@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/drawer_menu_account" android:title="Moje konto" android:icon="@drawable/ic_account_circle_black_24px" />
+<item android:id="@+id/drawer_menu_diary" android:title="Dziennik" android:icon="@drawable/ic_calendar_multiple_check" />
+<item android:id="@+id/drawer_menu_training_plans" android:title="Plany treningowe" android:icon="@drawable/ic_format_list_numbers"/>
+<item android:id="@+id/drawer_menu_atlas" android:title="Atlas ćwiczeń" android:icon="@drawable/ic_fitness_center_black_24px"/>
+<item android:id="@+id/drawer_menu_calculators" android:title="Kalkulatory" android:icon="@drawable/ic_calculator" />
+<item android:id="@+id/drawer_menu_monitor" android:title="Monitor postępów" android:icon="@drawable/ic_chart_areaspline" />
+<item android:id="@+id/drawer_menu_weight" android:title="Waga" android:icon="@drawable/ic_gauge" />
+<item android:id="@+id/drawer_menu_backpack" android:title="Torba treningowa" android:icon="@drawable/ic_wallet_travel" />
+
+</menu>
