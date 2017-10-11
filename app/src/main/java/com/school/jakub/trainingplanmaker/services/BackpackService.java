@@ -22,26 +22,26 @@ public class BackpackService {
 
     public String createBagpack(String name){
 
-        final String id =  UUID.randomUUID().toString();
         final String backpackName = name;
 
         myRealm.executeTransaction( new Realm.Transaction(){
             @Override
             public void execute(Realm realm) {
 
-                Backpack backpack = myRealm.createObject(Backpack.class, id);
-                backpack.setName(backpackName);
+                Backpack backpack = myRealm.createObject(Backpack.class, backpackName);
             }
         });
 
-        return id;
+        return name;
     }
 
     public ArrayList<Backpack> getAllBackpacks(){
-//        RealmResults results = myRealm.where(Backpack.class).findAll();
-//        Backpack[] resultArray = (Backpack[]) results.toArray();
 
         ArrayList<Backpack> list = new ArrayList(myRealm.where(Backpack.class).findAll());
         return list;
     }
+
+
+
+
 }
