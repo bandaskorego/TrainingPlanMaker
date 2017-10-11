@@ -2,6 +2,7 @@ package com.school.jakub.trainingplanmaker.controller.bagpack;
 
 import android.content.Context;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -23,6 +24,8 @@ public class BackpackActivity extends NavDrawer {
     protected Toolbar toolbar;
     private BackpackService backpackService;
     private FloatingActionButton fabAdd;
+    ListAdapter listAdapter;
+    ListView shitList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,36 +45,57 @@ public class BackpackActivity extends NavDrawer {
         drawerToggle.syncState();
 
         backpackService = new BackpackService();
+        listAdapter = new BackpackAdapter(this,backpackService);
 
-        ListAdapter listAdapter =
-                new BackpackAdapter(this,backpackService);
-
-        ListView shitList = (ListView) findViewById(R.id.backpack_list_view);
+        shitList = (ListView) findViewById(R.id.backpack_list_view);
         shitList.setAdapter(listAdapter);
 
         fabAdd = (FloatingActionButton) contentView.findViewById(R.id.backpack_activity_fabOK);
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder mBuilder = new AlertDialog.Builder(BackpackActivity.this);
-                View mView = getLayoutInflater().inflate(R.layout.backpack_activity_new_popup, null);
+                final AlertDialog.Builder mBuilder = new AlertDialog.Builder(BackpackActivity.this);
+                final View mView = getLayoutInflater().inflate(R.layout.backpack_activity_new_popup, null);
 
-                Button buttonOK = (Button) findViewById(R.id.backpack_activity_popup_OK);
-                Button buttonCancel = (Button) findViewById(R.id.backpack_activity_popup_Cancel);
+                mBuilder.setView(mView);
+                final AlertDialog dialog  = mBuilder.create();
+
+                Button buttonOK = (Button) mView.findViewById(R.id.backpack_activity_popup_OK);
+                Button buttonCancel = (Button) mView.findViewById(R.id.backpack_activity_popup_Cancel);
+                final EditText etName = (EditText) mView.findViewById(R.id.backpack_activity_popup_textInputLayout_editText);
 
                 buttonOK.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        EditText etName = (EditText) findViewById(R.id.backpack_activity_popup_textInputLayout_editText);
-                        backpackService.createBagpack(etName.toString());
-
+                        if(backpackService.checkIfNameIsValid(etName.getText().toString())) {
+                            backpackService.createBagpack(etName.getText().toString());
+                            updateListView();
+                            dialog.cancel();
+                        }else{
+                            Snackbar snackbar = Snackbar
+                                    .make(view, "Nazwa jest zajęta", Snackbar.LENGTH_LONG);
+                            snackbar.show();
+                        }
                     }
                 });
 
-                mBuilder.setView(mView);
-                AlertDialog dialog  = mBuilder.create();
+                buttonCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.cancel();
+                    }
+                });
+
+//                mBuilder.setView(mView);
+//                AlertDialog dialog  = mBuilder.create();
                 dialog.show();
             }
         });
     }
+
+    private void updateListView() {
+        listAdapter = new BackpackAdapter(this,backpackService);
+        shitList.setAdapter(listAdapter);
+    }
+
 }

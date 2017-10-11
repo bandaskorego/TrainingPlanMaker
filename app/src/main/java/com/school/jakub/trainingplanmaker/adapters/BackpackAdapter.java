@@ -1,16 +1,20 @@
 package com.school.jakub.trainingplanmaker.adapters;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.school.jakub.trainingplanmaker.R;
+import com.school.jakub.trainingplanmaker.controller.bagpack.BackpackActivity;
 import com.school.jakub.trainingplanmaker.model.Backpack;
 import com.school.jakub.trainingplanmaker.services.BackpackService;
 
@@ -38,6 +42,8 @@ public class BackpackAdapter extends ArrayAdapter<Backpack> {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View customView = inflater.inflate(R.layout.backpack_list_item, parent, false);
 
+
+        final Backpack backpack = getItem(position);
         String singleBagpack = getItem(position).getName();
         TextView textView = (TextView) customView.findViewById(R.id.backpack_list_item_textView);
         textView.setText(singleBagpack);
@@ -52,7 +58,24 @@ public class BackpackAdapter extends ArrayAdapter<Backpack> {
 //                notifyDataSetChanged();
 //            }
 //        });
-//        edit.setOnClickListener(position, R.id.bagpack_list_item_imageEdit);
+//        remove.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                new AlertDialog.Builder(getContext())
+//                        .setMessage("Czy na pewno chcesz usunąć plecak?")
+//                        .setCancelable(false)
+//                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int id) {
+//                                bpService.deleteBackpack(backpack);
+//                                dialog.cancel();
+//                            }
+//                        })
+//                        .setNegativeButton("No", null)
+//                        .show();
+//
+//            }
+//        });
 
         return customView;
     }

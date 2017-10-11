@@ -45,7 +45,7 @@
         android:id="@+id/backpack_activity_popup_OK"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Utwórz"
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@+id/backpack_activity_popup_textInputLayout"
         app:layout_constraintLeft_toLeftOf="@+id/guideline2"
@@ -59,7 +59,7 @@
     <Button
         android:id="@+id/backpack_activity_popup_Cancel"
         android:layout_height="48dp"
-        android:text="Button"
+        android:text="Anuluj"
         app:layout_constraintBottom_toBottomOf="@+id/backpack_activity_popup_OK"
         app:layout_constraintRight_toLeftOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/backpack_activity_popup_OK"
