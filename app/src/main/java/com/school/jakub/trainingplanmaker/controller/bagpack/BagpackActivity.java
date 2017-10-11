@@ -12,10 +12,12 @@ import android.widget.ListView;
 import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.adapters.BackpackAdapter;
 import com.school.jakub.trainingplanmaker.controller.NavDrawer;
+import com.school.jakub.trainingplanmaker.services.BackpackService;
 
 public class BagpackActivity extends NavDrawer {
 
     protected Toolbar toolbar;
+    private BackpackService backpackService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +36,13 @@ public class BagpackActivity extends NavDrawer {
         mDrawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
+        backpackService = new BackpackService();
+
         String[] list = { "KROPLOWKA KROASDASDASDASDASDDASDFASFSAFSAF" , " test1 ","test " , " test1 ","test " , " test1 ", "KROPLOWKA KROASDASDASDASDASDDASDFASFSAFSAF" , " test1 ","test " , " test1 ","test " , " test1 "};
 
 
         ListAdapter listAdapter =
-                new BackpackAdapter(this,list);
+                new BackpackAdapter(this,backpackService);
 
         ListView shitList = (ListView) findViewById(R.id.backpack_list_view);
         shitList.setAdapter(listAdapter);

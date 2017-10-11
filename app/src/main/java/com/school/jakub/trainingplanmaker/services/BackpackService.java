@@ -1,6 +1,13 @@
 package com.school.jakub.trainingplanmaker.services;
 
+import com.school.jakub.trainingplanmaker.model.Backpack;
+
+import java.util.ArrayList;
+import java.util.UUID;
+
 import io.realm.Realm;
+import io.realm.RealmResults;
+
 
 /**
  * Created by Jakub on 10-Oct-17.
@@ -9,14 +16,32 @@ import io.realm.Realm;
 public class BackpackService {
 
     private Realm myRealm;
-
-    BackpackService(){
+    public BackpackService(){
         myRealm = Realm.getDefaultInstance();
     }
 
-    public void createBagpack(String name){
+    public String createBagpack(String name){
 
+        final String id =  UUID.randomUUID().toString();
+        final String backpackName = name;
 
+        myRealm.executeTransaction( new Realm.Transaction(){
+            @Override
+            public void execute(Realm realm) {
 
+                Backpack backpack = myRealm.createObject(Backpack.class, id);
+                backpack.setName(backpackName);
+            }
+        });
+
+        return id;
+    }
+
+    public ArrayList<Backpack> getAllBackpacks(){
+//        RealmResults results = myRealm.where(Backpack.class).findAll();
+//        Backpack[] resultArray = (Backpack[]) results.toArray();
+
+        ArrayList<Backpack> list = new ArrayList(myRealm.where(Backpack.class).findAll());
+        return list;
     }
 }

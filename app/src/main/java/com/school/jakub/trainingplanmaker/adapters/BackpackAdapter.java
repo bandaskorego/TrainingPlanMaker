@@ -11,18 +11,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.school.jakub.trainingplanmaker.R;
+import com.school.jakub.trainingplanmaker.model.Backpack;
+import com.school.jakub.trainingplanmaker.services.BackpackService;
 
 /**
  * Created by Jakub on 10-Oct-17.
  */
 
-public class BackpackAdapter extends ArrayAdapter<String> {
+public class BackpackAdapter extends ArrayAdapter<Backpack> {
 
     private ImageView edit;
     private ImageView remove;
 
-    public BackpackAdapter(@NonNull Context context, String[] bagpacks) {
-        super(context, R.layout.backpack_list_item,bagpacks);
+    BackpackService bpService;
+
+    public BackpackAdapter(@NonNull Context context, BackpackService backpackService) {
+        super(context, R.layout.backpack_list_item, backpackService.getAllBackpacks());
+        bpService = backpackService;
+
     }
 
     @NonNull
@@ -32,7 +38,7 @@ public class BackpackAdapter extends ArrayAdapter<String> {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View customView = inflater.inflate(R.layout.backpack_list_item, parent, false);
 
-        String singleBagpack = getItem(position);
+        String singleBagpack = getItem(position).getName();
         TextView textView = (TextView) customView.findViewById(R.id.backpack_list_item_textView);
         textView.setText(singleBagpack);
 
