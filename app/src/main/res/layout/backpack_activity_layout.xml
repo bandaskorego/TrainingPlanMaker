@@ -9,7 +9,7 @@
     android:layout_alignParentTop="true"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="0dp"
-    tools:context="com.school.jakub.trainingplanmaker.controller.bagpack.BagpackActivity">
+    tools:context="com.school.jakub.trainingplanmaker.controller.bagpack.BackpackActivity">
 
     <include
         android:id="@+id/backpack_toolbar"

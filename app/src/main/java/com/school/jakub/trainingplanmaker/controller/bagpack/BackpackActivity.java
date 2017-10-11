@@ -14,7 +14,7 @@ import com.school.jakub.trainingplanmaker.adapters.BackpackAdapter;
 import com.school.jakub.trainingplanmaker.controller.NavDrawer;
 import com.school.jakub.trainingplanmaker.services.BackpackService;
 
-public class BagpackActivity extends NavDrawer {
+public class BackpackActivity extends NavDrawer {
 
     protected Toolbar toolbar;
     private BackpackService backpackService;

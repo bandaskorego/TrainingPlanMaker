@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.school.jakub.trainingplanmaker.R;
-import com.school.jakub.trainingplanmaker.controller.bagpack.BagpackActivity;
+import com.school.jakub.trainingplanmaker.controller.bagpack.BackpackActivity;
 
 /**
  * Created by Jakub on 09-Oct-17.
@@ -73,7 +73,7 @@ public class NavDrawer extends AppCompatActivity implements NavigationView.OnNav
             }
             case R.id.drawer_menu_backpack: {
                 System.out.println("drawer_menu_backpack");
-                Intent intent = new Intent(this, BagpackActivity.class);
+                Intent intent = new Intent(this, BackpackActivity.class);
                 startActivity(intent);
                 break;
             }
