@@ -10,7 +10,7 @@ import io.realm.annotations.PrimaryKey;
  * Created by Jakub on 07-Oct-17.
  */
 
-public class StuffForTraining extends RealmObject {
+public class Backpack extends RealmObject {
 
     @PrimaryKey
     private String id;

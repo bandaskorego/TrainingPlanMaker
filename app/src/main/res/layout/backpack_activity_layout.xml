@@ -12,7 +12,7 @@
     tools:context="com.school.jakub.trainingplanmaker.controller.bagpack.BagpackActivity">
 
     <include
-        android:id="@+id/bagpack_toolbar"
+        android:id="@+id/backpack_toolbar"
         layout="@layout/activity_toolbar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -38,7 +38,7 @@
         app:layout_constraintHorizontal_bias="0.488" />
 
     <ImageView
-        android:id="@+id/bagpack_activity_layout_bottomBox"
+        android:id="@+id/backpack_activity_layout_bottomBox"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:src="@color/colorPrimary"
@@ -50,16 +50,16 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <ListView
-        android:id="@+id/bagpack_list_view"
+        android:id="@+id/backpack_list_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="0dp"
         android:foregroundGravity="top"
-        app:layout_constraintBottom_toTopOf="@+id/bagpack_activity_layout_bottomBox"
+        app:layout_constraintBottom_toTopOf="@+id/backpack_activity_layout_bottomBox"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bagpack_toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/backpack_toolbar"
         app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>
