@@ -1,6 +1,8 @@
 package com.school.jakub.trainingplanmaker.controller.bagpack;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -9,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
@@ -16,16 +19,18 @@ import android.widget.ListView;
 
 import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.adapters.BackpackAdapter;
+import com.school.jakub.trainingplanmaker.controller.MainActivity;
 import com.school.jakub.trainingplanmaker.controller.NavDrawer;
+import com.school.jakub.trainingplanmaker.model.Backpack;
 import com.school.jakub.trainingplanmaker.services.BackpackService;
 
 public class BackpackActivity extends NavDrawer {
 
     protected Toolbar toolbar;
-    private BackpackService backpackService;
+    final private BackpackService backpackService = new BackpackService();
     private FloatingActionButton fabAdd;
     ListAdapter listAdapter;
-    ListView shitList;
+    ListView backpackList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +49,42 @@ public class BackpackActivity extends NavDrawer {
         mDrawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
-        backpackService = new BackpackService();
         listAdapter = new BackpackAdapter(this,backpackService);
 
-        shitList = (ListView) findViewById(R.id.backpack_list_view);
-        shitList.setAdapter(listAdapter);
+        backpackList = (ListView) findViewById(R.id.backpack_list_view);
+        backpackList.setAdapter(listAdapter);
+
+        backpackList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Backpack bp = (Backpack)adapterView.getItemAtPosition(i);
+                Intent intent = new Intent(BackpackActivity.this, BackpackEditActivity.class);
+                intent.putExtra("backpackName",bp.getName());
+                startActivity(intent);
+            }
+        });
+
+        backpackList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                final Backpack bp = (Backpack)adapterView.getItemAtPosition(i);
+                new AlertDialog.Builder(adapterView.getContext())
+                        .setMessage("Czy na pewno chcesz usunąć plecak?")
+                        .setCancelable(false)
+                        .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                backpackService.deleteBackpack(bp);
+                                updateListView();
+                                dialog.cancel();
+                            }
+                        })
+                        .setNegativeButton("Nie", null)
+                        .show();
+                return true;
+            }
+        });
+
+
 
         fabAdd = (FloatingActionButton) contentView.findViewById(R.id.backpack_activity_fabOK);
         fabAdd.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +131,7 @@ public class BackpackActivity extends NavDrawer {
 
     private void updateListView() {
         listAdapter = new BackpackAdapter(this,backpackService);
-        shitList.setAdapter(listAdapter);
+        backpackList.setAdapter(listAdapter);
     }
 
 }
