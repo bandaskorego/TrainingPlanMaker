@@ -25,6 +25,10 @@
         <activity
             android:name=".controller.bagpack.BackpackChecklistActivity"
             android:label="@string/title_activity_backpack__checklist"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".controller.ProfileMeasurementActivity"
+            android:label="@string/title_activity_profile_measurement"
             android:theme="@style/AppTheme"></activity>
     </application>
 
