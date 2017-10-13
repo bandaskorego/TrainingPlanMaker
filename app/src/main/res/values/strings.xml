@@ -3,5 +3,6 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="title_activity_backpack_edit">BackpackEditActivity</string>
+    <string name="title_activity_backpack__checklist">Checklista</string>
 
 </resources>

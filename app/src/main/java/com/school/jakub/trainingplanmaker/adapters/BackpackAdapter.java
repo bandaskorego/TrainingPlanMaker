@@ -36,7 +36,6 @@ public class BackpackAdapter extends ArrayAdapter<Backpack> {
         super(context, R.layout.backpack_list_item, backpackService.getAllBackpacks());
         bpService = backpackService;
         this.context = context;
-
     }
 
     @NonNull

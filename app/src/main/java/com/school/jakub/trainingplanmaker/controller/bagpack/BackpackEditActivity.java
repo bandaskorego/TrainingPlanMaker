@@ -22,9 +22,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.school.jakub.trainingplanmaker.R;
-import com.school.jakub.trainingplanmaker.adapters.BackpackAdapter;
 import com.school.jakub.trainingplanmaker.adapters.BackpackItemEditAdapter;
-import com.school.jakub.trainingplanmaker.model.Backpack;
 import com.school.jakub.trainingplanmaker.model.Item;
 import com.school.jakub.trainingplanmaker.services.BackpackService;
 
@@ -49,7 +47,7 @@ public class BackpackEditActivity extends AppCompatActivity {
         etName.setText(backpackName);
         etName.addTextChangedListener(new MyTextWatcher(etName));
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.backpack_checklist_toolbar);
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setTitle("Edycja plecaka");
         setSupportActionBar(toolbar);

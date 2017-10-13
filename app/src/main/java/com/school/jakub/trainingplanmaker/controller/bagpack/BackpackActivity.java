@@ -57,7 +57,7 @@ public class BackpackActivity extends NavDrawer {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Backpack bp = (Backpack)adapterView.getItemAtPosition(i);
-                Intent intent = new Intent(BackpackActivity.this, BackpackEditActivity.class);
+                Intent intent = new Intent(BackpackActivity.this, BackpackChecklistActivity.class);
                 intent.putExtra("backpackName",bp.getName());
                 startActivity(intent);
             }
