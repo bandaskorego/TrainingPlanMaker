@@ -2,6 +2,7 @@ package com.school.jakub.trainingplanmaker.adapters;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.controller.bagpack.BackpackActivity;
+import com.school.jakub.trainingplanmaker.controller.bagpack.BackpackEditActivity;
 import com.school.jakub.trainingplanmaker.model.Backpack;
 import com.school.jakub.trainingplanmaker.services.BackpackService;
 
@@ -26,12 +28,14 @@ public class BackpackAdapter extends ArrayAdapter<Backpack> {
 
     private ImageView edit;
     private ImageView remove;
+    private Context context;
 
     BackpackService bpService;
 
     public BackpackAdapter(@NonNull Context context, BackpackService backpackService) {
         super(context, R.layout.backpack_list_item, backpackService.getAllBackpacks());
         bpService = backpackService;
+        this.context = context;
 
     }
 
@@ -49,15 +53,17 @@ public class BackpackAdapter extends ArrayAdapter<Backpack> {
         textView.setText(singleBagpack);
 
         edit = (ImageView) customView.findViewById(R.id.backpack_list_item_imageEdit);
-        remove = (ImageView) customView.findViewById(R.id.backpack_list_item_imageRemove);
+//        remove = (ImageView) customView.findViewById(R.id.backpack_list_item_imageRemove);
 //
-//        edit.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view) {
-//                bagpacks.remove(position); //or some other task
-//                notifyDataSetChanged();
-//            }
-//        });
+        edit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(context, BackpackEditActivity.class);
+                intent.putExtra("backpack_name",backpack.getName());
+                context.startActivity(intent);
+            }
+        });
 //        remove.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {

@@ -11,11 +11,12 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:src="@drawable/ic_mode_edit_black_24px"
-        android:layout_marginBottom="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/backpack_list_item_imageRemove"
-        app:layout_constraintRight_toLeftOf="@+id/backpack_list_item_imageRemove"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="22dp" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:id="@+id/backpack_list_item_textView"
@@ -32,18 +33,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="12dp"
         app:layout_constraintVertical_bias="0.6" />
-
-    <ImageView
-        android:id="@+id/backpack_list_item_imageRemove"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:src="@drawable/ic_delete_black_24px"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp" />
 
 
 </android.support.constraint.ConstraintLayout>

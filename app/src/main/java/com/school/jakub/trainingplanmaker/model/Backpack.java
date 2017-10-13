@@ -13,8 +13,17 @@ import io.realm.annotations.PrimaryKey;
 public class Backpack extends RealmObject {
 
     @PrimaryKey
+    private String id;
     private String name;
     private RealmList<Item> items;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

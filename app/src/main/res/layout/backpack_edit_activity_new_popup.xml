@@ -19,7 +19,7 @@
             android:id="@+id/backpack_edit_activity_popup_textInputLayout_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nazwa pr" />
+            android:hint="Nazwa przedmiotu" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -45,7 +45,7 @@
         android:id="@+id/backpack_edit_activity_popup_OK"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Utwórz"
+        android:text="Dodaj"
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@+id/backpack_edit_activity_popup_textInputLayout"
         app:layout_constraintLeft_toLeftOf="@+id/guideline2"

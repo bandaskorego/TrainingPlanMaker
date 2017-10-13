@@ -19,7 +19,6 @@ import android.widget.ListView;
 
 import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.adapters.BackpackAdapter;
-import com.school.jakub.trainingplanmaker.controller.MainActivity;
 import com.school.jakub.trainingplanmaker.controller.NavDrawer;
 import com.school.jakub.trainingplanmaker.model.Backpack;
 import com.school.jakub.trainingplanmaker.services.BackpackService;
@@ -27,7 +26,7 @@ import com.school.jakub.trainingplanmaker.services.BackpackService;
 public class BackpackActivity extends NavDrawer {
 
     protected Toolbar toolbar;
-    final private BackpackService backpackService = new BackpackService();
+    final private BackpackService service = new BackpackService();
     private FloatingActionButton fabAdd;
     ListAdapter listAdapter;
     ListView backpackList;
@@ -49,7 +48,7 @@ public class BackpackActivity extends NavDrawer {
         mDrawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
-        listAdapter = new BackpackAdapter(this,backpackService);
+        listAdapter = new BackpackAdapter(this, service);
 
         backpackList = (ListView) findViewById(R.id.backpack_list_view);
         backpackList.setAdapter(listAdapter);
@@ -73,7 +72,7 @@ public class BackpackActivity extends NavDrawer {
                         .setCancelable(false)
                         .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                backpackService.deleteBackpack(bp);
+                                service.deleteBackpack(bp);
                                 updateListView();
                                 dialog.cancel();
                             }
@@ -96,15 +95,15 @@ public class BackpackActivity extends NavDrawer {
                 mBuilder.setView(mView);
                 final AlertDialog dialog  = mBuilder.create();
 
-                Button buttonOK = (Button) mView.findViewById(R.id.backpack_activity_popup_OK);
-                Button buttonCancel = (Button) mView.findViewById(R.id.backpack_activity_popup_Cancel);
-                final EditText etName = (EditText) mView.findViewById(R.id.backpack_activity_popup_textInputLayout_editText);
+                Button buttonOK = (Button) mView.findViewById(R.id.backpack_edit_activity_popup_OK);
+                Button buttonCancel = (Button) mView.findViewById(R.id.backpack_edit_activity_popup_Cancel);
+                final EditText etName = (EditText) mView.findViewById(R.id.backpack_edit_activity_popup_textInputLayout_editText);
 
                 buttonOK.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(backpackService.checkIfNameIsValid(etName.getText().toString())) {
-                            backpackService.createBagpack(etName.getText().toString());
+                        if(service.checkIfNameIsValid(etName.getText().toString())) {
+                            service.createBagpack(etName.getText().toString());
                             updateListView();
                             dialog.cancel();
                         }else{
@@ -130,8 +129,13 @@ public class BackpackActivity extends NavDrawer {
     }
 
     private void updateListView() {
-        listAdapter = new BackpackAdapter(this,backpackService);
+        listAdapter = new BackpackAdapter(this, service);
         backpackList.setAdapter(listAdapter);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateListView();
+    }
 }
