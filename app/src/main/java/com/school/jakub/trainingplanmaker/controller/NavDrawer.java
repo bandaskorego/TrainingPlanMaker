@@ -45,6 +45,8 @@ public class NavDrawer extends AppCompatActivity implements NavigationView.OnNav
 
             case R.id.drawer_menu_account: {
                 System.out.println("drawer_menu_account");
+                Intent intent = new Intent(this, ProfileMeasurementActivity.class);
+                startActivity(intent);
                 break;
             }
             case R.id.drawer_menu_diary: {
