@@ -63,24 +63,7 @@ public class BackpackAdapter extends ArrayAdapter<Backpack> {
                 context.startActivity(intent);
             }
         });
-//        remove.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                new AlertDialog.Builder(getContext())
-//                        .setMessage("Czy na pewno chcesz usunąć plecak?")
-//                        .setCancelable(false)
-//                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int id) {
-//                                bpService.deleteBackpack(backpack);
-//                                dialog.cancel();
-//                            }
-//                        })
-//                        .setNegativeButton("No", null)
-//                        .show();
-//
-//            }
-//        });
+
 
         return customView;
     }

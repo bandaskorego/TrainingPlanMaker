@@ -30,6 +30,10 @@
             android:name=".controller.ProfileMeasurementActivity"
             android:label="@string/title_activity_profile_measurement"
             android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".controller.CalendarActivity"
+            android:label="@string/title_activity_backpack_edit"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

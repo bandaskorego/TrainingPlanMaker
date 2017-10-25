@@ -1,6 +1,7 @@
 package com.school.jakub.trainingplanmaker.controller;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -21,12 +22,14 @@ import java.util.Locale;
 public class ProfileMeasurementActivity extends AppCompatActivity {
 
     private TextView datepicker;
+    private Context context;
 //    private DatePickerDialog.OnDateSetListener onDateSetListener;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.context = context;
         setContentView(R.layout.profile_measurement_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.profile_measurement_activity_toolbar);
         setSupportActionBar(toolbar);
@@ -34,12 +37,17 @@ public class ProfileMeasurementActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-
+        String date = getIntent().getStringExtra("date");
         datepicker = (TextView) findViewById(R.id.profile_measurement_activity_datepicker);
+
+        if(date != null) {
+            datepicker.setText(date);
+        }
+
         datepicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Profil  eMeasurementActivity.this, CalendarActivity.class);
+                Intent i = new Intent(ProfileMeasurementActivity.this, CalendarActivity.class);
                 startActivity(i);
             }
         });
