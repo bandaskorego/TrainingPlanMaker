@@ -23,15 +23,39 @@ public class CalendarActivity extends AppCompatActivity {
         setContentView(R.layout.calendar_layout);
         mCalendarView = (CalendarView) findViewById(R.id.profile_measurement_calendarView);
 
+        final int bicepsLeft = getIntent().getIntExtra("bicepsLeft", 0);
+        final int bicepsRight = getIntent().getIntExtra("bicepsRight", 0);
+        final int chest = getIntent().getIntExtra("chest", 0);
+        final int waist = getIntent().getIntExtra("waist", 0);
+        final int thighLeft = getIntent().getIntExtra("thighLeft", 0);
+        final int thighRight = getIntent().getIntExtra("thighRight", 0);
+        final int weight = getIntent().getIntExtra("weight", 0);
+
+        System.out.println(bicepsLeft);
+        System.out.println(bicepsRight);
+        System.out.println(chest);
+        System.out.println(waist);
+        System.out.println(thighLeft);
+        System.out.println(thighRight);
+        System.out.println(weight);
+
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
-                String date = day + " / " + (month+1) + " / " + year;
+                //String date = day + " / " + (month+1) + " / " + year;
 
                 Intent intent = new Intent(CalendarActivity.this, ProfileMeasurementActivity.class);
-                intent.putExtra("date", date);
+                intent.putExtra("year", year);
+                intent.putExtra("month", month);
+                intent.putExtra("day", day);
+                intent.putExtra("bicepsLeft", bicepsLeft);
+                intent.putExtra("bicepsRight", bicepsRight);
+                intent.putExtra("chest",chest);
+                intent.putExtra("waist", waist);
+                intent.putExtra("thighLeft", thighLeft);
+                intent.putExtra("thighRight", thighRight);
+                intent.putExtra("weight", weight);
                 startActivity(intent);
-
             }
         });
     }

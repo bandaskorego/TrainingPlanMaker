@@ -1,0 +1,40 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.school.jakub.trainingplanmaker.controller.exercise.AtlasActivity">
+    <item
+        android:id="@+id/atlas_action_legs"
+        android:orderInCategory="100"
+        android:title="Nogi"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/atlas_action_abs"
+        android:orderInCategory="100"
+        android:title="Brzuch"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/atlas_action_chest"
+        android:orderInCategory="100"
+        android:title="Klatka piersiowa"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/atlas_action_back"
+        android:orderInCategory="100"
+        android:title="Plecy"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/atlas_action_biceps"
+        android:orderInCategory="100"
+        android:title="Biceps"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/atlas_action_triceps"
+        android:orderInCategory="100"
+        android:title="Triceps"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/atlas_action_shoulders"
+        android:orderInCategory="100"
+        android:title="Barki"
+        app:showAsAction="never" />
+</menu>

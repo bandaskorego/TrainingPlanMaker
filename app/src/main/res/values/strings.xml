@@ -5,5 +5,8 @@
     <string name="title_activity_backpack_edit">BackpackEditActivity</string>
     <string name="title_activity_backpack__checklist">Checklista</string>
     <string name="title_activity_profile_measurement">Moje pomiary</string>
+    <string name="title_activity_atlas">AtlasActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 
 </resources>

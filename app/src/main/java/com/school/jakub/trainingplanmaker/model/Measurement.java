@@ -1,6 +1,8 @@
 package com.school.jakub.trainingplanmaker.model;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -15,11 +17,39 @@ public class Measurement extends RealmObject {
     private String id;
     private Date date;
     private int weight;
-    private int biceps;
+    private int bicepsLeft;
+    private int bicepsRight;
     private int chest;
     private int waist;
-    private int thigh;
-    private int calf;
+    private int thighLeft;
+    private int thighRight;
+
+    public Measurement() {
+        this.id = UUID.randomUUID().toString();
+        date = new Date();
+        this.weight = 50;
+        this.bicepsLeft = 25;
+        this.bicepsRight = 25;
+        this.chest = 90;
+        this.waist = 60;
+        this.thighLeft = 40;
+        this.thighRight = 40;
+    }
+
+    @Override
+    public String toString() {
+        return "Measurement{" +
+                "id='" + id + '\'' +
+                ", date=" + date +
+                ", weight=" + weight +
+                ", bicepsLeft=" + bicepsLeft +
+                ", bicepsRight=" + bicepsRight +
+                ", chest=" + chest +
+                ", waist=" + waist +
+                ", thighLeft=" + thighLeft +
+                ", thighRight=" + thighRight +
+                '}';
+    }
 
     public String getId() {
         return id;
@@ -45,12 +75,20 @@ public class Measurement extends RealmObject {
         this.weight = weight;
     }
 
-    public int getBiceps() {
-        return biceps;
+    public int getBicepsLeft() {
+        return bicepsLeft;
     }
 
-    public void setBiceps(int biceps) {
-        this.biceps = biceps;
+    public void setBicepsLeft(int bicepsLeft) {
+        this.bicepsLeft = bicepsLeft;
+    }
+
+    public int getBicepsRight() {
+        return bicepsRight;
+    }
+
+    public void setBicepsRight(int bicepsRight) {
+        this.bicepsRight = bicepsRight;
     }
 
     public int getChest() {
@@ -69,19 +107,19 @@ public class Measurement extends RealmObject {
         this.waist = waist;
     }
 
-    public int getThigh() {
-        return thigh;
+    public int getThighLeft() {
+        return thighLeft;
     }
 
-    public void setThigh(int thigh) {
-        this.thigh = thigh;
+    public void setThighLeft(int thighLeft) {
+        this.thighLeft = thighLeft;
     }
 
-    public int getCalf() {
-        return calf;
+    public int getThighRight() {
+        return thighRight;
     }
 
-    public void setCalf(int calf) {
-        this.calf = calf;
+    public void setThighRight(int thighRight) {
+        this.thighRight = thighRight;
     }
 }

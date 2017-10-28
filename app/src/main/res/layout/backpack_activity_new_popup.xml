@@ -19,7 +19,7 @@
             android:id="@+id/backpack_edit_activity_popup_textInputLayout_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nazwa pr" />
+            android:hint="Nazwa" />
 
     </android.support.design.widget.TextInputLayout>
 

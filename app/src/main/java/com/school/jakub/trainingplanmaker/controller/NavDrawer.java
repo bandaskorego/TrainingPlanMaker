@@ -13,6 +13,7 @@ import android.view.View;
 
 import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.controller.bagpack.BackpackActivity;
+import com.school.jakub.trainingplanmaker.controller.exercise.AtlasActivity;
 
 /**
  * Created by Jakub on 09-Oct-17.
@@ -58,7 +59,8 @@ public class NavDrawer extends AppCompatActivity implements NavigationView.OnNav
                 break;
             }
             case R.id.drawer_menu_atlas: {
-                System.out.println("drawer_menu_atlas");
+                Intent intent = new Intent(this, AtlasActivity.class);
+                startActivity(intent);
                 break;
             }
             case R.id.drawer_menu_calculators: {

@@ -7,386 +7,400 @@
     android:layout_height="match_parent"
     tools:context="com.school.jakub.trainingplanmaker.controller.ProfileMeasurementActivity">
 
-    <EditText
-        android:id="@+id/editText7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="3"
-        android:inputType="numberDecimal"
-        android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="@+id/editText6"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
-
-    <ImageView
-        android:id="@+id/imageView14"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/removecircle"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/editText7"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText7"
-        android:layout_marginBottom="0dp" />
-
-    <ImageView
-        android:id="@+id/imageView15"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/addcircle"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView14"
-        android:layout_marginTop="0dp" />
-
-    <EditText
-        android:id="@+id/editText6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="3"
-        android:inputType="numberDecimal"
-        android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="@+id/editText5"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
-
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/removecircle"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/editText6"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText6"
-        android:layout_marginBottom="0dp" />
-
-    <ImageView
-        android:id="@+id/imageView13"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/addcircle"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView12"
-        android:layout_marginTop="0dp" />
-
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="3"
-        android:inputType="numberDecimal"
-        android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="@+id/editText4"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
-
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/removecircle"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/editText5"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText5"
-        android:layout_marginBottom="0dp" />
-
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/addcircle"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView10"
-        android:layout_marginTop="0dp" />
-
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="3"
-        android:inputType="numberDecimal"
-        android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="@+id/editText3"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/removecircle"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/editText4"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText4"
-        android:layout_marginBottom="0dp" />
-
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/addcircle"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView8"
-        android:layout_marginTop="0dp" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/addcircle"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView6"
-        android:layout_marginTop="0dp" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/removecircle"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/editText3"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText3"
-        android:layout_marginBottom="0dp" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="3"
-        android:inputType="numberDecimal"
-        android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="@+id/editText"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/profile_measurement_activity_toolbar"
         android:layout_width="0dp"
-        android:layout_height="56dp"
+        android:layout_height="64dp"
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/AppTheme.PopupOverlay"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.0" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp" />
-
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Biceps(p)"
-        android:textSize="18sp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/editText"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Biceps(l)"
-        android:textSize="18sp"
-        app:layout_constraintRight_toLeftOf="@+id/editText3"
-        android:layout_marginRight="8dp"
-        app:layout_constraintTop_toTopOf="@+id/editText3"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText3"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.6"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Pierś"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText4"
-        app:layout_constraintRight_toLeftOf="@+id/editText4"
-        app:layout_constraintTop_toTopOf="@+id/editText4"
-        app:layout_constraintVertical_bias="0.6"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline"
-        app:layout_constraintHorizontal_bias="0.888" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Talia"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:textSize="18sp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/editText5"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText5"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintRight_toLeftOf="@+id/editText5"
-        android:layout_marginRight="8dp" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Udo(p)"
-        android:layout_marginLeft="0dp"
-        android:textSize="18sp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline"
-        android:layout_marginStart="8dp"
-        app:layout_constraintTop_toTopOf="@+id/editText6"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText6"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintRight_toLeftOf="@+id/editText6"
-        android:layout_marginRight="8dp" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Udo(l)"
-        android:textSize="18sp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintRight_toLeftOf="@+id/editText7"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/editText7"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText7"
-        android:layout_marginBottom="8dp" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pomiar"
-        android:textSize="24dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/profile_measurement_activity_toolbar"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Zapisz"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <TextView
-        android:id="@+id/profile_measurement_activity_datepicker"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Data pomiaru"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintLeft_creator="1" />
+
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:srcCompat="@drawable/addcircle"
-        app:layout_constraintLeft_toRightOf="@+id/imageView3"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="0.505"
-        android:layout_marginBottom="0dp" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/removecircle"
-        app:layout_constraintTop_toTopOf="@+id/editText"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText"
-        android:layout_marginBottom="0dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_measurement_activity_toolbar"
         app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/editText"
-        android:layout_marginLeft="42dp" />
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="3"
-        android:inputType="numberDecimal"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        app:layout_constraintLeft_toRightOf="@+id/textView4"
-        android:layout_marginLeft="8dp" />
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/profile_measurement_activity_inner_constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+>
 
-    <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guideline"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.04" />
+            <ImageView
+                android:id="@+id/profile_measurement_activity_plus_weight"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintLeft_toLeftOf="@+id/profile_measurement_activity_plus_thigh_right"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_minus_weight"
+                app:srcCompat="@drawable/addcircle" />
+
+            <ImageView
+                android:id="@+id/profile_measurement_activity_minus_weight"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_measurement_activity_weight"
+                app:layout_constraintLeft_toLeftOf="@+id/profile_measurement_activity_minus_thigh_left"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_weight"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/removecircle" />
+
+            <TextView
+                android:id="@+id/profile_measurement_activity_thigh_right"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="10"
+                android:textSize="24sp"
+                app:layout_constraintRight_toRightOf="@+id/profile_measurement_activity_thigh_left"
+                app:layout_constraintStart_toStartOf="@+id/profile_measurement_activity_thigh_left"
+                app:layout_constraintTop_toBottomOf="@+id/profile_measurement_activity_thigh_left" />
+
+            <TextView
+                android:id="@+id/profile_measurement_activity_weight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="10"
+                android:textSize="24sp"
+                app:layout_constraintRight_toRightOf="@+id/profile_measurement_activity_thigh_right"
+                app:layout_constraintStart_toStartOf="@+id/profile_measurement_activity_thigh_right"
+                app:layout_constraintTop_toBottomOf="@+id/profile_measurement_activity_thigh_right" />
+
+            <ImageView
+                android:id="@+id/profile_measurement_activity_minus_thigh_right"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_measurement_activity_thigh_right"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_thigh_right"
+                app:srcCompat="@drawable/removecircle"
+                app:layout_constraintLeft_toLeftOf="@+id/profile_measurement_activity_minus_biceps_left" />
+
+            <ImageView
+                android:id="@+id/profile_measurement_activity_plus_thigh_right"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintLeft_toLeftOf="@+id/profile_measurement_activity_plus_biceps_left"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_minus_thigh_right"
+                app:srcCompat="@drawable/addcircle" />
+
+            <TextView
+                android:id="@+id/profile_measurement_activity_thigh_left"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="10"
+                android:textSize="24sp"
+                app:layout_constraintRight_toRightOf="@+id/profile_measurement_activity_waist"
+                app:layout_constraintStart_toStartOf="@+id/profile_measurement_activity_waist"
+                app:layout_constraintTop_toBottomOf="@+id/profile_measurement_activity_waist" />
+
+            <ImageView
+                android:id="@+id/profile_measurement_activity_minus_thigh_left"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_measurement_activity_thigh_left"
+                app:layout_constraintLeft_toLeftOf="@+id/profile_measurement_activity_minus_biceps_left"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_thigh_left"
+                app:srcCompat="@drawable/removecircle" />
+
+            <ImageView
+                android:id="@+id/profile_measurement_activity_plus_thigh_left"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintLeft_toLeftOf="@+id/profile_measurement_activity_plus_biceps_left"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_minus_thigh_left"
+                app:srcCompat="@drawable/addcircle" />
+
+            <TextView
+                android:id="@+id/profile_measurement_activity_waist"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="10"
+                android:textSize="24sp"
+                app:layout_constraintRight_toRightOf="@+id/profile_measurement_activity_chest"
+                app:layout_constraintStart_toStartOf="@+id/profile_measurement_activity_chest"
+                app:layout_constraintTop_toBottomOf="@+id/profile_measurement_activity_chest" />
+
+            <ImageView
+                android:id="@+id/profile_measurement_activity_minus_waist"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_measurement_activity_waist"
+                app:layout_constraintLeft_toLeftOf="@+id/profile_measurement_activity_minus_biceps_left"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_waist"
+                app:srcCompat="@drawable/removecircle" />
+
+            <ImageView
+                android:id="@+id/profile_measurement_activity_plus_waist"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintLeft_toLeftOf="@+id/profile_measurement_activity_plus_biceps_left"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_minus_waist"
+                app:srcCompat="@drawable/addcircle" />
+
+            <TextView
+                android:id="@+id/profile_measurement_activity_chest"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="10"
+                android:textSize="24sp"
+                app:layout_constraintRight_toRightOf="@+id/profile_measurement_activity_biceps_right"
+                app:layout_constraintStart_toStartOf="@+id/profile_measurement_activity_biceps_right"
+                app:layout_constraintTop_toBottomOf="@+id/profile_measurement_activity_biceps_right" />
+
+            <ImageView
+                android:id="@+id/profile_measurement_activity_minus_chest"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_measurement_activity_chest"
+                app:layout_constraintLeft_toLeftOf="@+id/profile_measurement_activity_minus_biceps_left"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_chest"
+                app:srcCompat="@drawable/removecircle" />
+
+            <ImageView
+                android:id="@+id/profile_measurement_activity_plus_chest"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintLeft_toLeftOf="@+id/profile_measurement_activity_plus_biceps_left"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_minus_chest"
+                app:srcCompat="@drawable/addcircle" />
+
+            <ImageView
+                android:id="@+id/profile_measurement_activity_plus_biceps_right"
+                android:layout_width="40dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_measurement_activity_minus_biceps_right"
+                app:layout_constraintEnd_toEndOf="@+id/profile_measurement_activity_plus_biceps_left"
+                app:layout_constraintLeft_toLeftOf="@+id/profile_measurement_activity_plus_biceps_left"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_minus_biceps_right"
+                app:srcCompat="@drawable/addcircle" />
+
+            <ImageView
+                android:id="@+id/profile_measurement_activity_minus_biceps_right"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_measurement_activity_biceps_right"
+                app:layout_constraintLeft_toLeftOf="@+id/profile_measurement_activity_minus_biceps_left"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_biceps_right"
+                app:srcCompat="@drawable/removecircle" />
+
+            <TextView
+                android:id="@+id/profile_measurement_activity_biceps_right"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="10"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="@+id/profile_measurement_activity_biceps_left"
+                app:layout_constraintStart_toStartOf="@+id/profile_measurement_activity_biceps_left"
+                app:layout_constraintTop_toBottomOf="@+id/profile_measurement_activity_biceps_left" />
+
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/fab_margin"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:srcCompat="@android:drawable/ic_dialog_email" />
+
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginLeft="8dp"
+                android:text="Biceps(l)"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_measurement_activity_biceps_left"
+                app:layout_constraintLeft_toLeftOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_biceps_left"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="Biceps(r)"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_measurement_activity_biceps_right"
+                app:layout_constraintLeft_toLeftOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_biceps_right"
+                app:layout_constraintVertical_bias="0.6" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="Pierś"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_measurement_activity_chest"
+                app:layout_constraintLeft_toLeftOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_chest"
+                app:layout_constraintVertical_bias="0.6" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="Talia"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_measurement_activity_waist"
+                app:layout_constraintLeft_toLeftOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_waist" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="Udo(l)"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_measurement_activity_thigh_left"
+                app:layout_constraintLeft_toLeftOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_thigh_left" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="Udo(p)"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_measurement_activity_thigh_right"
+                app:layout_constraintLeft_toLeftOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_thigh_right" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Pomiar"
+                android:textSize="24dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/profile_measurement_activity_datepicker"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="24dp"
+                android:text="Data pomiaru"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_measurement_activity_weight" />
+
+            <ImageView
+                android:id="@+id/profile_measurement_activity_plus_biceps_left"
+                android:layout_width="40dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_measurement_activity_minus_biceps_left"
+                app:layout_constraintHorizontal_bias="0.25"
+                app:layout_constraintLeft_toRightOf="@+id/profile_measurement_activity_minus_biceps_left"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_minus_biceps_left"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/addcircle" />
+
+            <ImageView
+                android:id="@+id/profile_measurement_activity_minus_biceps_left"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_measurement_activity_biceps_left"
+                app:layout_constraintStart_toEndOf="@+id/profile_measurement_activity_biceps_left"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_biceps_left"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/removecircle" />
+
+            <TextView
+                android:id="@+id/profile_measurement_activity_biceps_left"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                android:text="10"
+                android:textSize="24sp"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.0" />
+
+            <Button
+                android:id="@+id/profile_measurement_activity_save_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Zapisz"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_measurement_activity_datepicker" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="Waga"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_measurement_activity_weight"
+                app:layout_constraintLeft_toLeftOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/profile_measurement_activity_weight"
+                app:layout_constraintVertical_bias="0.777" />
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
 
 </android.support.constraint.ConstraintLayout>
