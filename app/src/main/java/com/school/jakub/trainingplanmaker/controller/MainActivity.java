@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.school.jakub.trainingplanmaker.R;
+import com.school.jakub.trainingplanmaker.controller.utils.NavDrawer;
 import com.school.jakub.trainingplanmaker.services.TrainingService;
 
 import io.realm.Realm;

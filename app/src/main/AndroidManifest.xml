@@ -27,15 +27,15 @@
             android:label="@string/title_activity_backpack__checklist"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".controller.ProfileMeasurementActivity"
+            android:name=".controller.measurement.ProfileMeasurementActivity"
             android:label="@string/title_activity_profile_measurement"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".controller.CalendarActivity"
+            android:name=".controller.utils.CalendarActivity"
             android:label="@string/title_activity_backpack_edit"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".controller.exercise.AtlasActivity"
+            android:name=".controller.atlas.AtlasActivity"
             android:label="@string/title_activity_atlas"
             android:theme="@style/AppTheme"></activity>
     </application>

@@ -1,4 +1,4 @@
-package com.school.jakub.trainingplanmaker.controller;
+package com.school.jakub.trainingplanmaker.controller.measurement;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.school.jakub.trainingplanmaker.R;
+import com.school.jakub.trainingplanmaker.controller.utils.CalendarActivity;
 import com.school.jakub.trainingplanmaker.model.Measurement;
 import com.school.jakub.trainingplanmaker.services.MeasurementService;
 

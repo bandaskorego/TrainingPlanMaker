@@ -1,4 +1,4 @@
-package com.school.jakub.trainingplanmaker.controller;
+package com.school.jakub.trainingplanmaker.controller.utils;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.school.jakub.trainingplanmaker.R;
+import com.school.jakub.trainingplanmaker.controller.measurement.ProfileMeasurementActivity;
 import com.school.jakub.trainingplanmaker.controller.bagpack.BackpackActivity;
-import com.school.jakub.trainingplanmaker.controller.exercise.AtlasActivity;
+import com.school.jakub.trainingplanmaker.controller.atlas.AtlasActivity;
 
 /**
  * Created by Jakub on 09-Oct-17.

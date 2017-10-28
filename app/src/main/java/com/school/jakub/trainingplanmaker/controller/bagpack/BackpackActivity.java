@@ -19,7 +19,7 @@ import android.widget.ListView;
 
 import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.adapters.BackpackAdapter;
-import com.school.jakub.trainingplanmaker.controller.NavDrawer;
+import com.school.jakub.trainingplanmaker.controller.utils.NavDrawer;
 import com.school.jakub.trainingplanmaker.model.Backpack;
 import com.school.jakub.trainingplanmaker.services.BackpackService;
 

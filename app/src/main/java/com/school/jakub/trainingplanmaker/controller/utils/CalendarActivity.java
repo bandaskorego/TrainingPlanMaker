@@ -1,4 +1,4 @@
-package com.school.jakub.trainingplanmaker.controller;
+package com.school.jakub.trainingplanmaker.controller.utils;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.CalendarView;
 
 import com.school.jakub.trainingplanmaker.R;
+import com.school.jakub.trainingplanmaker.controller.measurement.ProfileMeasurementActivity;
 
 /**
  * Created by Jakub on 14-Oct-17.

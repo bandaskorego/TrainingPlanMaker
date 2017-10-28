@@ -1,12 +1,10 @@
-package com.school.jakub.trainingplanmaker.controller.exercise;
+package com.school.jakub.trainingplanmaker.controller.atlas;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
@@ -28,9 +26,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.school.jakub.trainingplanmaker.R;
-import com.school.jakub.trainingplanmaker.adapters.BackpackAdapter;
 import com.school.jakub.trainingplanmaker.adapters.ExerciseAdapter;
-import com.school.jakub.trainingplanmaker.controller.NavDrawer;
+import com.school.jakub.trainingplanmaker.controller.utils.NavDrawer;
 import com.school.jakub.trainingplanmaker.model.Exercise;
 import com.school.jakub.trainingplanmaker.services.TrainingService;
 
@@ -84,14 +81,6 @@ public class AtlasActivity extends NavDrawer {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
     }
 
