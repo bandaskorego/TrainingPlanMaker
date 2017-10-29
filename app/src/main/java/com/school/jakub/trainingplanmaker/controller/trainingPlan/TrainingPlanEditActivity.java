@@ -36,10 +36,14 @@ public class TrainingPlanEditActivity extends AppCompatActivity implements Adapt
     ArrayAdapter<String> adapter2;
     Spinner spinner_1;
     Spinner spinner_2;
+    Spinner spinner_3;
+    Spinner spinner_4;
     List<String> listSpiner1;
     List<String> listSpiner2;
     ArrayAdapter<String> adapterSpiner1;
     ArrayAdapter<String> adapterSpiner2;
+    ArrayAdapter<Integer> adapterSpiner3;
+    ArrayAdapter<Integer> adapterSpiner4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +51,6 @@ public class TrainingPlanEditActivity extends AppCompatActivity implements Adapt
         setContentView(R.layout.training_plan_edit_activity);
 
         initialise();
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.training_plans_activity_edit_fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     private void initialise() {
@@ -104,19 +100,35 @@ public class TrainingPlanEditActivity extends AppCompatActivity implements Adapt
         spinner_2 = (Spinner) findViewById(R.id.training_plans_activity_edit_spinner_Exercise);
         listSpiner2 = new ArrayList<String>(service.getExercisesFromCategoryAsStringList("Barki"));
 
+        spinner_3 = (Spinner) findViewById(R.id.training_plans_activity_edit_spinner_series_number);
+        spinner_4 = (Spinner) findViewById(R.id.training_plans_activity_edit_spinner_repetition_number);
 
 
-
-        adapterSpiner1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listSpiner1);
-        adapterSpiner1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapterSpiner1 = new ArrayAdapter<String>(this,R.layout.my_spinner, listSpiner1);
+        adapterSpiner1.setDropDownViewResource(R.layout.my_spinner);
         spinner_1.setAdapter(adapterSpiner1);
 
-        adapterSpiner2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listSpiner2);
-        adapterSpiner2.setDropDownViewResource(R.layout.training_plan_activity_edit_spiner_row);
+        adapterSpiner2 = new ArrayAdapter<String>(this, R.layout.my_spinner, listSpiner2);
+        adapterSpiner2.setDropDownViewResource(R.layout.my_spinner);
         spinner_2.setAdapter(adapterSpiner2);
 
 
+        adapterSpiner3 = new ArrayAdapter<Integer>(this,R.layout.my_spinner, generateNumbersTo(10));
+        adapterSpiner3.setDropDownViewResource(R.layout.my_spinner);
+        spinner_3.setAdapter(adapterSpiner3);
 
+        adapterSpiner4 = new ArrayAdapter<Integer>(this,R.layout.my_spinner, generateNumbersTo(40));
+        adapterSpiner4.setDropDownViewResource(R.layout.my_spinner);
+        spinner_4.setAdapter(adapterSpiner4);
+
+    }
+
+    private List<Integer> generateNumbersTo(int to) {
+        List<Integer> numbers = new ArrayList<>();
+        for(int i=1; i<=to;i++){
+            numbers.add(i);
+        }
+        return numbers;
     }
 
 
@@ -132,8 +144,8 @@ public class TrainingPlanEditActivity extends AppCompatActivity implements Adapt
 
         listSpiner2 = new ArrayList<String>(service.getExercisesFromCategoryAsStringList(name));
 
-        adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listSpiner2);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter2 = new ArrayAdapter<String>(this, R.layout.my_spinner, listSpiner2);
+        adapter2.setDropDownViewResource(R.layout.my_spinner);
         spinner_2.setAdapter(adapter2);
     }
 
