@@ -13,7 +13,10 @@ public class TrainingPlan extends RealmObject{
     @PrimaryKey
     String id;
     String name;
-    RealmList<Series> series;
+    RealmList<Series> series = new RealmList<>();
+    boolean defaultPlan;
+
+
 
     @Override
     public String toString() {
@@ -22,6 +25,14 @@ public class TrainingPlan extends RealmObject{
                 ", name='" + name + '\'' +
                 ", series=" + series +
                 '}';
+    }
+
+    public boolean isDefaultPlan() {
+        return defaultPlan;
+    }
+
+    public void setDefaultPlan(boolean defaultPlan) {
+        this.defaultPlan = defaultPlan;
     }
 
     public String getId() {

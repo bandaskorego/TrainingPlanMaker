@@ -9,7 +9,11 @@ import android.view.View;
 
 import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.controller.utils.NavDrawer;
+import com.school.jakub.trainingplanmaker.model.TrainingPlan;
 import com.school.jakub.trainingplanmaker.services.TrainingService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import io.realm.Realm;
 
@@ -20,6 +24,7 @@ public class MainActivity extends NavDrawer {
     private Realm myRealm;
     private TrainingService trainingService;
     protected Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,16 +49,22 @@ public class MainActivity extends NavDrawer {
     }
 
     private void initialise(){
-
         trainingService = new TrainingService();
+//        List<TrainingPlan> list = new ArrayList<>(trainingService.getAllDefaultPlans());
+//        for(int i=0;i<list.size();i++)
+//            for(int j =0; j<list.get(i).getSeries().size(); j++)
+//                System.out.println(list.get(i).getSeries().get(j).toString());
+
+
+
         myRealm = Realm.getDefaultInstance();
 
         if (trainingService.getAllMuscleGroup().isEmpty()){
             trainingService.createBaseConfiguration();
             System.out.println("Cwiczenia dodane");
         }else{
-            trainingService.printAllExercises();
-            trainingService.printAllMuscleGroups();
+//            trainingService.printAllExercises();
+//            trainingService.printAllMuscleGroups();
         }
     }
 

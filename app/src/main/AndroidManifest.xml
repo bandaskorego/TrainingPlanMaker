@@ -37,6 +37,14 @@
         <activity
             android:name=".controller.atlas.AtlasActivity"
             android:label="@string/title_activity_atlas"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".controller.trainingPlan.TrainingPlans"
+            android:label="@string/title_activity_training_plans"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".controller.trainingPlan.TrainingPlanEditActivity"
+            android:label="@string/title_activity_training_plan_edit"
             android:theme="@style/AppTheme"></activity>
     </application>
 

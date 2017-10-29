@@ -15,6 +15,8 @@ import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.controller.measurement.ProfileMeasurementActivity;
 import com.school.jakub.trainingplanmaker.controller.bagpack.BackpackActivity;
 import com.school.jakub.trainingplanmaker.controller.atlas.AtlasActivity;
+import com.school.jakub.trainingplanmaker.controller.trainingPlan.TrainingPlans;
+import com.school.jakub.trainingplanmaker.model.TrainingPlan;
 
 /**
  * Created by Jakub on 09-Oct-17.
@@ -56,7 +58,8 @@ public class NavDrawer extends AppCompatActivity implements NavigationView.OnNav
                 break;
             }
             case R.id.drawer_menu_training_plans: {
-                System.out.println("drawer_menu_training_plans");
+                Intent intent = new Intent(this, TrainingPlans.class);
+                startActivity(intent);
                 break;
             }
             case R.id.drawer_menu_atlas: {
