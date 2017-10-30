@@ -914,6 +914,13 @@ public class TrainingService {
         return plan;
     }
 
+    public TrainingPlan getPlanByUUID(String uuid) {
+        TrainingPlan plan = myRealm.where(TrainingPlan.class)
+                .equalTo("id",uuid).findFirst();
+
+        return plan;
+    }
+
     public void setPlanName(final String oldName, final String newName){
         final TrainingPlan plan = myRealm.where(TrainingPlan.class)
                 .equalTo("name",oldName).findFirst();

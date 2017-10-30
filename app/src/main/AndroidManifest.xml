@@ -45,6 +45,10 @@
         <activity
             android:name=".controller.trainingPlan.TrainingPlanEditActivity"
             android:label="@string/title_activity_training_plan_edit"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".controller.trainingPlan.TrainingPlanSelect"
+            android:label="@string/title_activity_training_plan_select"
             android:theme="@style/AppTheme"></activity>
     </application>
 

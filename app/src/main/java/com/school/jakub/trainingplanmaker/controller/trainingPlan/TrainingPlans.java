@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
@@ -20,6 +21,7 @@ import com.school.jakub.trainingplanmaker.adapters.TrainingPlansAdapter;
 import com.school.jakub.trainingplanmaker.controller.bagpack.BackpackEditActivity;
 import com.school.jakub.trainingplanmaker.controller.utils.NavDrawer;
 import com.school.jakub.trainingplanmaker.model.Item;
+import com.school.jakub.trainingplanmaker.model.TrainingPlan;
 import com.school.jakub.trainingplanmaker.services.TrainingService;
 
 public class TrainingPlans extends NavDrawer {
@@ -81,6 +83,18 @@ public class TrainingPlans extends NavDrawer {
         userPlanAdapter = new TrainingPlansAdapter(this, service.getAllDefaultPlans());
         userPlansList = (ListView) findViewById(R.id.training_plans_activity_user_plans_list);
         userPlansList.setAdapter(userPlanAdapter);
+
+        userPlansList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TrainingPlan plan = (TrainingPlan)adapterView.getItemAtPosition(i);
+                Intent intent = new Intent(adapterView.getContext(), TrainingPlanSelect.class);
+                intent.putExtra("name",plan.getName());
+                startActivity(intent);
+            }
+        });
+
+
         newPlan = (Button) findViewById(R.id.training_plans_activity_add_new_plan_btn);
         newPlan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,10 +109,6 @@ public class TrainingPlans extends NavDrawer {
                 Button buttonCancel = (Button) mView.findViewById(R.id.backpack_edit_activity_popup_Cancel);
                 final EditText etName = (EditText) mView.findViewById(R.id.backpack_edit_activity_popup_textInputLayout_editText);
                 etName.setHint("Nazwa planu");
-//                final TextInputLayout textInputLayout = (TextInputLayout) mView.findViewById(R.id.backpack_activity_edit_layoutInput);
-//                textInputLayout.setHint("sad");
-//                final Item item =(Item)adapterView.getItemAtPosition(i);
-//                etName.setText(item.getName());
                 buttonOK.setText("Dodaj");
 
                 buttonOK.setOnClickListener(new View.OnClickListener() {
