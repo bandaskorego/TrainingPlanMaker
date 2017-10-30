@@ -1,6 +1,7 @@
 package com.school.jakub.trainingplanmaker.controller.trainingPlan;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -20,6 +21,7 @@ import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.adapters.TrainingPlansAdapter;
 import com.school.jakub.trainingplanmaker.controller.bagpack.BackpackEditActivity;
 import com.school.jakub.trainingplanmaker.controller.utils.NavDrawer;
+import com.school.jakub.trainingplanmaker.model.Backpack;
 import com.school.jakub.trainingplanmaker.model.Item;
 import com.school.jakub.trainingplanmaker.model.TrainingPlan;
 import com.school.jakub.trainingplanmaker.services.TrainingService;
@@ -37,6 +39,12 @@ public class TrainingPlans extends NavDrawer {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        initialise();
+
+    }
+
+    private void initialise() {
+
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View contentView = inflater.inflate(R.layout.training_plans_activity, null, false);
         mDrawerLayout.addView(contentView, 0);
@@ -49,40 +57,31 @@ public class TrainingPlans extends NavDrawer {
         mDrawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
-        initialise();
-//
-//        defaultPlanAdapter = new TrainingPlansAdapter(this, service.getAllDefaultPlans());
-//        defaultPlansList = (ListView) findViewById(R.id.training_plans_activity_default_plans_list);
-//        defaultPlansList.setAdapter(defaultPlanAdapter);
-
-
-
-//        setContentView(R.layout.training_plans_activity);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-
-
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.training_plans_activity_fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-    }
-
-    private void initialise() {
         service = new TrainingService();
-//        defaultPlanAdapter = new TrainingPlansAdapter(this, service.getAllDefaultPlans());
-//        defaultPlansList = (ListView) findViewById(R.id.training_plans_activity_default_plans_list);
-//        defaultPlansList.setAdapter(defaultPlanAdapter);
 
         userPlanAdapter = new TrainingPlansAdapter(this, service.getAllDefaultPlans());
         userPlansList = (ListView) findViewById(R.id.training_plans_activity_user_plans_list);
         userPlansList.setAdapter(userPlanAdapter);
+
+        userPlansList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                final TrainingPlan plan = (TrainingPlan) adapterView.getItemAtPosition(i);
+                new AlertDialog.Builder(adapterView.getContext())
+                        .setMessage("Czy na pewno chcesz usunąć plan?")
+                        .setCancelable(false)
+                        .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                service.deletePlan(plan.getId());
+                                updateListView();
+                                dialog.cancel();
+                            }
+                        })
+                        .setNegativeButton("Nie", null)
+                        .show();
+                return true;
+            }
+        });
 
         userPlansList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -145,4 +144,15 @@ public class TrainingPlans extends NavDrawer {
 
     }
 
+    private void updateListView() {
+        userPlanAdapter = new TrainingPlansAdapter(this, service.getAllDefaultPlans());
+        userPlansList = (ListView) findViewById(R.id.training_plans_activity_user_plans_list);
+        userPlansList.setAdapter(userPlanAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateListView();
+    }
 }

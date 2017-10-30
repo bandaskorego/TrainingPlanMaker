@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 import io.realm.Realm;
+import io.realm.RealmObject;
 import io.realm.RealmResults;
 
 /**
@@ -963,5 +964,116 @@ public class TrainingService {
             names.add(exercise.getName());
 
         return names;
+    }
+
+    public List<Series> getAllSeriesFromPlan(String planName){
+        RealmResults<TrainingPlan> plan = myRealm.where(TrainingPlan.class)
+                .equalTo("name", planName)
+                .findAll();
+        List<Series> list = new ArrayList<>(plan.get(0).getSeries());
+        return list;
+    }
+    
+    public void setNumberOfRepetitionInSeries(final String uuid, final int numberOfRepetition){
+        System.out.println(" setNumberOfRepetitionInSeries ");
+        final Series series = myRealm.where(Series.class)
+                .equalTo("id",uuid).findFirst();
+        
+        myRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                series.setNumberOfRepetitions(numberOfRepetition);
+                myRealm.copyToRealmOrUpdate(series);
+            }
+        });
+        
+    }
+
+    public void addSeriesToPlan(final String planId, final String exercise, final int series, final int repetition) {
+        myRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                Exercise exercise1 = myRealm.where(Exercise.class)
+                        .equalTo("name", exercise)
+                        .findFirst();
+
+                TrainingPlan plan1 = myRealm.where(TrainingPlan.class)
+                        .equalTo("id",planId).findFirst();
+
+                Series s;
+                for(int i = 0; i<series ; i++){
+                    s = myRealm.createObject(Series.class, UUID.randomUUID().toString());
+                    s.setExercise(exercise1);
+                    s.setNumberOfRepetitions(repetition-1);
+                    //myRealm.copyToRealmOrUpdate(s);
+                    plan1.getSeries().add(s);
+                }
+                myRealm.copyToRealmOrUpdate(plan1);
+            }
+        });
+
+
+    }
+
+    public void removeSeriesFromPlanByPlanId(final String planId, final int i) {
+
+        myRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+
+                TrainingPlan plan = myRealm.where(TrainingPlan.class)
+                        .equalTo("id",planId)
+                        .findFirst();
+
+                plan.getSeries().remove(i);
+                myRealm.copyToRealmOrUpdate(plan);
+            }
+        });
+
+    }
+
+    public void removeSeriesFromPlanByPlanName(final String planName, final int i) {
+
+        myRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+
+                TrainingPlan plan = myRealm.where(TrainingPlan.class)
+                        .equalTo("name",planName)
+                        .findFirst();
+
+                plan.getSeries().remove(i);
+                myRealm.copyToRealmOrUpdate(plan);
+            }
+        });
+
+    }
+
+    public void swapSeriesPositionInPlan(String planName, final int pos1,final int pos2) {
+        final TrainingPlan plan = myRealm.where(TrainingPlan.class)
+                .equalTo("name",planName)
+                .findFirst();
+
+        myRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                if(pos2>-1 && pos1 < plan.getSeries().size()){
+                    plan.getSeries().move(pos1, pos2);
+                }
+            }
+        });
+    }
+
+    public void deletePlan(String id) {
+        final TrainingPlan plan = myRealm.where(TrainingPlan.class)
+                .equalTo("id",id)
+                .findFirst();
+
+        myRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                plan.deleteFromRealm();
+            }
+        });
     }
 }

@@ -47,4 +47,5 @@ public class Series extends RealmObject{
     public void setNumberOfRepetitions(int numberOfRepetitions) {
         this.numberOfRepetitions = numberOfRepetitions;
     }
+
 }

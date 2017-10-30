@@ -14,12 +14,17 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.school.jakub.trainingplanmaker.R;
+import com.school.jakub.trainingplanmaker.adapters.BackpackAdapter;
+import com.school.jakub.trainingplanmaker.adapters.seriesEditAdapter;
+import com.school.jakub.trainingplanmaker.model.Series;
 import com.school.jakub.trainingplanmaker.model.TrainingPlan;
 import com.school.jakub.trainingplanmaker.services.TrainingService;
 
@@ -29,10 +34,12 @@ import java.util.List;
 public class TrainingPlanEditActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     EditText trainingName;
+    Button addBtn;
     TextInputLayout layoutTrainingName;
     TrainingService service;
     TrainingPlan plan;
-    ArrayAdapter<String> adapter1;
+    ListAdapter adapter1;
+    ListView listView;
     ArrayAdapter<String> adapter2;
     Spinner spinner_1;
     Spinner spinner_2;
@@ -51,6 +58,9 @@ public class TrainingPlanEditActivity extends AppCompatActivity implements Adapt
         setContentView(R.layout.training_plan_edit_activity);
 
         initialise();
+        System.out.println(plan.toString());
+        for(int i = 0 ; i < plan.getSeries().size(); i++)
+            System.out.println(plan.getSeries().get(i).toString());
     }
 
     private void initialise() {
@@ -61,6 +71,7 @@ public class TrainingPlanEditActivity extends AppCompatActivity implements Adapt
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        addBtn = (Button) findViewById(R.id.training_plans_activity_edit_add_btn);
 
         trainingName = (EditText) findViewById(R.id.training_plans_activity_edit_training_name);
         layoutTrainingName = (TextInputLayout) findViewById(R.id.training_plans_activity_edit_text_wrapper);
@@ -73,25 +84,10 @@ public class TrainingPlanEditActivity extends AppCompatActivity implements Adapt
         trainingName.setText(oldName);
         validateName();
 
-        ListView listView = (ListView) findViewById(R.id.training_plans_activity_edit_series_listView);
+        listView = (ListView) findViewById(R.id.training_plans_activity_edit_series_listView);
 
-        // Defined Array values to show in ListView
-        String[] values = new String[] { "Android List View",
-                "Adapter implementation",
-                "Simple List View In Android",
-                "Create List View Android",
-                "Android Example",
-                "List View Source Code",
-                "List View Array Adapter",
-                "Android Example List View"
-        };
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, values);
-
-
-        // Assign adapter to ListView
-        listView.setAdapter(adapter);
+        adapter1 = new seriesEditAdapter(this, service, plan.getName());
+        listView.setAdapter(adapter1);
 
         spinner_1 = (Spinner) findViewById(R.id.training_plans_activity_edit_spinner_bodyPart);
         spinner_1.setOnItemSelectedListener(this);
@@ -121,6 +117,34 @@ public class TrainingPlanEditActivity extends AppCompatActivity implements Adapt
         adapterSpiner4.setDropDownViewResource(R.layout.my_spinner);
         spinner_4.setAdapter(adapterSpiner4);
 
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!spinner_2.getSelectedItem().toString().equals("")) {
+                    service.addSeriesToPlan(
+                            plan.getId(),
+                            spinner_2.getSelectedItem().toString(),
+                            Integer.parseInt(spinner_3.getSelectedItem().toString()),
+                            Integer.parseInt(spinner_4.getSelectedItem().toString())+1
+                    );
+                    refreshListView();
+                }else{
+                    Snackbar snackbar = Snackbar
+                            .make(view, "Wypełnij wszystkie pola", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+            }
+        });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                service.removeSeriesFromPlanByPlanId(plan.getId(), i);
+                refreshListView();
+                return false;
+            }
+        });
+
     }
 
     private List<Integer> generateNumbersTo(int to) {
@@ -132,26 +156,23 @@ public class TrainingPlanEditActivity extends AppCompatActivity implements Adapt
     }
 
 
-    public void onItemSelected(AdapterView<?> parent, View view, int position,
-                               long id) {
-
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         updateExerciseSpinner(parent.getItemAtPosition(position).toString());
-//        // TODO Auto-generated method stub
-//        Toast.makeText(this, "YOUR SELECTION IS : " + parent.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
     }
 
     private void updateExerciseSpinner(String name){
-
         listSpiner2 = new ArrayList<String>(service.getExercisesFromCategoryAsStringList(name));
-
         adapter2 = new ArrayAdapter<String>(this, R.layout.my_spinner, listSpiner2);
         adapter2.setDropDownViewResource(R.layout.my_spinner);
         spinner_2.setAdapter(adapter2);
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
+    public void onNothingSelected(AdapterView<?> adapterView) {}
 
+    public void refreshListView(){
+        adapter1 = new seriesEditAdapter(this, service, plan.getName());
+        listView.setAdapter(adapter1);
     }
 
     @Override
@@ -214,7 +235,6 @@ public class TrainingPlanEditActivity extends AppCompatActivity implements Adapt
 
         public void afterTextChanged(Editable editable) {
             if (view.getId() == R.id.training_plans_activity_edit_training_name) {
-                System.out.println("Wchodze");
                 validateName();
             }
         }

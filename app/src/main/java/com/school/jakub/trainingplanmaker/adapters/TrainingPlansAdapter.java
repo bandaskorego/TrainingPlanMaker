@@ -52,15 +52,16 @@ public class TrainingPlansAdapter extends ArrayAdapter<TrainingPlan> {
         if(plan.getSeries().size()> 9){
             for(int i =0 ; i<7 ; i++){
                 String s = listOfPlans.get(position).getSeries().get(i).getExercise().getName();
-                text += (1+i)+". " + s.substring(0, Math.min(s.length(), 40)) + "\n";
+                text += "\n" +  (1+i)+". " + s.substring(0, Math.min(s.length(), 40)) ;
             }
-            text += "  ...   \n";
+            text += "\n  ...   \n";
             text += plan.getSeries().size() + ".";
             text += listOfPlans.get(position).getSeries().get(plan.getSeries().size()-1).getExercise().getName();
-            System.out.println(" Udało się wpisać " + listOfPlans.get(position).getSeries().get(plan.getSeries().size()-1).getExercise().getName());
+//            System.out.println(" Udało się wpisać " + listOfPlans.get(position).getSeries().get(plan.getSeries().size()-1).getExercise().getName());
         }else{
-            for(Series s : plan.getSeries()){
-                text += text + "\n" + s.getExercise().getName();
+            for(int i =0 ; i<plan.getSeries().size() ; i++){
+                String s = listOfPlans.get(position).getSeries().get(i).getExercise().getName();
+                text += "\n" +  (1+i)+". " + s.substring(0, Math.min(s.length(), 40)) ;
             }
         }
         TextView content = (TextView) customView.findViewById(R.id.training_plans_activity_list_adapter_row_content);

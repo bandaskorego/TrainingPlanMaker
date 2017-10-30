@@ -63,7 +63,8 @@ public class MainActivity extends NavDrawer {
             trainingService.createBaseConfiguration();
             System.out.println("Cwiczenia dodane");
         }else{
-//            trainingService.printAllExercises();
+            System.out.println(trainingService.getPlanByName("Trening FBW").toString());
+
 //            trainingService.printAllMuscleGroups();
         }
     }
