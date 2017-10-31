@@ -11,5 +11,6 @@
     <string name="title_activity_training_plans">TrainingPlans</string>
     <string name="title_activity_training_plan_edit">training_plan_edit</string>
     <string name="title_activity_training_plan_select">TrainingPlanSelect</string>
+    <string name="title_activity_diary">DiaryActivity</string>
 
 </resources>

@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.school.jakub.trainingplanmaker.R;
+import com.school.jakub.trainingplanmaker.controller.diary.DiaryActivity;
 import com.school.jakub.trainingplanmaker.controller.measurement.ProfileMeasurementActivity;
 import com.school.jakub.trainingplanmaker.controller.bagpack.BackpackActivity;
 import com.school.jakub.trainingplanmaker.controller.atlas.AtlasActivity;
@@ -40,6 +41,15 @@ public class NavDrawer extends AppCompatActivity implements NavigationView.OnNav
     }
 
     @Override
+    public void onBackPressed() {
+        System.out.println(" BACK");
+        System.out.println(" BACK");
+        System.out.println(" BACK");
+        System.out.println(" BACK");
+        System.out.println(" BACK");
+    }
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         mDrawerLayout.closeDrawer(GravityCompat.START);
@@ -48,22 +58,27 @@ public class NavDrawer extends AppCompatActivity implements NavigationView.OnNav
         switch (item.getItemId()) {
 
             case R.id.drawer_menu_account: {
-                System.out.println("drawer_menu_account");
                 Intent intent = new Intent(this, ProfileMeasurementActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
                 break;
             }
             case R.id.drawer_menu_diary: {
-                System.out.println("drawer_menu_diary");
+                Intent intent = new Intent(this, DiaryActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
                 break;
             }
             case R.id.drawer_menu_training_plans: {
                 Intent intent = new Intent(this, TrainingPlans.class);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
+                finish();
                 break;
             }
             case R.id.drawer_menu_atlas: {
                 Intent intent = new Intent(this, AtlasActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
                 break;
             }
@@ -80,7 +95,6 @@ public class NavDrawer extends AppCompatActivity implements NavigationView.OnNav
                 break;
             }
             case R.id.drawer_menu_backpack: {
-                System.out.println("drawer_menu_backpack");
                 Intent intent = new Intent(this, BackpackActivity.class);
                 startActivity(intent);
                 break;

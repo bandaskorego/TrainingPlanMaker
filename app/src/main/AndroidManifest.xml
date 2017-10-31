@@ -49,6 +49,10 @@
         <activity
             android:name=".controller.trainingPlan.TrainingPlanSelect"
             android:label="@string/title_activity_training_plan_select"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".controller.diary.DiaryActivity"
+            android:label="@string/title_activity_diary"
             android:theme="@style/AppTheme"></activity>
     </application>
 

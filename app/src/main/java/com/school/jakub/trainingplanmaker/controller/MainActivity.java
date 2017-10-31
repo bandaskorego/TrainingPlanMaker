@@ -10,6 +10,7 @@ import android.view.View;
 import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.controller.utils.NavDrawer;
 import com.school.jakub.trainingplanmaker.model.TrainingPlan;
+import com.school.jakub.trainingplanmaker.services.DiaryService;
 import com.school.jakub.trainingplanmaker.services.TrainingService;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class MainActivity extends NavDrawer {
     public static final String TAG = MainActivity.class.getName();
     private Realm myRealm;
     private TrainingService trainingService;
+    private DiaryService diaryService;
     protected Toolbar toolbar;
 
 
@@ -50,23 +52,15 @@ public class MainActivity extends NavDrawer {
 
     private void initialise(){
         trainingService = new TrainingService();
-//        List<TrainingPlan> list = new ArrayList<>(trainingService.getAllDefaultPlans());
-//        for(int i=0;i<list.size();i++)
-//            for(int j =0; j<list.get(i).getSeries().size(); j++)
-//                System.out.println(list.get(i).getSeries().get(j).toString());
-
-
+        diaryService = new DiaryService();
 
         myRealm = Realm.getDefaultInstance();
 
         if (trainingService.getAllMuscleGroup().isEmpty()){
             trainingService.createBaseConfiguration();
-            System.out.println("Cwiczenia dodane");
-        }else{
-            System.out.println(trainingService.getPlanByName("Trening FBW").toString());
-
-//            trainingService.printAllMuscleGroups();
+            diaryService.createFirstDiary();
         }
+
     }
 
 }
