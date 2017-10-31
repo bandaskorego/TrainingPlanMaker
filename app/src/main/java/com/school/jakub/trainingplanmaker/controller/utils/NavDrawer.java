@@ -65,7 +65,7 @@ public class NavDrawer extends AppCompatActivity implements NavigationView.OnNav
             }
             case R.id.drawer_menu_diary: {
                 Intent intent = new Intent(this, DiaryActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
                 break;
             }

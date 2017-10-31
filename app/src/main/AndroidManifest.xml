@@ -53,6 +53,10 @@
         <activity
             android:name=".controller.diary.DiaryActivity"
             android:label="@string/title_activity_diary"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".controller.diary.AddExerciseToDayEntry"
+            android:label="@string/title_activity_add_exercise_to_day_entry"
             android:theme="@style/AppTheme"></activity>
     </application>
 

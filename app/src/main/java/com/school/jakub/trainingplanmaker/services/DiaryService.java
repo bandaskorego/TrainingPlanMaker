@@ -2,9 +2,13 @@ package com.school.jakub.trainingplanmaker.services;
 
 import com.school.jakub.trainingplanmaker.model.DayEntry;
 import com.school.jakub.trainingplanmaker.model.Diary;
+import com.school.jakub.trainingplanmaker.model.Entry;
+import com.school.jakub.trainingplanmaker.model.Exercise;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import io.realm.Realm;
@@ -104,5 +108,37 @@ public class DiaryService {
 
 
         return null;
+    }
+
+    public List<Entry> getAllEntrysFromDayEntryById(String dayEntryId) {
+
+        DayEntry dayEntry = myRealm.where(DayEntry.class)
+                .equalTo("id",dayEntryId)
+                .findFirst();
+
+        return new ArrayList<>(dayEntry.getEntrys());
+    }
+
+    public void addEntrysToDayEntry(final String exerciseName,final int series,final int repetition,final int weight,final boolean ifFinished, Date date) {
+        final DayEntry dayEntry = getDayEntryByDate(date);
+        final Exercise exercise = myRealm.where(Exercise.class)
+                .equalTo("name", exerciseName)
+                .findFirst();
+
+        myRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                for(int i = 0; i < series ; i++)
+                {
+                    Entry entry = myRealm.createObject(Entry.class, UUID.randomUUID().toString());
+                    entry.setExercise(exercise);
+                    entry.setRepetition(repetition);
+                    entry.setWeight(weight);
+                    entry.setFinished(ifFinished);
+                    dayEntry.getEntrys().add(entry);
+                }
+                myRealm.copyToRealmOrUpdate(dayEntry);
+            }
+        });
     }
 }

@@ -10,14 +10,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.school.jakub.trainingplanmaker.R;
+import com.school.jakub.trainingplanmaker.adapters.DiaryAdapter;
 import com.school.jakub.trainingplanmaker.controller.utils.NavDrawer;
 import com.school.jakub.trainingplanmaker.model.DayEntry;
+import com.school.jakub.trainingplanmaker.model.Diary;
+import com.school.jakub.trainingplanmaker.model.Entry;
 import com.school.jakub.trainingplanmaker.services.DiaryService;
 
 import org.w3c.dom.Text;
@@ -38,6 +42,7 @@ public class DiaryActivity extends NavDrawer {
     DiaryService service;
     DayEntry dayEntry;
     Context context;
+    ArrayAdapter<Entry> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,9 +76,35 @@ public class DiaryActivity extends NavDrawer {
         readDayEntry();
         setDateTextView();
         addLisners();
+        refreshListView();
+
+        System.out.println("LISTUJE WPISY");
+        for(Entry e : dayEntry.getEntrys()){
+            System.out.println(e.toString());
+        }
+    }
+
+    private void refreshListView() {
+        adapter = new DiaryAdapter(DiaryActivity.this,service,dayEntry.getId());
+        listView.setAdapter(adapter);
     }
 
     private void addLisners() {
+
+        addExerciseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DiaryActivity.this, AddExerciseToDayEntry.class);
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(dayEntry.getDate());
+                intent.putExtra("day", cal.get(Calendar.DAY_OF_MONTH));
+                intent.putExtra("month", cal.get(Calendar.MONTH));
+                intent.putExtra("year", cal.get(Calendar.YEAR));
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+//                finish();
+            }
+        });
 
         leftImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,7 +175,7 @@ public class DiaryActivity extends NavDrawer {
     private void setDateTextView(){
         Calendar cal = Calendar.getInstance();
         cal.setTime(dayEntry.getDate());
-        dateTextView.setText( cal.get(Calendar.DAY_OF_MONTH) + "-" + (cal.get(Calendar.MONTH)+1) + "-" + cal.get(Calendar.YEAR));
+        dateTextView.setText(  cal.get(Calendar.DAY_OF_MONTH) + "-" + (cal.get(Calendar.MONTH)+1) + "-" + cal.get(Calendar.YEAR));
     }
 
 
