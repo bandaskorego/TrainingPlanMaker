@@ -1,6 +1,8 @@
 package com.school.jakub.trainingplanmaker.controller.diary;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -22,6 +24,7 @@ import com.school.jakub.trainingplanmaker.controller.utils.NavDrawer;
 import com.school.jakub.trainingplanmaker.model.DayEntry;
 import com.school.jakub.trainingplanmaker.model.Diary;
 import com.school.jakub.trainingplanmaker.model.Entry;
+import com.school.jakub.trainingplanmaker.model.TrainingPlan;
 import com.school.jakub.trainingplanmaker.services.DiaryService;
 
 import org.w3c.dom.Text;
@@ -82,14 +85,49 @@ public class DiaryActivity extends NavDrawer {
         for(Entry e : dayEntry.getEntrys()){
             System.out.println(e.toString());
         }
+
+
+    }
+    public void setSelection(int n){
+        listView.setSelection(n);
     }
 
-    private void refreshListView() {
+    public void refreshListView() {
         adapter = new DiaryAdapter(DiaryActivity.this,service,dayEntry.getId());
         listView.setAdapter(adapter);
     }
 
     private void addLisners() {
+
+        addPlanBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder b = new AlertDialog.Builder(DiaryActivity.this);
+                b.setTitle("Wybierz plan");
+                final List<TrainingPlan> plans =  service.getAllTrainingPlans();
+                String[] types = new String[plans.size()];
+                for(int i=0; i<plans.size(); i++){
+                    types[i] = plans.get(i).getName();
+                }
+
+                b.setItems(types, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                        service.addAllSeriesToDiary(plans.get(i), dayEntry);
+                        refreshListView();
+                    }
+                });
+                if(plans.size()!=0){
+                    b.show();
+                }else{
+                    Snackbar snackbar = Snackbar
+                            .make(view, "Musisz najpierw stworzyć plan", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+
+            }
+        });
 
         addExerciseBtn.setOnClickListener(new View.OnClickListener() {
             @Override

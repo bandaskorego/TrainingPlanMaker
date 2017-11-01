@@ -99,7 +99,6 @@ public class seriesEditAdapter extends ArrayAdapter<Series> {
         spinner_3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                System.out.println(series.getId());
                 service.setNumberOfRepetitionInSeries(series.getId(),i+1);
             }
 

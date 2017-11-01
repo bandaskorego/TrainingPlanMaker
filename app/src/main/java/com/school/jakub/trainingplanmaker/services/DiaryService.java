@@ -4,6 +4,8 @@ import com.school.jakub.trainingplanmaker.model.DayEntry;
 import com.school.jakub.trainingplanmaker.model.Diary;
 import com.school.jakub.trainingplanmaker.model.Entry;
 import com.school.jakub.trainingplanmaker.model.Exercise;
+import com.school.jakub.trainingplanmaker.model.Series;
+import com.school.jakub.trainingplanmaker.model.TrainingPlan;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -140,5 +142,84 @@ public class DiaryService {
                 myRealm.copyToRealmOrUpdate(dayEntry);
             }
         });
+    }
+
+    public void setNumberOfRepetition(final Entry item,final int repetition) {
+        myRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                item.setRepetition(repetition);
+            }
+        });
+    }
+
+    public void setWeightOfEntry(final Entry item, final int i) {
+        myRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                item.setWeight(i);
+            }
+        });
+    }
+
+    public void swapSeriesPositionInPlan(String dayEntryId,final int pos1,final int pos2) {
+        final DayEntry dayEntry = myRealm.where(DayEntry.class)
+                .equalTo("id",dayEntryId)
+                .findFirst();
+
+        myRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                if(pos2>-1 && pos1 < dayEntry.getEntrys().size()){
+                    dayEntry.getEntrys().move(pos1, pos2);
+                }
+            }
+        });
+    }
+
+    public void setFinishedStatusOfEntry(final Entry item) {
+        myRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                item.setFinished(!item.isFinished());
+            }
+        });
+    }
+
+    public void removeEntry(final Entry item) {
+        myRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                item.deleteFromRealm();
+            }
+        });
+    }
+
+    public List<TrainingPlan> getAllTrainingPlans() {
+        RealmResults<TrainingPlan> plans = myRealm.where(TrainingPlan.class).findAll();
+        return new ArrayList<>(plans);
+    }
+
+    public void addAllSeriesToDiary(final TrainingPlan plan, final DayEntry dayEntry) {
+        System.out.println(plan.getName());
+        System.out.println(plan.getName());
+        System.out.println(plan.getName());
+        System.out.println(plan.getName());
+
+        myRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                for(Series s : plan.getSeries()){
+                    Entry e = myRealm.createObject(Entry.class, UUID.randomUUID().toString());
+                    e.setFinished(false);
+                    e.setExercise(s.getExercise());
+                    e.setRepetition(s.getNumberOfRepetitions());
+                    e.setWeight(0);
+                    dayEntry.getEntrys().add(e);
+                }
+                myRealm.copyToRealmOrUpdate(dayEntry);
+            }
+        });
+
     }
 }
