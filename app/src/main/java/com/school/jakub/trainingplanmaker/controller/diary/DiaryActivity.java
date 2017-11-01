@@ -1,6 +1,7 @@
 package com.school.jakub.trainingplanmaker.controller.diary;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,6 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -29,9 +32,11 @@ import com.school.jakub.trainingplanmaker.services.DiaryService;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class DiaryActivity extends NavDrawer {
 
@@ -47,13 +52,44 @@ public class DiaryActivity extends NavDrawer {
     Context context;
     ArrayAdapter<Entry> adapter;
 
+    Calendar myCalendar = Calendar.getInstance();
+    //    String dateFormat = "dd.MM.yyyy";
+    DatePickerDialog.OnDateSetListener date;
+//    SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.GERMAN);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.context = context;
 
         initialise();
+        setUpDatepickerLogic();
+    }
 
+    private void setUpDatepickerLogic() {
+        date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Intent intent = new Intent(DiaryActivity.this, DiaryActivity.class);
+                intent.putExtra("day", dayOfMonth);
+                intent.putExtra("month", monthOfYear);
+                intent.putExtra("year", year);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        };
+
+        dateTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myCalendar.setTime(dayEntry.getDate());
+                new DatePickerDialog(DiaryActivity.this, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
     }
 
     private void initialise() {
@@ -64,7 +100,7 @@ public class DiaryActivity extends NavDrawer {
         toolbar = (Toolbar) findViewById(R.id.diary_activity_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Dziennik treningowy");
-        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar,R.string.open, R.string.close);
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open, R.string.close);
         mDrawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
@@ -82,18 +118,19 @@ public class DiaryActivity extends NavDrawer {
         refreshListView();
 
         System.out.println("LISTUJE WPISY");
-        for(Entry e : dayEntry.getEntrys()){
+        for (Entry e : dayEntry.getEntrys()) {
             System.out.println(e.toString());
         }
 
 
     }
-    public void setSelection(int n){
+
+    public void setSelection(int n) {
         listView.setSelection(n);
     }
 
     public void refreshListView() {
-        adapter = new DiaryAdapter(DiaryActivity.this,service,dayEntry.getId());
+        adapter = new DiaryAdapter(DiaryActivity.this, service, dayEntry.getId());
         listView.setAdapter(adapter);
     }
 
@@ -104,9 +141,9 @@ public class DiaryActivity extends NavDrawer {
             public void onClick(View view) {
                 AlertDialog.Builder b = new AlertDialog.Builder(DiaryActivity.this);
                 b.setTitle("Wybierz plan");
-                final List<TrainingPlan> plans =  service.getAllTrainingPlans();
+                final List<TrainingPlan> plans = service.getAllTrainingPlans();
                 String[] types = new String[plans.size()];
-                for(int i=0; i<plans.size(); i++){
+                for (int i = 0; i < plans.size(); i++) {
                     types[i] = plans.get(i).getName();
                 }
 
@@ -118,9 +155,9 @@ public class DiaryActivity extends NavDrawer {
                         refreshListView();
                     }
                 });
-                if(plans.size()!=0){
+                if (plans.size() != 0) {
                     b.show();
-                }else{
+                } else {
                     Snackbar snackbar = Snackbar
                             .make(view, "Musisz najpierw stworzyć plan", Snackbar.LENGTH_LONG);
                     snackbar.show();
@@ -178,17 +215,17 @@ public class DiaryActivity extends NavDrawer {
     }
 
     private void readDayEntry() {
-        if(getIntent().hasExtra("day")){
+        if (getIntent().hasExtra("day")) {
 
-            int day = getIntent().getIntExtra("day",0);
-            int month = getIntent().getIntExtra("month",0);
-            int year = getIntent().getIntExtra("year",0);
-            year-=1900;
+            int day = getIntent().getIntExtra("day", 0);
+            int month = getIntent().getIntExtra("month", 0);
+            int year = getIntent().getIntExtra("year", 0);
+            year -= 1900;
 
-            Date tmpDate = new Date(year,month,day,0,0,0);
-            if(service.checkIfDayEntryExist(tmpDate)){
+            Date tmpDate = new Date(year, month, day, 0, 0, 0);
+            if (service.checkIfDayEntryExist(tmpDate)) {
                 dayEntry = service.getDayEntryByDate(tmpDate);
-            }else{
+            } else {
                 service.createNewDayEntry(tmpDate);
                 dayEntry = service.getDayEntryByDate(tmpDate);
             }
@@ -200,20 +237,20 @@ public class DiaryActivity extends NavDrawer {
 //            //USUNAC
 //            dayEntry = service.getDayEntryByDate(new Date());
 
-        }else{
-            if(service.checkIfTodaysDayEntryExist()){
+        } else {
+            if (service.checkIfTodaysDayEntryExist()) {
                 dayEntry = service.getDayEntryByDate(new Date());
-            }else{
+            } else {
                 service.createNewDayEntry(new Date());
                 dayEntry = service.getDayEntryByDate(new Date());
             }
         }
     }
 
-    private void setDateTextView(){
+    private void setDateTextView() {
         Calendar cal = Calendar.getInstance();
         cal.setTime(dayEntry.getDate());
-        dateTextView.setText(  cal.get(Calendar.DAY_OF_MONTH) + "-" + (cal.get(Calendar.MONTH)+1) + "-" + cal.get(Calendar.YEAR));
+        dateTextView.setText(cal.get(Calendar.DAY_OF_MONTH) + "-" + (cal.get(Calendar.MONTH) + 1) + "-" + cal.get(Calendar.YEAR));
     }
 
 
