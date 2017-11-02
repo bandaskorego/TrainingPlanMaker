@@ -13,6 +13,7 @@ import android.view.View;
 
 import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.controller.diary.DiaryActivity;
+import com.school.jakub.trainingplanmaker.controller.measurement.MeasurementMonitorActivity;
 import com.school.jakub.trainingplanmaker.controller.measurement.ProfileMeasurementActivity;
 import com.school.jakub.trainingplanmaker.controller.bagpack.BackpackActivity;
 import com.school.jakub.trainingplanmaker.controller.atlas.AtlasActivity;
@@ -91,7 +92,9 @@ public class NavDrawer extends AppCompatActivity implements NavigationView.OnNav
                 break;
             }
             case R.id.drawer_menu_weight: {
-                System.out.println("drawer_menu_weight");
+                Intent intent = new Intent(this, MeasurementMonitorActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
                 break;
             }
             case R.id.drawer_menu_backpack: {

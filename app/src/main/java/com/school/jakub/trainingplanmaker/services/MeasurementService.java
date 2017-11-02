@@ -2,6 +2,7 @@ package com.school.jakub.trainingplanmaker.services;
 
 import com.school.jakub.trainingplanmaker.model.Measurement;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -111,11 +112,28 @@ public class MeasurementService {
     }
 
     public List<Measurement> getAllMeasurement(){
-        RealmResults<Measurement> measurements = myRealm.where(Measurement.class).findAll();
+        RealmResults<Measurement> measurements = myRealm.where(Measurement.class).findAll().sort("date");
         if(measurements.isEmpty())
             return null;
         List<Measurement> list = new ArrayList<>(measurements);
         return list;
     }
 
+    public List<Measurement> getMeasurementInRange(int i) {
+        RealmResults<Measurement> list = myRealm.where(Measurement.class).findAll().sort("date");
+        Calendar today = Calendar.getInstance();
+        Date from = new Date(today.get(Calendar.YEAR)-1900,today.get(Calendar.MONTH)-i, today.get(Calendar.DAY_OF_MONTH));
+        Date to = new Date();
+
+        System.out.println(list);
+
+        List<Measurement> measurements = new ArrayList<>();
+        for(Measurement m : list){
+            if (m.getDate().after(from) && m.getDate().before(to))
+                measurements.add(m);
+        }
+
+        System.out.println(measurements);
+        return measurements;
+    }
 }

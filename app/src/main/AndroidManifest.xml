@@ -57,6 +57,10 @@
         <activity
             android:name=".controller.diary.AddExerciseToDayEntry"
             android:label="@string/title_activity_add_exercise_to_day_entry"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".controller.measurement.MeasurementMonitorActivity"
+            android:label="@string/title_activity_measurement_monitor"
             android:theme="@style/AppTheme"></activity>
     </application>
 

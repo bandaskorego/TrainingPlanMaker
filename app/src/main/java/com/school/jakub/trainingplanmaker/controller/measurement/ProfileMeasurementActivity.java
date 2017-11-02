@@ -169,7 +169,7 @@ public class ProfileMeasurementActivity extends AppCompatActivity implements Vie
         measurement.setThighLeft(getIntent().getIntExtra("thighLeft", 0));
         measurement.setThighRight(getIntent().getIntExtra("thighRight", 0));
         measurement.setWeight(getIntent().getIntExtra("weight", 0));
-        measurement.setDate(new Date((getIntent().getIntExtra("year",0)-1900), getIntent().getIntExtra("month",0),getIntent().getIntExtra("day",0)));
+        measurement.setDate(new Date((getIntent().getIntExtra("year",0)-1900), getIntent().getIntExtra("month",0),getIntent().getIntExtra("day",0),0,0,0));
     }
 
 
