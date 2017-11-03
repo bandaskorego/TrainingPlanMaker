@@ -23,44 +23,42 @@
         android:layout_width="0dp" />
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/backpack_activity_fabOK"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:src="@drawable/ic_add_black_24px"
-        app:backgroundTint="@color/colorPrimaryDark"
-        android:tint="@color/white"
-        app:fabSize="mini"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintHorizontal_bias="0.488" />
-
-    <ImageView
-        android:id="@+id/backpack_activity_layout_bottomBox"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:src="@color/colorPrimary"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintVertical_bias="1.0" />
-
     <ListView
         android:id="@+id/backpack_list_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:foregroundGravity="top"
-        app:layout_constraintBottom_toTopOf="@+id/backpack_activity_layout_bottomBox"
+        app:layout_constraintBottom_toTopOf="@+id/backpack_activity_layout_add_btn"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backpack_toolbar"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+    <Button
+        android:id="@+id/backpack_activity_layout_add_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Nowy plecak"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="24dp"
+        android:text="Twoje plecaki"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backpack_toolbar" />
 
 </android.support.constraint.ConstraintLayout>

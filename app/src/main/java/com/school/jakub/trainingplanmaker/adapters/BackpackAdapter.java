@@ -52,8 +52,8 @@ public class BackpackAdapter extends ArrayAdapter<Backpack> {
         textView.setText(singleBagpack);
 
         edit = (ImageView) customView.findViewById(R.id.backpack_list_item_imageEdit);
-//        remove = (ImageView) customView.findViewById(R.id.backpack_list_item_imageRemove);
-//
+        remove = (ImageView) customView.findViewById(R.id.backpack_list_item_imageDalete);
+
         edit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -61,6 +61,26 @@ public class BackpackAdapter extends ArrayAdapter<Backpack> {
                 Intent intent = new Intent(context, BackpackEditActivity.class);
                 intent.putExtra("backpack_name",backpack.getName());
                 context.startActivity(intent);
+            }
+        });
+
+        remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AlertDialog.Builder(view.getContext())
+                        .setMessage("Czy na pewno chcesz usunąć plecak?")
+                        .setCancelable(false)
+                        .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                remove(backpack);
+                                notifyDataSetChanged();
+                                bpService.deleteBackpack(backpack);
+                                dialog.cancel();
+                            }
+                        })
+                        .setNegativeButton("Nie", null)
+                        .show();
+
             }
         });
 

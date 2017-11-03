@@ -1,9 +1,11 @@
 package com.school.jakub.trainingplanmaker.adapters;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,8 +69,21 @@ public class seriesEditAdapter extends ArrayAdapter<Series> {
         imageDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                service.removeSeriesFromPlanByPlanName(planName,position);
-                ((TrainingPlanEditActivity) context).refreshListView();
+                new AlertDialog.Builder(view.getContext())
+                        .setMessage("Czy na pewno chcesz usunąć serie?")
+                        .setCancelable(false)
+                        .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                remove(series);
+                                notifyDataSetChanged();
+                                service.removeSeriesFromPlanByPlanName(planName,position);
+                                ((TrainingPlanEditActivity) context).refreshListView();
+                                dialog.cancel();
+                            }
+                        })
+                        .setNegativeButton("Nie", null)
+                        .show();
+
             }
         });
 

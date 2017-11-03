@@ -124,9 +124,8 @@ public class BackpackEditActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.backpack_edit_activity_fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-
+        Button btnAdd = (Button) findViewById(R.id.backpack_edit_activity_add_btn);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final AlertDialog.Builder mBuilder = new AlertDialog.Builder(BackpackEditActivity.this);
@@ -165,6 +164,15 @@ public class BackpackEditActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
+
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.backpack_edit_activity_fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
     }
 
     private void updateListView() {

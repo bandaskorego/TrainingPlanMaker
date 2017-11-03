@@ -41,7 +41,7 @@ public class BackpackActivity extends NavDrawer {
 
         toolbar = (Toolbar) findViewById(R.id.backpack_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Twoje plecaki");
+        getSupportActionBar().setTitle("Zarządzanie plecakami");
 
 
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open, R.string.close);
@@ -63,30 +63,8 @@ public class BackpackActivity extends NavDrawer {
             }
         });
 
-        backpackList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                final Backpack bp = (Backpack)adapterView.getItemAtPosition(i);
-                new AlertDialog.Builder(adapterView.getContext())
-                        .setMessage("Czy na pewno chcesz usunąć plecak?")
-                        .setCancelable(false)
-                        .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                service.deleteBackpack(bp);
-                                updateListView();
-                                dialog.cancel();
-                            }
-                        })
-                        .setNegativeButton("Nie", null)
-                        .show();
-                return true;
-            }
-        });
-
-
-
-        fabAdd = (FloatingActionButton) contentView.findViewById(R.id.backpack_activity_fabOK);
-        fabAdd.setOnClickListener(new View.OnClickListener() {
+        Button btnAdd = (Button) findViewById(R.id.backpack_activity_layout_add_btn);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final AlertDialog.Builder mBuilder = new AlertDialog.Builder(BackpackActivity.this);
@@ -126,6 +104,14 @@ public class BackpackActivity extends NavDrawer {
                 dialog.show();
             }
         });
+
+//        fabAdd = (FloatingActionButton) contentView.findViewById(R.id.backpack_activity_fabOK);
+//        fabAdd.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
     }
 
     private void updateListView() {
