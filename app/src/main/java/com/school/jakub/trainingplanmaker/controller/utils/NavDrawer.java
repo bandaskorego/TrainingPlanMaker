@@ -93,7 +93,7 @@ public class NavDrawer extends AppCompatActivity implements NavigationView.OnNav
             }
             case R.id.drawer_menu_weight: {
                 Intent intent = new Intent(this, MeasurementMonitorActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
                 break;
             }

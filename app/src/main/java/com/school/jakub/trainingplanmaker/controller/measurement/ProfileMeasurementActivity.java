@@ -2,11 +2,14 @@ package com.school.jakub.trainingplanmaker.controller.measurement;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -41,7 +44,7 @@ public class ProfileMeasurementActivity extends AppCompatActivity implements Vie
         this.context = context;
         setContentView(R.layout.profile_measurement_activity);
         initialiseItems();
-
+        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -56,15 +59,6 @@ public class ProfileMeasurementActivity extends AppCompatActivity implements Vie
         refreshMeasurements();
         service.printAll();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                service.removeAllEntrys();
-                Snackbar.make(view, "Wyszystkie rekordy usunięte", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     private void copyValues(Measurement measurement, Measurement lastEntry) {
@@ -76,7 +70,6 @@ public class ProfileMeasurementActivity extends AppCompatActivity implements Vie
         measurement.setThighRight(lastEntry.getThighRight());
         measurement.setWeight(lastEntry.getWeight());
     }
-
 
     private void initialiseItems() {
         measurement = new Measurement();
@@ -134,6 +127,7 @@ public class ProfileMeasurementActivity extends AppCompatActivity implements Vie
                 i.putExtra("thighRight", measurement.getThighRight());
                 i.putExtra("weight", measurement.getWeight());
                 startActivity(i);
+                finish();
             }
         });
 
@@ -170,6 +164,26 @@ public class ProfileMeasurementActivity extends AppCompatActivity implements Vie
         measurement.setThighRight(getIntent().getIntExtra("thighRight", 0));
         measurement.setWeight(getIntent().getIntExtra("weight", 0));
         measurement.setDate(new Date((getIntent().getIntExtra("year",0)-1900), getIntent().getIntExtra("month",0),getIntent().getIntExtra("day",0),0,0,0));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+        }
+        if(item.getItemId() == R.id.manage_measurement){
+            Intent intent = new Intent(ProfileMeasurementActivity.this, ManageMeasurementsActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_measurement, menu);
+        return true;
     }
 
 

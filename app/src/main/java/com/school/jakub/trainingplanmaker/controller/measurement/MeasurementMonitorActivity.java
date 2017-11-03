@@ -1,6 +1,7 @@
 package com.school.jakub.trainingplanmaker.controller.measurement;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +10,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -58,14 +61,7 @@ public class MeasurementMonitorActivity extends NavDrawer implements CompoundBut
 
         initialise();
         generateChart();
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
     }
 
     private void generateChart() {
@@ -186,9 +182,6 @@ public class MeasurementMonitorActivity extends NavDrawer implements CompoundBut
         lineChart.invalidate();
         lineChart.getLegend().setWordWrapEnabled(true);
 
-
-
-
     }
 
     private void setUpToolbar() {
@@ -254,12 +247,38 @@ public class MeasurementMonitorActivity extends NavDrawer implements CompoundBut
         chest.setOnCheckedChangeListener(this);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initialise();
+        generateChart();
+    }
+
     private List<Integer> generateListWithNumbers(int from, int to) {
         List<Integer> list = new ArrayList<>();
         for(int i = from ; i <=to ; i++){
             list.add(i);
         }
         return list;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_measurement2options, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.manage_measurement){
+            Intent intent = new Intent(MeasurementMonitorActivity.this, ManageMeasurementsActivity.class);
+            startActivity(intent);
+        }
+        if(item.getItemId() == R.id.manage_measurement_add_measurement){
+            Intent intent = new Intent(MeasurementMonitorActivity.this, ProfileMeasurementActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -275,8 +294,7 @@ public class MeasurementMonitorActivity extends NavDrawer implements CompoundBut
             Calendar c = Calendar.getInstance();
             c.setTime(date);
 
-
-            return c.get(Calendar.DAY_OF_MONTH) + "." + c.get(Calendar.MONTH); //+ "." + c.get(Calendar.YEAR);
+            return c.get(Calendar.DAY_OF_MONTH) + "." + (c.get(Calendar.MONTH)+1); //+ "." + c.get(Calendar.YEAR);
         }
     }
 

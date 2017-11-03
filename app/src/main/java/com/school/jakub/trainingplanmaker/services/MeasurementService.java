@@ -136,4 +136,13 @@ public class MeasurementService {
         System.out.println(measurements);
         return measurements;
     }
+
+    public void removeMeasurement(final Measurement measurement) {
+        myRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                measurement.deleteFromRealm();
+            }
+        });
+    }
 }

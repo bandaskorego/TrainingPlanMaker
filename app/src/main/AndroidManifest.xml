@@ -61,7 +61,11 @@
         <activity
             android:name=".controller.measurement.MeasurementMonitorActivity"
             android:label="@string/title_activity_measurement_monitor"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".controller.measurement.ManageMeasurementsActivity"
+            android:label="@string/title_activity_manage_measurements"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

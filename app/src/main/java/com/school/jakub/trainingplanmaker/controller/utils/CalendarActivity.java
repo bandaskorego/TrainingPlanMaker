@@ -57,6 +57,7 @@ public class CalendarActivity extends AppCompatActivity {
                 intent.putExtra("thighRight", thighRight);
                 intent.putExtra("weight", weight);
                 startActivity(intent);
+                finish();
             }
         });
     }

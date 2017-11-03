@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.school.jakub.trainingplanmaker.controller.atlas.AtlasActivity">
+    <item
+        android:id="@+id/manage_measurement"
+        android:orderInCategory="100"
+        android:title="Zarządzaj pomiarami"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/manage_measurement_add_measurement"
+        android:orderInCategory="100"
+        android:title="Dodaj nowy pomiar"
+        app:showAsAction="never" />
+</menu>

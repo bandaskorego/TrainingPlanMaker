@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/measurement_adapter_row_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+    <TextView
+        android:id="@+id/measurement_adapter_row_biceps_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/measurement_adapter_row_date" />
+
+    <TextView
+        android:id="@+id/measurement_adapter_row_thigh_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/measurement_adapter_row_biceps_left"
+        app:layout_constraintTop_toBottomOf="@+id/measurement_adapter_row_biceps_left" />
+
+    <TextView
+        android:id="@+id/measurement_adapter_row_waist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/measurement_adapter_row_thigh_left"
+        app:layout_constraintTop_toBottomOf="@+id/measurement_adapter_row_thigh_left" />
+
+    <TextView
+        android:id="@+id/measurement_adapter_row_biceps_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/measurement_adapter_row_biceps_left"
+        app:layout_constraintEnd_toStartOf="@+id/measurement_adapter_row_wieght"
+        app:layout_constraintStart_toEndOf="@+id/measurement_adapter_row_biceps_left"
+        app:layout_constraintTop_toTopOf="@+id/measurement_adapter_row_biceps_left"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/measurement_adapter_row_thigh_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/measurement_adapter_row_biceps_right"
+        app:layout_constraintTop_toBottomOf="@+id/measurement_adapter_row_biceps_right" />
+
+    <TextView
+        android:id="@+id/measurement_adapter_row_chest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/measurement_adapter_row_thigh_right"
+        app:layout_constraintTop_toBottomOf="@+id/measurement_adapter_row_thigh_right" />
+
+    <ImageView
+        android:id="@+id/measurement_adapter_row_image_edit"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/measurement_adapter_row_image_remove"
+        app:layout_constraintEnd_toStartOf="@+id/measurement_adapter_row_image_remove"
+        app:layout_constraintTop_toTopOf="@+id/measurement_adapter_row_image_remove"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/ic_mode_edit_black_24px" />
+
+    <ImageView
+        android:id="@+id/measurement_adapter_row_image_remove"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/measurement_adapter_row_date"
+        app:srcCompat="@drawable/ic_delete_black_24px" />
+
+    <TextView
+        android:id="@+id/measurement_adapter_row_wieght"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/measurement_adapter_row_biceps_right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/measurement_adapter_row_biceps_right"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/measurement_adapter_row_image_remove"
+        app:srcCompat="@color/colorPrimary" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/colorPrimary" />
+</android.support.constraint.ConstraintLayout>
