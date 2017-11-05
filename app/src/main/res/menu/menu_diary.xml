@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.school.jakub.trainingplanmaker.controller.atlas.AtlasActivity">
+    <item
+        android:id="@+id/menu_diary_btn"
+        android:orderInCategory="100"
+        android:title="Idz do dziennika"
+        app:showAsAction="never" />
+</menu>

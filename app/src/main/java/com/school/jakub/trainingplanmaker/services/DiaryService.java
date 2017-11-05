@@ -4,6 +4,7 @@ import com.school.jakub.trainingplanmaker.model.DayEntry;
 import com.school.jakub.trainingplanmaker.model.Diary;
 import com.school.jakub.trainingplanmaker.model.Entry;
 import com.school.jakub.trainingplanmaker.model.Exercise;
+import com.school.jakub.trainingplanmaker.model.MuscleGroup;
 import com.school.jakub.trainingplanmaker.model.Series;
 import com.school.jakub.trainingplanmaker.model.TrainingPlan;
 
@@ -222,4 +223,48 @@ public class DiaryService {
         });
 
     }
+
+    public List<String> getAllMuscleGroup() {
+        RealmResults<MuscleGroup> groups = myRealm.where(MuscleGroup.class).findAll();
+        List<String> list = new ArrayList<>();
+        for(MuscleGroup m : groups) {
+            list.add(m.getName());
+            System.out.println(m.getName());
+        }
+        return list;
+    }
+
+    public List<String> getAllDoneExerciseAsStringList(String s, int range) {
+        List<String> exercises = new ArrayList<>();
+        RealmResults<DayEntry> dayEntries = myRealm.where(DayEntry.class).findAll();
+        if(!dayEntries.isEmpty()){
+            Calendar cal = Calendar.getInstance();
+            Date to = new Date();
+            Date from = new Date(cal.get(Calendar.YEAR)-1900, cal.get(Calendar.MONTH)-range,cal.get(Calendar.DAY_OF_MONTH));
+            for(DayEntry day : dayEntries){
+                if (day.getDate().after(from) && day.getDate().before(to)){
+                    for(Entry e : day.getEntrys()){
+                        if (!exercises.contains(e.getExercise().getName()) && e.getExercise().getMuscleGroup().getName().equals(s) && e.isFinished())
+                            exercises.add(e.getExercise().getName());
+                    }
+                }
+            }
+        }else{
+            return exercises;
+        }
+    return exercises;
+    }
+
+    public List<DayEntry> getAllDayEntryInRange(int range){
+        RealmResults<DayEntry> dayEntries = myRealm.where(DayEntry.class).findAll().sort("date");
+        List<DayEntry> list = new ArrayList<>();
+        Calendar cal = Calendar.getInstance();
+        Date to = new Date();
+        Date from = new Date(cal.get(Calendar.YEAR)-1900, cal.get(Calendar.MONTH)-range,cal.get(Calendar.DAY_OF_MONTH));
+        for(DayEntry d : dayEntries)
+            if (!d.getEntrys().isEmpty() && d.getDate().after(from) && d.getDate().before(to))
+                list.add(d);
+        return list;
+    }
+
 }

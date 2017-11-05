@@ -13,6 +13,7 @@ import android.view.View;
 
 import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.controller.diary.DiaryActivity;
+import com.school.jakub.trainingplanmaker.controller.exerciseMonitor.ExerciseMonitor;
 import com.school.jakub.trainingplanmaker.controller.measurement.MeasurementMonitorActivity;
 import com.school.jakub.trainingplanmaker.controller.measurement.ProfileMeasurementActivity;
 import com.school.jakub.trainingplanmaker.controller.bagpack.BackpackActivity;
@@ -88,7 +89,9 @@ public class NavDrawer extends AppCompatActivity implements NavigationView.OnNav
                 break;
             }
             case R.id.drawer_menu_monitor: {
-                System.out.println("drawer_menu_monitor");
+                Intent intent = new Intent(this, ExerciseMonitor.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
                 break;
             }
             case R.id.drawer_menu_weight: {

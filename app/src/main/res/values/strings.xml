@@ -15,5 +15,7 @@
     <string name="title_activity_add_exercise_to_day_entry">AddExerciseToDayEntry</string>
     <string name="title_activity_measurement_monitor">MeasurementMonitorActivity</string>
     <string name="title_activity_manage_measurements">ManageMeasurementsActivity</string>
+    <string name="title_activity_exercise_monitor">ExerciseMonitor</string>
+    <string name="title_activity_account">AccountActivity</string>
 
 </resources>

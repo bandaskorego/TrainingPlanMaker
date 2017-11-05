@@ -1,8 +1,10 @@
 package com.school.jakub.trainingplanmaker.adapters;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +43,7 @@ public class DiaryAdapter extends ArrayAdapter<Entry> {
     Context context;
 
     public DiaryAdapter(@NonNull Context context, DiaryService service, String dayEntryId) {
-        super(context,R.layout.diary_activity_listview_row , service.getAllEntrysFromDayEntryById(dayEntryId));
+        super(context, R.layout.diary_activity_listview_row, service.getAllEntrysFromDayEntryById(dayEntryId));
         this.service = service;
         this.dayEntryId = dayEntryId;
         this.context = context;
@@ -63,14 +65,14 @@ public class DiaryAdapter extends ArrayAdapter<Entry> {
     }
 
     private void setUpSpinners(final int position) {
-        ArrayAdapter<Integer> adapterRepetitionSpinner = new ArrayAdapter<Integer>(context,R.layout.my_spinner, generateListWithNumbers(1,40));
+        ArrayAdapter<Integer> adapterRepetitionSpinner = new ArrayAdapter<Integer>(context, R.layout.my_spinner, generateListWithNumbers(1, 40));
         adapterRepetitionSpinner.setDropDownViewResource(R.layout.my_spinner);
         repetitionSpinner.setAdapter(adapterRepetitionSpinner);
-        repetitionSpinner.setSelection(getItem(position).getRepetition()-1);
+        repetitionSpinner.setSelection(getItem(position).getRepetition() - 1);
         repetitionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                service.setNumberOfRepetition(getItem(position),i+1);
+                service.setNumberOfRepetition(getItem(position), i + 1);
 //                ((DiaryActivity) context).refreshListView();
             }
 
@@ -80,7 +82,7 @@ public class DiaryAdapter extends ArrayAdapter<Entry> {
             }
         });
 
-        ArrayAdapter<Integer> adapterweightSpinner = new ArrayAdapter<Integer>(context,R.layout.my_spinner, generateListWithNumbers(0,200));
+        ArrayAdapter<Integer> adapterweightSpinner = new ArrayAdapter<Integer>(context, R.layout.my_spinner, generateListWithNumbers(0, 200));
         adapterweightSpinner.setDropDownViewResource(R.layout.my_spinner);
         weightSpinner.setAdapter(adapterweightSpinner);
         weightSpinner.setSelection(getItem(position).getWeight());
@@ -97,31 +99,31 @@ public class DiaryAdapter extends ArrayAdapter<Entry> {
         });
     }
 
-    public List<Integer> generateListWithNumbers(int from, int to){
+    public List<Integer> generateListWithNumbers(int from, int to) {
         List<Integer> list = new ArrayList<>();
-        for(int i = from ; i <=to ; i++){
+        for (int i = from; i <= to; i++) {
             list.add(i);
         }
         return list;
     }
 
     private void setUpTextViews(int position) {
-        series.setText("Seria " + (position+1));
+        series.setText("Seria " + (position + 1));
         exercise.setText(getItem(position).getExercise().getName().toString());
-        status.setText(getItem(position).isFinished()?"Status: Wykonane":"Status: Zaplanowane");
-        if(getItem(position).isFinished())
+        status.setText(getItem(position).isFinished() ? "Status: Wykonane" : "Status: Zaplanowane");
+        if (getItem(position).isFinished())
             statusBtn.setImageResource(R.drawable.ic_undo);
-}
+    }
 
     private void addOnClickListeners(final int position) {
 
         upArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                service.swapSeriesPositionInPlan(dayEntryId, position, position -1);
+                service.swapSeriesPositionInPlan(dayEntryId, position, position - 1);
                 ((DiaryActivity) context).refreshListView();
-                if(position!=0)
-                    ((DiaryActivity) context).setSelection(position-1);
+                if (position != 0)
+                    ((DiaryActivity) context).setSelection(position - 1);
 //                notifyDataSetChanged();
             }
         });
@@ -129,9 +131,9 @@ public class DiaryAdapter extends ArrayAdapter<Entry> {
         downArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                service.swapSeriesPositionInPlan(dayEntryId, position+1, position );
+                service.swapSeriesPositionInPlan(dayEntryId, position + 1, position);
                 ((DiaryActivity) context).refreshListView();
-                ((DiaryActivity) context).setSelection(position+1);
+                ((DiaryActivity) context).setSelection(position + 1);
 //                notifyDataSetChanged();
             }
         });
@@ -148,24 +150,35 @@ public class DiaryAdapter extends ArrayAdapter<Entry> {
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Entry entry = getItem(position);
-                remove(getItem(position));
-                service.removeEntry(entry);
-                notifyDataSetChanged();
+                new AlertDialog.Builder(view.getContext())
+                        .setMessage("Czy na pewno chcesz usunąć plecak?")
+                        .setCancelable(false)
+                        .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Entry entry = getItem(position);
+                                remove(getItem(position));
+                                service.removeEntry(entry);
+                                notifyDataSetChanged();
+                                dialog.cancel();
+                            }
+                        })
+                        .setNegativeButton("Nie", null)
+                        .show();
+
             }
         });
 
     }
 
     private void createHandlers(View customView) {
-         series = (TextView) customView.findViewById(R.id.diary_activity_list_series);
-         status = (TextView) customView.findViewById(R.id.diary_activity_list_status);
-         exercise = (TextView) customView.findViewById(R.id.diary_activity_list_exercise);
-         upArrow = (ImageView) customView.findViewById(R.id.diary_activity_list_up_btn);
-         downArrow =(ImageView) customView.findViewById(R.id.diary_activity_list_down_btn);
-         deleteBtn = (ImageView) customView.findViewById(R.id.diary_activity_list_delete_image);
-         statusBtn = (ImageView) customView.findViewById(R.id.diary_activity_list_status_image);
-         repetitionSpinner = (Spinner) customView.findViewById(R.id.diary_activity_list_spinner_repetiton);
-         weightSpinner = (Spinner) customView.findViewById(R.id.diary_activity_list_spinner_weight);
+        series = (TextView) customView.findViewById(R.id.diary_activity_list_series);
+        status = (TextView) customView.findViewById(R.id.diary_activity_list_status);
+        exercise = (TextView) customView.findViewById(R.id.diary_activity_list_exercise);
+        upArrow = (ImageView) customView.findViewById(R.id.diary_activity_list_up_btn);
+        downArrow = (ImageView) customView.findViewById(R.id.diary_activity_list_down_btn);
+        deleteBtn = (ImageView) customView.findViewById(R.id.diary_activity_list_delete_image);
+        statusBtn = (ImageView) customView.findViewById(R.id.diary_activity_list_status_image);
+        repetitionSpinner = (Spinner) customView.findViewById(R.id.diary_activity_list_spinner_repetiton);
+        weightSpinner = (Spinner) customView.findViewById(R.id.diary_activity_list_spinner_weight);
     }
 }
