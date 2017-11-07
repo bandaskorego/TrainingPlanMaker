@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content">
 
                     <Button
-                        android:id="@+id/goToDietCalendarActivity"
+                        android:id="@+id/goToMeasurementActivity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Zakualizuj wpisy"
@@ -84,17 +84,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!--<android.support.constraint.ConstraintLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent">-->
-
-            <!--<ImageView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:src="@drawable/drawer_background"-->
-            <!--app:layout_constraintTop_toTopOf="parent" />-->
-
-            <!--</android.support.constraint.ConstraintLayout>-->
 
         </android.support.v7.widget.CardView>
 
@@ -153,7 +142,7 @@
                     android:layout_height="wrap_content">
 
                     <Button
-                        android:id="@+id/goToDietCalendarActivit"
+                        android:id="@+id/goToDiaryActivity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Przeglądaj dziennik"
@@ -208,7 +197,7 @@
                     android:layout_height="wrap_content">
 
                     <Button
-                        android:id="@+id/goToDietCalendarActivi"
+                        android:id="@+id/goToTrainingPlansActivity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Przeglądaj swoje plany treningowe"
@@ -282,7 +271,7 @@
                     android:layout_height="wrap_content">
 
                     <Button
-                        android:id="@+id/goToDietCalendarActiv"
+                        android:id="@+id/goToBackpackActivity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Nie zapomnij zabrać plecaka"

@@ -1,5 +1,7 @@
 package com.school.jakub.trainingplanmaker.controller.utils;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.school.jakub.trainingplanmaker.R;
+import com.school.jakub.trainingplanmaker.controller.MainActivity;
 import com.school.jakub.trainingplanmaker.controller.diary.DiaryActivity;
 import com.school.jakub.trainingplanmaker.controller.exerciseMonitor.ExerciseMonitor;
 import com.school.jakub.trainingplanmaker.controller.measurement.MeasurementMonitorActivity;
@@ -44,11 +47,19 @@ public class NavDrawer extends AppCompatActivity implements NavigationView.OnNav
 
     @Override
     public void onBackPressed() {
-        System.out.println(" BACK");
-        System.out.println(" BACK");
-        System.out.println(" BACK");
-        System.out.println(" BACK");
-        System.out.println(" BACK");
+        new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Exit")
+                .setMessage("Wyjść z aplikacji?")
+                .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Intent intent = new Intent(Intent.ACTION_MAIN);
+                        intent.addCategory(Intent.CATEGORY_HOME);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        finish();
+                    }
+                }).setNegativeButton("Nie", null).show();
     }
 
     @Override
@@ -60,7 +71,7 @@ public class NavDrawer extends AppCompatActivity implements NavigationView.OnNav
         switch (item.getItemId()) {
 
             case R.id.drawer_menu_account: {
-                Intent intent = new Intent(this, ProfileMeasurementActivity.class);
+                Intent intent = new Intent(this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
                 break;
@@ -105,7 +116,6 @@ public class NavDrawer extends AppCompatActivity implements NavigationView.OnNav
                 startActivity(intent);
                 break;
             }
-
         }
         return true;
     }

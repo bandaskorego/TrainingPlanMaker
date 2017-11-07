@@ -80,283 +80,283 @@ public class TrainingService {
                 /*Klatka piersiowa*/
                 Exercise c1 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 c1.setMuscleGroup(chest);
-                c1.setName("wyciskanie sztangi w leżeniu na ławce poziomej");
+                c1.setName("Wyciskanie sztangi w leżeniu na ławce poziomej");
 
                 Exercise c2;
                 c2 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 c2.setMuscleGroup(chest);
-                c2.setName("wyciskanie sztangielek w leżeniu na ławce poziomej");
+                c2.setName("Wyciskanie sztangielek w leżeniu na ławce poziomej");
 
                 Exercise c3;
                 c3 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 c3.setMuscleGroup(chest);
-                c3.setName("wyciskanie sztangi w leżeniu na ławce skośnej-głową w górę");
+                c3.setName("Wyciskanie sztangi w leżeniu na ławce skośnej-głową w górę");
 
                 Exercise c4;
                 c4 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 c4.setMuscleGroup(chest);
-                c4.setName("wyciskanie sztangielek w leżeniu na ławce skośnej-głową w górę");
+                c4.setName("Wyciskanie sztangielek w leżeniu na ławce skośnej-głową w górę");
 
                 Exercise c5;
                 c5 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 c5.setMuscleGroup(chest);
-                c5.setName("wyciskanie sztangi w leżeniu na ławce skośnej-głową w dół");
+                c5.setName("Wyciskanie sztangi w leżeniu na ławce skośnej-głową w dół");
 
                 Exercise c6;
                 c6 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 c6.setMuscleGroup(chest);
-                c6.setName("rozpiętki ze sztangielkami w leżeniu na ławce poziomej");
+                c6.setName("Rozpiętki ze sztangielkami w leżeniu na ławce poziomej");
 
                 Exercise c7;
                 c7 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 c7.setMuscleGroup(chest);
-                c7.setName("pompki na poręczach");
+                c7.setName("Pompki na poręczach");
 
                 Exercise c8;
                 c8 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 c8.setMuscleGroup(chest);
-                c8.setName("krzyżowanie linek wyciągu w staniu");
+                c8.setName("Krzyżowanie linek wyciągu w staniu");
 
                 /* Nogi */
 
                 Exercise n1;
                 n1 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 n1.setMuscleGroup(legs);
-                n1.setName("PRZYSIADY ZE SZTANGĄ NA KARKU");
+                n1.setName("Przysiady ze sztangą na karku");
 
                 Exercise n2;
                 n2 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 n2.setMuscleGroup(legs);
-                n2.setName("WYPYCHANIE CIĘŻARU NA SUWNICY");
+                n2.setName("Wypychanie ciężaru na suwnicy");
 
                 Exercise n3;
                 n3 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 n3.setMuscleGroup(legs);
-                n3.setName("PROSTOWANIE NÓG NA MASZYNIE");
+                n3.setName("Prostowanie nóg na maszynie");
 
                 Exercise n4;
                 n4 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 n4.setMuscleGroup(legs);
-                n4.setName("MARTWY CIĄG NA PROSTYCH NOGACH");
+                n4.setName("Martwy ciąg na prostych nogach");
 
                 Exercise n5;
                 n5 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 n5.setMuscleGroup(legs);
-                n5.setName("WSPIĘCIA NA PALCE");
+                n5.setName("Wspięcia na palce");
 
                 Exercise n6;
                 n6 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 n6.setMuscleGroup(legs);
-                n6.setName("WYKROKI");
+                n6.setName("Wykroki");
 
                 /* Brzuch */
 
                 Exercise b1;
                 b1 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 b1.setMuscleGroup(abs);
-                b1.setName("SKŁONY W LEŻENIU PŁASKO");
+                b1.setName("Skłony w leżeniu płasko");
 
                 Exercise b2;
                 b2 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 b2.setMuscleGroup(abs);
-                b2.setName("SKŁONY W LEŻENIU GŁOWĄ W DÓŁ");
+                b2.setName("Skłony w leżeniu głową w dół");
 
                 Exercise b3;
                 b3 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 b3.setMuscleGroup(abs);
-                b3.setName("UNOSZENIE NÓG W LEŻENIU NA SKOŚNEJ ŁAWCE");
+                b3.setName("Unoszenie nóg w leżeniu na skośnej ławce");
 
                 Exercise b4;
                 b4 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 b4.setMuscleGroup(abs);
-                b4.setName("UNOSZENIE NÓG W ZWISIE NA DRĄŻKU");
+                b4.setName("Unoszenie nóg w zwisie na drążku");
 
                 Exercise b5;
                 b5 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 b5.setMuscleGroup(abs);
-                b5.setName("SKŁONY TUŁOWIA Z LINKĄ WYCIĄGU SIEDZĄC");
+                b5.setName("Skłony tułowia z linką wyciągu siedząc");
 
                 Exercise b6;
                 b6 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 b6.setMuscleGroup(abs);
-                b6.setName("SKRĘTY TUŁOWIA");
+                b6.setName("Skręty tułowia");
 
                 Exercise b7;
                 b7 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 b7.setMuscleGroup(abs);
-                b7.setName("SPIĘCIA BRZUCHA NA WYCIĄGU");
+                b7.setName("Spięcia brzucha na wyciągu");
 
                 Exercise b8;
                 b8 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 b8.setMuscleGroup(abs);
-                b8.setName("SKŁONY BOCZNE NA ŁAWCE");
+                b8.setName("Skłony boczne na ławce");
 
                 /* Plecy */
 
                 Exercise p1;
                 p1 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 p1.setMuscleGroup(back);
-                p1.setName("PODCIĄGANIE NA DRĄŻKU SZEROKIM UCHWYTEM (NACHWYT)");
+                p1.setName("Podciąganie na drążku szerokim uchwytem (nachwyt)");
 
                 Exercise p2;
                 p2 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 p2.setMuscleGroup(back);
-                p2.setName("PODCIĄGANIE NA DRĄŻKU PODCHWYTEM");
+                p2.setName("Podciąganie na drążku podchwytem");
 
                 Exercise p3;
                 p3 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 p3.setMuscleGroup(back);
-                p3.setName("PODCIĄGANIE SZTANGI W OPADZIE(WIOSŁOWANIE)");
+                p3.setName("Podciąganie sztangi w opadzie(wiosłowanie)");
 
                 Exercise p4;
                 p4 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 p4.setMuscleGroup(back);
-                p4.setName("PODCIĄGANIE SZTANGIELKI W OPADZIE(WIOSŁOWANIE)");
+                p4.setName("podciąganie sztangielki w opadzie(wiosłowanie)");
 
                 Exercise p5;
                 p5 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 p5.setMuscleGroup(back);
-                p5.setName("PODCIĄGANIE KOŃCA SZTANGI W OPADZIE");
+                p5.setName("Podciąganie końca sztangi w opadzie");
 
                 Exercise p6;
                 p6 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 p6.setMuscleGroup(back);
-                p6.setName("PRZYCIĄGANIE LINKI WYCIĄGU DOLNEGO W SIADZIE PŁASKIM");
+                p6.setName("Przyciąganie linki wyciągu dolnego w siadzie płaskim");
 
                 Exercise p7;
                 p7 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 p7.setMuscleGroup(back);
-                p7.setName("MARTWY CIĄG");
+                p7.setName("Martwy ciąg");
 
                 Exercise p8;
                 p8 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 p8.setMuscleGroup(back);
-                p8.setName("PODCIĄGANIE (WIOSŁOWANIE) W LEŻENIU NA ŁAWECZCE POZIOMEJ");
+                p8.setName("Podciąganie (wiosłowanie) w leżeniu na ławeczce poziomej");
 
                 /* Biceps */
 
                 Exercise bic1;
                 bic1 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 bic1.setMuscleGroup(biceps);
-                bic1.setName("UGINANIE RAMION ZE SZTANGĄ STOJAC PODCHWYTEM");
+                bic1.setName("Uginanie ramion ze sztangą stojac podchwytem");
 
                 Exercise bic2;
                 bic2 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 bic2.setMuscleGroup(biceps);
-                bic2.setName("UGINANIE RAMION ZE SZTANGIELKAMI STOJĄC PODCHWYTEM");
+                bic2.setName("Uginanie ramion ze sztangielkami stojąc podchwytem");
 
                 Exercise bic3;
                 bic3 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 bic3.setMuscleGroup(biceps);
-                bic3.setName("UGINANIE RAMION ZE SZTANGIELKAMI STOJĄC (UCHWYT „MŁOTKOWY”)");
+                bic3.setName("Uginanie ramion ze sztangielkami stojąc (uchwyt „młotkowy”)");
 
                 Exercise bic4;
                 bic4 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 bic4.setMuscleGroup(biceps);
-                bic4.setName("UGINANIE RAMION ZE SZTANGĄ NA „MODLITEWNIKU”");
+                bic4.setName("Uginanie ramion ze sztangą na modlitewniku");
 
                 Exercise bic5;
                 bic5 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 bic5.setMuscleGroup(biceps);
-                bic5.setName("UGINANIE RAMIENIA ZE SZTANGIELKĄ NA „MODLITEWNIKU”");
+                bic5.setName("Uginanie ramienia ze sztangielką na modlitewniku");
 
                 Exercise bic6;
                 bic6 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 bic6.setMuscleGroup(biceps);
-                bic6.setName("UGINANIE RAMION ZE SZTANGIELKAMI W SIADZIE NA ŁAWCE SKOŚNEJ(Z SUPINACJĄ NADGARSTKA)");
+                bic6.setName("Uginanie ramion ze sztangielkami w siadzie na ławce skośnej(z supinacją nadgarstka)");
 
                 Exercise bic7;
                 bic7 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 bic7.setMuscleGroup(biceps);
-                bic7.setName("UGINANIE RAMION PODCHWYTEM STOJĄC-Z RĄCZKĄ WYCIĄGU");
+                bic7.setName("Uginanie ramion podchwytem stojąc-z rączką wyciągu");
 
                 /* Triceps */
 
                 Exercise t1;
                 t1 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 t1.setMuscleGroup(triceps);
-                t1.setName("PROSTOWANIE RAMION NA WYCIĄGU STOJĄC");
+                t1.setName("Prostowanie ramion na wyciągu stojąc");
 
                 Exercise t2;
                 t2 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 t2.setMuscleGroup(triceps);
-                t2.setName("WYCISKANIE „FRANCUSKIE” SZTANGI W SIADZIE");
+                t2.setName("Wyciskanie „francuskie” sztangi w siadzie");
 
                 Exercise t3;
                 t3 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 t3.setMuscleGroup(triceps);
-                t3.setName("WYCISKANIE “FRANCUSKIE” JEDNORĄCZ SZTANGIELKI W SIADZIE");
+                t3.setName("Wyciskanie “francuskie” jednorącz sztangielki w siadzie");
 
                 Exercise t4;
                 t4 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 t4.setMuscleGroup(triceps);
-                t4.setName("WYCISKANIE „FRANCUSKIE” SZTANGI W LEŻENIU");
+                t4.setName("Wyciskanie „francuskie” sztangi w leżeniu");
 
                 Exercise t5;
                 t5 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 t5.setMuscleGroup(triceps);
-                t5.setName("WYCISKANIE „FRANCUSKIE”SZTANGIELKI W LEŻENIU");
+                t5.setName("Wyciskanie „francuskie”sztangielki w leżeniu");
 
                 Exercise t6;
                 t6 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 t6.setMuscleGroup(triceps);
-                t6.setName("PROSTOWNIE RAMIENIA ZE SZTANGIELKĄ W OPADZIE TUŁOWIA");
+                t6.setName("Prostownie ramienia ze sztangielką w opadzie tułowia");
 
                 Exercise t7;
                 t7 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 t7.setMuscleGroup(triceps);
-                t7.setName("PROSTOWANIE RAMION NA WYCIĄGU W PŁASZCZYŹNE POZIOMEJ STOJĄC");
+                t7.setName("Prostowanie ramion na wyciągu w płaszczyźne poziomej stojąc");
 
                 Exercise t8;
                 t8 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 t8.setMuscleGroup(triceps);
-                t8.setName("POMPKI NA PORĘCZACH");
+                t8.setName("Pompki na poręczach");
 
                 Exercise t9;
                 t9 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 t9.setMuscleGroup(triceps);
-                t9.setName("WYCISKANIE W LEŻENIU NA ŁAWCE POZIOMEJ WĄSKIM UCHWYTEM");
+                t9.setName("Wyciskanie w leżeniu na ławce poziomej wąskim uchwytem");
 
                 /* Barki */
                 Exercise bar1;
                 bar1 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 bar1.setMuscleGroup(shoulders);
-                bar1.setName("WYCISKANIE SZTANGI SPRZED GŁOWY");
+                bar1.setName("Wyciskanie sztangi sprzed głowy");
 
                 Exercise bar2;
                 bar1 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 bar1.setMuscleGroup(shoulders);
-                bar1.setName("WYCISKANIE SZTANGI ZZA GŁOWY");
+                bar1.setName("Wyciskanie sztangi zza głowy");
 
                 Exercise bar3;
                 bar3 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 bar3.setMuscleGroup(shoulders);
-                bar3.setName("WYCISKANIE SZTANGIELEK");
+                bar3.setName("Wyciskanie sztangielek");
 
                 Exercise bar4;
                 bar4 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 bar4.setMuscleGroup(shoulders);
-                bar4.setName("ARNOLDKI");
+                bar4.setName("Arnoldki");
 
                 Exercise bar5;
                 bar5 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 bar5.setMuscleGroup(shoulders);
-                bar5.setName("UNOSZENIE SZTANGIELEK BOKIEM W GÓRĘ");
+                bar5.setName("Unoszenie sztangielek bokiem w górę");
 
                 Exercise bar6;
                 bar6 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 bar6.setMuscleGroup(shoulders);
-                bar6.setName("UNOSZENIE SZTANGIELEK W OPADZIE TUŁOWIA");
+                bar6.setName("Unoszenie sztangielek w opadzie tułowia");
 
                 Exercise bar7;
                 bar7 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 bar7.setMuscleGroup(shoulders);
-                bar7.setName("PODCIĄGANIE SZTANGI WZDŁUŻ TUŁOWIA");
+                bar7.setName("Podciąganie sztangi wzdłuż tułowia");
 
                 Exercise bar8;
                 bar8 = myRealm.createObject(Exercise.class, UUID.randomUUID().toString());
                 bar8.setMuscleGroup(shoulders);
-                bar8.setName("UNOSZENIE RAMION W PRZÓD ZE SZTANGIELKAMI");
+                bar8.setName("Unoszenie ramion w przód ze sztangielkami");
 
                 /*Treningi*/
                 TrainingPlan fbw;
