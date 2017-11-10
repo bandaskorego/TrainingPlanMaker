@@ -44,6 +44,7 @@ public class ManageMeasurementsActivity extends AppCompatActivity {
             }
         });
 
+
         adaper = new MeasurementAdapter(this, service);
         listView.setAdapter(adaper);
 

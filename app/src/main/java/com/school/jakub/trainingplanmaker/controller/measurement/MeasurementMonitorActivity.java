@@ -4,10 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -59,7 +56,7 @@ public class MeasurementMonitorActivity extends NavDrawer implements CompoundBut
         setUpToolbar();
 
 
-        initialise();
+        initialize();
         generateChart();
 
     }
@@ -68,119 +65,119 @@ public class MeasurementMonitorActivity extends NavDrawer implements CompoundBut
 
         List<Measurement> list = service.getMeasurementInRange(months.getSelectedItemPosition()+1);
 
-        List<Entry> weightList = new ArrayList<Entry>();
-        List<Entry> waistList = new ArrayList<Entry>();
-        List<Entry> chestList = new ArrayList<Entry>();
-        List<Entry> bicepsLeftList = new ArrayList<Entry>();
-        List<Entry> bicepsRightList = new ArrayList<Entry>();
-        List<Entry> thighLeftList = new ArrayList<Entry>();
-        List<Entry> thighRightList = new ArrayList<Entry>();
+        if(list.size()>0){
+            List<Entry> weightList = new ArrayList<Entry>();
+            List<Entry> waistList = new ArrayList<Entry>();
+            List<Entry> chestList = new ArrayList<Entry>();
+            List<Entry> bicepsLeftList = new ArrayList<Entry>();
+            List<Entry> bicepsRightList = new ArrayList<Entry>();
+            List<Entry> thighLeftList = new ArrayList<Entry>();
+            List<Entry> thighRightList = new ArrayList<Entry>();
 
 
-        String text = "";
-        for (Measurement m : list) {
-            weightList.add(new Entry(m.getDate().getTime(), (float) m.getWeight()));
-            waistList.add(new Entry(m.getDate().getTime(), (float) m.getWaist()));
-            chestList.add(new Entry(m.getDate().getTime(), (float) m.getChest()));
-            bicepsLeftList.add(new Entry(m.getDate().getTime(), (float) m.getBicepsLeft()));
-            bicepsRightList.add(new Entry(m.getDate().getTime(), (float) m.getBicepsRight()));
-            thighLeftList.add(new Entry(m.getDate().getTime(), (float) m.getThighLeft()));
-            thighRightList.add(new Entry(m.getDate().getTime(), (float) m.getThighRight()));
+            String text = "";
+            for (Measurement m : list) {
+                weightList.add(new Entry(m.getDate().getTime(), (float) m.getWeight()));
+                waistList.add(new Entry(m.getDate().getTime(), (float) m.getWaist()));
+                chestList.add(new Entry(m.getDate().getTime(), (float) m.getChest()));
+                bicepsLeftList.add(new Entry(m.getDate().getTime(), (float) m.getBicepsLeft()));
+                bicepsRightList.add(new Entry(m.getDate().getTime(), (float) m.getBicepsRight()));
+                thighLeftList.add(new Entry(m.getDate().getTime(), (float) m.getThighLeft()));
+                thighRightList.add(new Entry(m.getDate().getTime(), (float) m.getThighRight()));
 
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(m.getDate());
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(m.getDate());
 
-            text += "Data pomiaru: " + cal.get(Calendar.DAY_OF_MONTH) + "." + (cal.get(Calendar.MONTH)+1) + "." + cal.get(Calendar.YEAR) + "\n";
-            text += "Waga: " + m.getWeight() + " kg, ";
-            text += "Talia: " + m.getWaist() + " cm, ";
-            text += "Udo(l): " + m.getThighLeft()+ " cm, ";
-            text += "Udo(p): " + m.getThighRight() + " cm, \n";
-            text += "Pierś: " + m.getChest() + " cm, ";
-            text += "Biceps(l): " + m.getBicepsLeft() + " cm, ";
-            text += "Biceps(p): " + m.getBicepsRight() + " cm, \n\n";
+                text += "Data pomiaru: " + cal.get(Calendar.DAY_OF_MONTH) + "." + (cal.get(Calendar.MONTH)+1) + "." + cal.get(Calendar.YEAR) + "\n";
+                text += "Waga: " + m.getWeight() + " kg, ";
+                text += "Talia: " + m.getWaist() + " cm, ";
+                text += "Udo(l): " + m.getThighLeft()+ " cm, ";
+                text += "Udo(p): " + m.getThighRight() + " cm, \n";
+                text += "Pierś: " + m.getChest() + " cm, ";
+                text += "Biceps(l): " + m.getBicepsLeft() + " cm, ";
+                text += "Biceps(p): " + m.getBicepsRight() + " cm, \n\n";
 
+            }
+            entrys.setText(text);
+
+            ArrayList<ILineDataSet> lines = new ArrayList<ILineDataSet>();
+            String[] xAxis = new String[weightList.size()];
+
+            if (weight.isChecked()) {
+                LineDataSet lDataSet1 = new LineDataSet(weightList, "Waga");
+                lDataSet1.setDrawFilled(true);
+                lDataSet1.setFillColor(Color.BLUE);
+                lDataSet1.setColor(Color.BLUE);
+                lines.add(lDataSet1);
+            }
+            if (waist.isChecked()) {
+                LineDataSet lDataSet2 = new LineDataSet(waistList, "Talia");
+                lDataSet2.setDrawFilled(true);
+                lDataSet2.setFillColor(Color.RED);
+                lDataSet2.setColor(Color.RED);
+                lines.add(lDataSet2);
+            }
+            if (chest.isChecked()) {
+                LineDataSet lDataSet2 = new LineDataSet(chestList, "Pierś");
+                lDataSet2.setDrawFilled(true);
+                lDataSet2.setFillColor(Color.CYAN);
+                lDataSet2.setColor(Color.CYAN);
+                lines.add(lDataSet2);
+            }
+            if (chest.isChecked()) {
+                LineDataSet lDataSet2 = new LineDataSet(bicepsLeftList, "Pierś");
+                lDataSet2.setDrawFilled(true);
+                lDataSet2.setFillColor(Color.CYAN);
+                lDataSet2.setColor(Color.CYAN);
+                lines.add(lDataSet2);
+            }
+            if (bicepsLeft.isChecked()) {
+                LineDataSet lDataSet2 = new LineDataSet(bicepsLeftList, "Biceps(l)");
+                lDataSet2.setDrawFilled(true);
+                lDataSet2.setFillColor(Color.GREEN);
+                lDataSet2.setColor(Color.GREEN);
+                lines.add(lDataSet2);
+            }
+            if (bicepsRight.isChecked()) {
+                LineDataSet lDataSet2 = new LineDataSet(bicepsRightList, "Biceps(p)");
+                lDataSet2.setDrawFilled(true);
+                lDataSet2.setFillColor(Color.YELLOW);
+                lDataSet2.setColor(Color.YELLOW);
+                lines.add(lDataSet2);
+            }
+            if (thighLeft.isChecked()) {
+                LineDataSet lDataSet2 = new LineDataSet(thighLeftList, "Udo(l)");
+                lDataSet2.setDrawFilled(true);
+                lDataSet2.setFillColor(Color.LTGRAY);
+                lDataSet2.setColor(Color.LTGRAY);
+                lines.add(lDataSet2);
+            }
+            if (thighRight.isChecked()) {
+                LineDataSet lDataSet2 = new LineDataSet(thighRightList, "Udo(p)");
+                lDataSet2.setDrawFilled(true);
+                lDataSet2.setFillColor(Color.MAGENTA);
+                lDataSet2.setColor(Color.MAGENTA);
+                lines.add(lDataSet2);
+            }
+
+            lineChart.setData(new LineData(lines));
+            lineChart.animateY(1000);
+            Description d = new Description();
+            d.setText("");
+            lineChart.setDescription(d);
+
+            XAxis xAxiss = lineChart.getXAxis();
+            xAxiss.setValueFormatter(new DateValueFormatter());
+            lineChart.notifyDataSetChanged();
+            lineChart.invalidate();
+            lineChart.getLegend().setWordWrapEnabled(true);
         }
-        entrys.setText(text);
-
-        ArrayList<ILineDataSet> lines = new ArrayList<ILineDataSet>();
-        String[] xAxis = new String[weightList.size()];
-
-        if (weight.isChecked()) {
-            LineDataSet lDataSet1 = new LineDataSet(weightList, "Waga");
-            lDataSet1.setDrawFilled(true);
-            lDataSet1.setFillColor(Color.BLUE);
-            lDataSet1.setColor(Color.BLUE);
-            lines.add(lDataSet1);
-        }
-        if (waist.isChecked()) {
-            LineDataSet lDataSet2 = new LineDataSet(waistList, "Talia");
-            lDataSet2.setDrawFilled(true);
-            lDataSet2.setFillColor(Color.RED);
-            lDataSet2.setColor(Color.RED);
-            lines.add(lDataSet2);
-        }
-        if (chest.isChecked()) {
-            LineDataSet lDataSet2 = new LineDataSet(chestList, "Pierś");
-            lDataSet2.setDrawFilled(true);
-            lDataSet2.setFillColor(Color.CYAN);
-            lDataSet2.setColor(Color.CYAN);
-            lines.add(lDataSet2);
-        }
-        if (chest.isChecked()) {
-            LineDataSet lDataSet2 = new LineDataSet(bicepsLeftList, "Pierś");
-            lDataSet2.setDrawFilled(true);
-            lDataSet2.setFillColor(Color.CYAN);
-            lDataSet2.setColor(Color.CYAN);
-            lines.add(lDataSet2);
-        }
-        if (bicepsLeft.isChecked()) {
-            LineDataSet lDataSet2 = new LineDataSet(bicepsLeftList, "Biceps(l)");
-            lDataSet2.setDrawFilled(true);
-            lDataSet2.setFillColor(Color.GREEN);
-            lDataSet2.setColor(Color.GREEN);
-            lines.add(lDataSet2);
-        }
-        if (bicepsRight.isChecked()) {
-            LineDataSet lDataSet2 = new LineDataSet(bicepsRightList, "Biceps(p)");
-            lDataSet2.setDrawFilled(true);
-            lDataSet2.setFillColor(Color.YELLOW);
-            lDataSet2.setColor(Color.YELLOW);
-            lines.add(lDataSet2);
-        }
-        if (thighLeft.isChecked()) {
-            LineDataSet lDataSet2 = new LineDataSet(thighLeftList, "Udo(l)");
-            lDataSet2.setDrawFilled(true);
-            lDataSet2.setFillColor(Color.LTGRAY);
-            lDataSet2.setColor(Color.LTGRAY);
-            lines.add(lDataSet2);
-        }
-        if (thighRight.isChecked()) {
-            LineDataSet lDataSet2 = new LineDataSet(thighRightList, "Udo(p)");
-            lDataSet2.setDrawFilled(true);
-            lDataSet2.setFillColor(Color.MAGENTA);
-            lDataSet2.setColor(Color.MAGENTA);
-            lines.add(lDataSet2);
+        else {
+            entrys.setText("Brak wpisów, usupełnij pomiary");
+            lineChart.clear();
+            lineChart.setNoDataText("Brak wpisów, usupełnij pomiary");
         }
 
-        lineChart.setData(new LineData(lines));
-        lineChart.animateY(1000);
-        Description d = new Description();
-        d.setText("");
-        lineChart.setDescription(d);
-
-
-//        LineDataSet dataSet = new LineDataSet(entries, "Label");
-//        dataSet.setColor(Color.RED);
-//        dataSet.setValueTextColor(Color.BLUE);
-//
-//        LineData lineData = new LineData(dataSet);
-//        lineChart.setData(lineData);
-//        lineChart.invalidate(); // refresh
-        XAxis xAxiss = lineChart.getXAxis();
-        xAxiss.setValueFormatter(new DateValueFormatter());
-        lineChart.notifyDataSetChanged();
-        lineChart.invalidate();
-        lineChart.getLegend().setWordWrapEnabled(true);
 
     }
 
@@ -200,7 +197,7 @@ public class MeasurementMonitorActivity extends NavDrawer implements CompoundBut
         drawerToggle.syncState();
     }
 
-    private void initialise() {
+    private void initialize() {
         lineChart = (LineChart) findViewById(R.id.measurement_monitor_activity_linechart);
         service = new MeasurementService();
 
@@ -250,7 +247,7 @@ public class MeasurementMonitorActivity extends NavDrawer implements CompoundBut
     @Override
     protected void onResume() {
         super.onResume();
-        initialise();
+        initialize();
         generateChart();
     }
 
