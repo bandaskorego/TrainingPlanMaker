@@ -43,7 +43,7 @@ public class TrainingPlansAdapter extends ArrayAdapter<TrainingPlan> {
 
         LayoutInflater inflater = LayoutInflater.from(getContext());
         final Context con = getContext();
-        View customView = inflater.inflate(R.layout.training_activity_list_adapter_row, parent, false);
+        View customView = inflater.inflate(R.layout.training_activity_list_adapter_row_temporary, parent, false);
 
         final TrainingPlan plan = getItem(position);
         TextView title = (TextView) customView.findViewById(R.id.training_plans_activity_list_adapter_row_title);

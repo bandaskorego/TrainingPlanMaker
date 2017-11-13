@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
@@ -19,19 +18,13 @@ import android.widget.ListView;
 
 import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.adapters.TrainingPlansAdapter;
-import com.school.jakub.trainingplanmaker.controller.bagpack.BackpackEditActivity;
 import com.school.jakub.trainingplanmaker.controller.utils.NavDrawer;
-import com.school.jakub.trainingplanmaker.model.Backpack;
-import com.school.jakub.trainingplanmaker.model.Item;
 import com.school.jakub.trainingplanmaker.model.TrainingPlan;
 import com.school.jakub.trainingplanmaker.services.TrainingService;
 
 public class TrainingPlans extends NavDrawer {
 
     TrainingService service;
-//    ListAdapter defaultPlanAdapter;
-//    ListView defaultPlansList;
-
     ListAdapter userPlanAdapter;
     ListView userPlansList;
     Button newPlan;
@@ -39,11 +32,11 @@ public class TrainingPlans extends NavDrawer {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        initialise();
+        initialize();
 
     }
 
-    private void initialise() {
+    private void initialize() {
 
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View contentView = inflater.inflate(R.layout.training_plans_activity, null, false);

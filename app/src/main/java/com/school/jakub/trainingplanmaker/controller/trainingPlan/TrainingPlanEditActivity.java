@@ -58,9 +58,6 @@ public class TrainingPlanEditActivity extends AppCompatActivity implements Adapt
         setContentView(R.layout.training_plan_edit_activity);
 
         initialise();
-//        System.out.println(plan.toString());
-//        for(int i = 0 ; i < plan.getSeries().size(); i++)
-//            System.out.println(plan.getSeries().get(i).toString());
     }
 
     private void initialise() {
