@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/training_background_image3"
     tools:context="com.school.jakub.trainingplanmaker.controller.trainingPlan.TrainingPlans">
 <!--android:background="@color/colorPrimaryDark"-->
 
@@ -29,22 +30,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Twoje plany treningowe"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/training_plans_activity_toolbar" />
-
-
     <ListView
         android:id="@+id/training_plans_activity_user_plans_list"
         android:layout_width="0dp"
@@ -54,7 +39,7 @@
         app:layout_constraintBottom_toTopOf="@id/training_plans_activity_add_new_plan_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintTop_toBottomOf="@+id/training_plans_activity_toolbar">
         <!--android:divider="@android:color/transparent"-->
         <!--android:dividerHeight="5dp">-->
 
@@ -64,8 +49,15 @@
         android:id="@+id/training_plans_activity_add_new_plan_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/button_style1"
         android:text="Utwórz własny plan"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/training_plans_activity_user_plans_list" />
 
     <!--<ImageView-->
