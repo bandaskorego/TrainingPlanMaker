@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.school.jakub.trainingplanmaker.R;
-import com.school.jakub.trainingplanmaker.model.Series;
 import com.school.jakub.trainingplanmaker.model.TrainingPlan;
 import com.school.jakub.trainingplanmaker.services.TrainingService;
 
@@ -24,11 +23,11 @@ public class TrainingPlanSelect extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.training_plan_select_activity);
 
-        initialise();
+        initialize();
 
     }
 
-    private void initialise() {
+    private void initialize() {
 
         service = new TrainingService();
         Toolbar toolbar = (Toolbar) findViewById(R.id.training_plan_activity_select_toolbar);

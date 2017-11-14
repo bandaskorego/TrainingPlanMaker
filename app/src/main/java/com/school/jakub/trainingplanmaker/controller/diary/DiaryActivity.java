@@ -6,17 +6,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,18 +22,13 @@ import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.adapters.DiaryAdapter;
 import com.school.jakub.trainingplanmaker.controller.utils.NavDrawer;
 import com.school.jakub.trainingplanmaker.model.DayEntry;
-import com.school.jakub.trainingplanmaker.model.Diary;
 import com.school.jakub.trainingplanmaker.model.Entry;
 import com.school.jakub.trainingplanmaker.model.TrainingPlan;
 import com.school.jakub.trainingplanmaker.services.DiaryService;
 
-import org.w3c.dom.Text;
-
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class DiaryActivity extends NavDrawer {
 
@@ -53,16 +45,14 @@ public class DiaryActivity extends NavDrawer {
     ArrayAdapter<Entry> adapter;
 
     Calendar myCalendar = Calendar.getInstance();
-    //    String dateFormat = "dd.MM.yyyy";
     DatePickerDialog.OnDateSetListener date;
-//    SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.GERMAN);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.context = context;
 
-        initialise();
+        initialize();
         setUpDatepickerLogic();
     }
 
@@ -92,7 +82,7 @@ public class DiaryActivity extends NavDrawer {
         });
     }
 
-    private void initialise() {
+    private void initialize() {
 
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View contentView = inflater.inflate(R.layout.diary_activity, null, false);
@@ -116,13 +106,6 @@ public class DiaryActivity extends NavDrawer {
         setDateTextView();
         addLisners();
         refreshListView();
-
-        System.out.println("LISTUJE WPISY");
-        for (Entry e : dayEntry.getEntrys()) {
-            System.out.println(e.toString());
-        }
-
-
     }
 
     public void setSelection(int n) {

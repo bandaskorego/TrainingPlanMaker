@@ -60,7 +60,7 @@ public class AtlasActivity extends NavDrawer {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.atlas_activity_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Menu");
+        getSupportActionBar().setTitle("Nogi");
 
 
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar,R.string.open, R.string.close);
@@ -102,25 +102,32 @@ public class AtlasActivity extends NavDrawer {
         //noinspection SimplifiableIfStatement
         if (id == R.id.atlas_action_legs) {
             mViewPager.setCurrentItem(0);
+            getSupportActionBar().setTitle("Nogi");
         }
         if (id == R.id.atlas_action_abs) {
             mViewPager.setCurrentItem(1);
+            getSupportActionBar().setTitle("Brzuch");
         }
 
         if (id == R.id.atlas_action_chest) {
             mViewPager.setCurrentItem(2);
+            getSupportActionBar().setTitle("Klatka piersiowa");
         }
         if (id == R.id.atlas_action_back) {
             mViewPager.setCurrentItem(3);
+            getSupportActionBar().setTitle("Plecy");
         }
         if (id == R.id.atlas_action_biceps) {
             mViewPager.setCurrentItem(4);
+            getSupportActionBar().setTitle("Biceps");
         }
         if (id == R.id.atlas_action_triceps) {
             mViewPager.setCurrentItem(5);
+            getSupportActionBar().setTitle("Triceps");
         }
         if (id == R.id.atlas_action_shoulders) {
             mViewPager.setCurrentItem(6);
+            getSupportActionBar().setTitle("Barki");
         }
 
         return super.onOptionsItemSelected(item);
@@ -166,11 +173,8 @@ public class AtlasActivity extends NavDrawer {
                                  Bundle savedInstanceState) {
             final LayoutInflater inflater1 = inflater;
             View rootView = inflater.inflate(R.layout.atlas_fragment, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             final Context context = getContext();
 
-
-            textView.setText(service.getMuscleGroupName(getArguments().getInt(ARG_SECTION_NUMBER)));
             adapter = new ExerciseAdapter(getContext(), service, getArguments().getInt(ARG_SECTION_NUMBER));
             
             
