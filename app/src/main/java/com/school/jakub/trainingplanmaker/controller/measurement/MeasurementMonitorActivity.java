@@ -27,7 +27,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.school.jakub.trainingplanmaker.R;
-import com.school.jakub.trainingplanmaker.controller.utils.NavDrawer;
+import com.school.jakub.trainingplanmaker.utils.NavDrawer;
 import com.school.jakub.trainingplanmaker.model.Measurement;
 import com.school.jakub.trainingplanmaker.services.MeasurementService;
 

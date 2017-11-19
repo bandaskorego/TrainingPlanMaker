@@ -1,7 +1,6 @@
 package com.school.jakub.trainingplanmaker.controller.bagpack;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,7 +18,7 @@ import android.widget.ListView;
 
 import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.adapters.BackpackAdapter;
-import com.school.jakub.trainingplanmaker.controller.utils.NavDrawer;
+import com.school.jakub.trainingplanmaker.utils.NavDrawer;
 import com.school.jakub.trainingplanmaker.model.Backpack;
 import com.school.jakub.trainingplanmaker.services.BackpackService;
 
@@ -99,19 +98,10 @@ public class BackpackActivity extends NavDrawer {
                     }
                 });
 
-//                mBuilder.setView(mView);
-//                AlertDialog dialog  = mBuilder.create();
                 dialog.show();
             }
         });
 
-//        fabAdd = (FloatingActionButton) contentView.findViewById(R.id.backpack_activity_fabOK);
-//        fabAdd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
     }
 
     private void updateListView() {

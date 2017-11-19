@@ -23,11 +23,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.adapters.ExerciseAdapter;
-import com.school.jakub.trainingplanmaker.controller.utils.NavDrawer;
+import com.school.jakub.trainingplanmaker.utils.NavDrawer;
 import com.school.jakub.trainingplanmaker.model.Exercise;
 import com.school.jakub.trainingplanmaker.services.TrainingService;
 
@@ -176,9 +175,6 @@ public class AtlasActivity extends NavDrawer {
             final Context context = getContext();
 
             adapter = new ExerciseAdapter(getContext(), service, getArguments().getInt(ARG_SECTION_NUMBER));
-            
-            
-            //ListAdapter listAdapter = new ExerciseAdapter(getContext(), service);
 
             exercisesList = (ListView) rootView.findViewById(R.id.atlas_fragment_exercises);
             exercisesList.setAdapter(adapter);

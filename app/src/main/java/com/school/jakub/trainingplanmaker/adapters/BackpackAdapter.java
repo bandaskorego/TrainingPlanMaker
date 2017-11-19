@@ -28,6 +28,8 @@ public class BackpackAdapter extends ArrayAdapter<Backpack> {
 
     private ImageView edit;
     private ImageView remove;
+    private TextView items;
+    TextView name;
     private Context context;
 
     BackpackService bpService;
@@ -48,8 +50,21 @@ public class BackpackAdapter extends ArrayAdapter<Backpack> {
 
         final Backpack backpack = getItem(position);
         String singleBagpack = getItem(position).getName();
-        TextView textView = (TextView) customView.findViewById(R.id.backpack_list_item_textView);
-        textView.setText(singleBagpack);
+
+        name = (TextView) customView.findViewById(R.id.backpack_list_item_textView);
+        items = (TextView) customView.findViewById(R.id.backpack_list_item_text_items);
+        name.setText(singleBagpack);
+        String itemsText ="";
+        if(backpack.getItems().isEmpty()){
+            itemsText = "Pusty";
+        }else{
+            for(int i =1; i<=backpack.getItems().size(); i++){
+                itemsText+= i +". " +backpack.getItems().get(i-1).getName() + "\n";
+            }
+        }
+        items.setText(itemsText);
+
+
 
         edit = (ImageView) customView.findViewById(R.id.backpack_list_item_imageEdit);
         remove = (ImageView) customView.findViewById(R.id.backpack_list_item_imageDalete);

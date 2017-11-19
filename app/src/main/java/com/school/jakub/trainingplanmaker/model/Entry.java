@@ -16,9 +16,6 @@ public class Entry extends RealmObject{
     private int weight;
     private boolean isFinished;
 
-
-
-
     @Override
     public String toString() {
         return "Entry{" +

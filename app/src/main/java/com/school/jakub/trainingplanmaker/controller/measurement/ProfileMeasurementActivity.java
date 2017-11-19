@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.school.jakub.trainingplanmaker.R;
-import com.school.jakub.trainingplanmaker.controller.utils.CalendarActivity;
+import com.school.jakub.trainingplanmaker.utils.CalendarActivity;
 import com.school.jakub.trainingplanmaker.model.Measurement;
 import com.school.jakub.trainingplanmaker.services.MeasurementService;
 
@@ -34,9 +33,6 @@ public class ProfileMeasurementActivity extends AppCompatActivity implements Vie
     private ImageView bicepsLeftMinusBtn, bicepsRightMinusBtn, chestMinusBtn, waistMinusBtn, thighLeftMinusBtn, thighRightMinusBtn, weightMinusBtn;
     private Button btnSave;
     MeasurementService service = new MeasurementService();
-
-    //    private DatePickerDialog.OnDateSetListener onDateSetListener;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +53,6 @@ public class ProfileMeasurementActivity extends AppCompatActivity implements Vie
             }
         }
         refreshMeasurements();
-        service.printAll();
 
     }
 
@@ -100,20 +95,20 @@ public class ProfileMeasurementActivity extends AppCompatActivity implements Vie
         thighRightMinusBtn = (ImageView) findViewById(R.id.profile_measurement_activity_minus_thigh_right);
         weightMinusBtn = (ImageView) findViewById(R.id.profile_measurement_activity_minus_weight);
 
-        bicepsLeftPlusBtn.setOnClickListener(this);
-        bicepsRightPlusBtn.setOnClickListener(this);
-        chestPlusBtn.setOnClickListener(this);
-        waistPlusBtn.setOnClickListener(this);
-        thighLeftPlusBtn.setOnClickListener(this);
-        thighRightPlusBtn.setOnClickListener(this);
-        weightPlusBtn.setOnClickListener(this);
-        bicepsLeftMinusBtn.setOnClickListener(this);
-        bicepsRightMinusBtn.setOnClickListener(this);
-        chestMinusBtn.setOnClickListener(this);
-        waistMinusBtn.setOnClickListener(this);
-        thighLeftMinusBtn.setOnClickListener(this);
-        thighRightMinusBtn.setOnClickListener(this);
-        weightMinusBtn.setOnClickListener(this);
+        bicepsLeftPlusBtn.setOnTouchListener(new RepeatListener(400, 100, this));
+        bicepsRightPlusBtn.setOnTouchListener(new RepeatListener(400, 100, this));
+        chestPlusBtn.setOnTouchListener(new RepeatListener(400, 100, this));
+        waistPlusBtn.setOnTouchListener(new RepeatListener(400, 100, this));
+        thighLeftPlusBtn.setOnTouchListener(new RepeatListener(400, 100, this));
+        thighRightPlusBtn.setOnTouchListener(new RepeatListener(400, 100, this));
+        weightPlusBtn.setOnTouchListener(new RepeatListener(400, 100, this));
+        bicepsLeftMinusBtn.setOnTouchListener(new RepeatListener(400, 100, this));
+        bicepsRightMinusBtn.setOnTouchListener(new RepeatListener(400, 100, this));
+        chestMinusBtn.setOnTouchListener(new RepeatListener(400, 100, this));
+        waistMinusBtn.setOnTouchListener(new RepeatListener(400, 100, this));
+        thighLeftMinusBtn.setOnTouchListener(new RepeatListener(400, 100, this));
+        thighRightMinusBtn.setOnTouchListener(new RepeatListener(400, 100, this));
+        weightMinusBtn.setOnTouchListener(new RepeatListener(400, 100, this));
 
         datepicker.setOnClickListener(new View.OnClickListener() {
             @Override

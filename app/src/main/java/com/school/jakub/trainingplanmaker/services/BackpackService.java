@@ -28,6 +28,7 @@ public class BackpackService {
         myRealm.executeTransaction( new Realm.Transaction(){
             @Override
             public void execute(Realm realm) {
+
                 Backpack backpack = myRealm.createObject(Backpack.class, UUID.randomUUID().toString());
                 backpack.setName(backpackName);
             }

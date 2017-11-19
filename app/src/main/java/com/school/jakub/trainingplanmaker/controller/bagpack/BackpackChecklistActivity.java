@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,10 +39,10 @@ public class BackpackChecklistActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Intent i = getIntent();
-        backpackName = i.getStringExtra("backpack_name");
+        backpackName = i.getStringExtra("backpackName");
 
         toolbar.setTitleTextColor(Color.WHITE);
-        toolbar.setTitle("Twoja checklista");
+        toolbar.setTitle("Przedmioty do zabrania");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -56,21 +57,54 @@ public class BackpackChecklistActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if("Red".equals(colors.get(i))) {
-                    adapterView.getChildAt(i).setBackgroundColor(Color.GREEN);
+//                    CardView card = adapterView.findViewById(R.id.backpack_checklist_item_row_cardView);
+//
+
+                    CardView card = (CardView) adapterView.getChildAt(i).findViewById(R.id.backpack_checklist_item_row_cardView);
+                    card.setCardBackgroundColor(Color.GREEN);
                     colors.set(i,"Blue");
                     if(checkIfAllTaken()){
+                        Thread thread = new Thread(){
+                            @Override
+                            public void run() {
+                                try {
+                                    Thread.sleep(2000); // As I am using LENGTH_LONG in Toast
+                                    BackpackChecklistActivity.this.finish();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        };
                         Snackbar snackbar = Snackbar
-                                .make(view, "Masz już wszystko", Snackbar.LENGTH_SHORT);
+                                .make(view, "Masz już wszystko, możesz ruszać na trening", Snackbar.LENGTH_SHORT);
                         snackbar.show();
+                        thread.start();
+
                     }
                 }
                 else {
-                    adapterView.getChildAt(i).setBackgroundColor(Color.RED);
+//                    CardView card = adapterView.findViewById(R.id.backpack_checklist_item_row_cardView);
+//                    card.setCardBackgroundColor(Color.RED);
+//                    adapterView.getChildAt(i).setBackgroundColor(Color.RED);
+                    CardView card = (CardView) adapterView.getChildAt(i).findViewById(R.id.backpack_checklist_item_row_cardView);
+                    card.setCardBackgroundColor(Color.RED);
                     colors.set(i, "Red");
                 }
             }
         });
     }
+
+    Thread thread = new Thread(){
+        @Override
+        public void run() {
+            try {
+                Thread.sleep(3500); // As I am using LENGTH_LONG in Toast
+                BackpackChecklistActivity.this.finish();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    };
 
     private boolean checkIfAllTaken(){
         for(String s : colors){

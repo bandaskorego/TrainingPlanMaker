@@ -1,5 +1,6 @@
 package com.school.jakub.trainingplanmaker.services;
 
+import com.school.jakub.trainingplanmaker.model.Account;
 import com.school.jakub.trainingplanmaker.model.Exercise;
 import com.school.jakub.trainingplanmaker.model.MuscleGroup;
 import com.school.jakub.trainingplanmaker.model.Series;
@@ -975,7 +976,6 @@ public class TrainingService {
     }
     
     public void setNumberOfRepetitionInSeries(final String uuid, final int numberOfRepetition){
-        System.out.println(" setNumberOfRepetitionInSeries ");
         final Series series = myRealm.where(Series.class)
                 .equalTo("id",uuid).findFirst();
         
@@ -1075,5 +1075,29 @@ public class TrainingService {
                 plan.deleteFromRealm();
             }
         });
+    }
+
+    public boolean checkIfAccountExist() {
+        if(myRealm.where(Account.class).findAll().isEmpty())
+            return false;
+        return true;
+    }
+
+    public void createAccount(final String name) {
+        myRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                Account account = myRealm.createObject(Account.class);
+                account.setName(name);
+            }
+        });
+    }
+
+    public String getAccountName(){
+        if(!checkIfAccountExist()){
+            return "";
+        }else {
+            return myRealm.where(Account.class).findFirst().getName();
+        }
     }
 }

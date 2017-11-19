@@ -98,31 +98,29 @@ public class BackpackEditActivity extends AppCompatActivity {
                     }
                 });
 
-//                mBuilder.setView(mView);
-//                AlertDialog dialog  = mBuilder.create();
                 dialog.show();
             }
         });
-
-        itemList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                final Item item = (Item)adapterView.getItemAtPosition(i);
-                new AlertDialog.Builder(adapterView.getContext())
-                        .setMessage("Czy na pewno chcesz usunąć przedmiot z plecaka?")
-                        .setCancelable(false)
-                        .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                service.deleteItemFromBackpack(backpackName, item.getName());
-                                updateListView();
-                                dialog.cancel();
-                            }
-                        })
-                        .setNegativeButton("Nie", null)
-                        .show();
-                return true;
-            }
-        });
+//
+//        itemList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                final Item item = (Item)adapterView.getItemAtPosition(i);
+//                new AlertDialog.Builder(adapterView.getContext())
+//                        .setMessage("Czy na pewno chcesz usunąć przedmiot z plecaka?")
+//                        .setCancelable(false)
+//                        .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int id) {
+//                                service.deleteItemFromBackpack(backpackName, item.getName());
+//                                updateListView();
+//                                dialog.cancel();
+//                            }
+//                        })
+//                        .setNegativeButton("Nie", null)
+//                        .show();
+//                return true;
+//            }
+//        });
 
         Button btnAdd = (Button) findViewById(R.id.backpack_edit_activity_add_btn);
         btnAdd.setOnClickListener(new View.OnClickListener() {

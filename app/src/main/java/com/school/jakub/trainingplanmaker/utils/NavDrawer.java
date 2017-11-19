@@ -1,4 +1,4 @@
-package com.school.jakub.trainingplanmaker.controller.utils;
+package com.school.jakub.trainingplanmaker.utils;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -12,17 +12,18 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.school.jakub.trainingplanmaker.R;
-import com.school.jakub.trainingplanmaker.controller.MainActivity;
+import com.school.jakub.trainingplanmaker.controller.main.BmiCalculatorActivity;
+import com.school.jakub.trainingplanmaker.controller.main.MainActivity;
 import com.school.jakub.trainingplanmaker.controller.diary.DiaryActivity;
 import com.school.jakub.trainingplanmaker.controller.exerciseMonitor.ExerciseMonitor;
 import com.school.jakub.trainingplanmaker.controller.measurement.MeasurementMonitorActivity;
-import com.school.jakub.trainingplanmaker.controller.measurement.ProfileMeasurementActivity;
 import com.school.jakub.trainingplanmaker.controller.bagpack.BackpackActivity;
 import com.school.jakub.trainingplanmaker.controller.atlas.AtlasActivity;
 import com.school.jakub.trainingplanmaker.controller.trainingPlan.TrainingPlans;
-import com.school.jakub.trainingplanmaker.model.TrainingPlan;
+import com.school.jakub.trainingplanmaker.services.TrainingService;
 
 /**
  * Created by Jakub on 09-Oct-17.
@@ -32,6 +33,8 @@ public class NavDrawer extends AppCompatActivity implements NavigationView.OnNav
 
     protected DrawerLayout mDrawerLayout;
     protected NavigationView navigationView;
+    private TextView name;
+    TrainingService service;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,8 +44,12 @@ public class NavDrawer extends AppCompatActivity implements NavigationView.OnNav
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         navigationView = (NavigationView) findViewById(R.id.navView);
         navigationView.setNavigationItemSelectedListener(this);
+        service = new TrainingService();
 
         View hView =  navigationView.getHeaderView(0);
+
+        name = (TextView) hView.findViewById(R.id.drawer_name);
+        name.setText(service.getAccountName());
     }
 
     @Override
@@ -96,7 +103,9 @@ public class NavDrawer extends AppCompatActivity implements NavigationView.OnNav
                 break;
             }
             case R.id.drawer_menu_calculators: {
-                System.out.println("drawer_menu_calculators");
+                Intent intent = new Intent(this, BmiCalculatorActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
                 break;
             }
             case R.id.drawer_menu_monitor: {

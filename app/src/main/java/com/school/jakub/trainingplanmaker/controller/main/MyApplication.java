@@ -1,4 +1,4 @@
-package com.school.jakub.trainingplanmaker.controller;
+package com.school.jakub.trainingplanmaker.controller.main;
 
 import android.app.Application;
 

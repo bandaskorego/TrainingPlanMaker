@@ -1,4 +1,4 @@
-package com.school.jakub.trainingplanmaker.controller.utils;
+package com.school.jakub.trainingplanmaker.utils;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,13 +32,6 @@ public class CalendarActivity extends AppCompatActivity {
         final int thighRight = getIntent().getIntExtra("thighRight", 0);
         final int weight = getIntent().getIntExtra("weight", 0);
 
-        System.out.println(bicepsLeft);
-        System.out.println(bicepsRight);
-        System.out.println(chest);
-        System.out.println(waist);
-        System.out.println(thighLeft);
-        System.out.println(thighRight);
-        System.out.println(weight);
 
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override

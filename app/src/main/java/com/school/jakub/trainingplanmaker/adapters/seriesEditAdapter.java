@@ -58,8 +58,6 @@ public class seriesEditAdapter extends ArrayAdapter<Series> {
         ArrayAdapter<Integer> adapterSpiner3 = new ArrayAdapter<Integer>(context,R.layout.my_spinner, generateNumbersTo(40));
         adapterSpiner3.setDropDownViewResource(R.layout.my_spinner);
         spinner_3.setAdapter(adapterSpiner3);
-        System.out.println(series.getNumberOfRepetitions());
-        System.out.println("Ilosc repetition");
         spinner_3.setSelection(series.getNumberOfRepetitions()-1);
 
         imageDelete = (ImageView) customView.findViewById(R.id.training_plan_activity_edit_delete);
@@ -103,14 +101,6 @@ public class seriesEditAdapter extends ArrayAdapter<Series> {
             }
         });
 
-
-
-//        spinner_3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-//            }
-//        });
         spinner_3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

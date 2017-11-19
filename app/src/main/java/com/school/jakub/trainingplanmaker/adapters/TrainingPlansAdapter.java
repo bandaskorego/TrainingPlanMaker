@@ -57,7 +57,6 @@ public class TrainingPlansAdapter extends ArrayAdapter<TrainingPlan> {
             text += "\n  ...   \n";
             text += plan.getSeries().size() + ".";
             text += listOfPlans.get(position).getSeries().get(plan.getSeries().size()-1).getExercise().getName();
-//            System.out.println(" Udało się wpisać " + listOfPlans.get(position).getSeries().get(plan.getSeries().size()-1).getExercise().getName());
         }else{
             for(int i =0 ; i<plan.getSeries().size() ; i++){
                 String s = listOfPlans.get(position).getSeries().get(i).getExercise().getName();

@@ -20,7 +20,7 @@ import android.widget.TextView;
 
 import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.adapters.DiaryAdapter;
-import com.school.jakub.trainingplanmaker.controller.utils.NavDrawer;
+import com.school.jakub.trainingplanmaker.utils.NavDrawer;
 import com.school.jakub.trainingplanmaker.model.DayEntry;
 import com.school.jakub.trainingplanmaker.model.Entry;
 import com.school.jakub.trainingplanmaker.model.TrainingPlan;

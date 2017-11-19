@@ -2,27 +2,19 @@ package com.school.jakub.trainingplanmaker.model;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
 
 /**
  * Created by Jakub on 28-Oct-17.
  */
 
 
-public class Series extends RealmObject{
+ public class Series extends RealmObject{
 
     @PrimaryKey
     String id;
     Exercise exercise;
     int numberOfRepetitions;
-
-    @Override
-    public String toString() {
-        return "Series{" +
-                "id='" + id + '\'' +
-                ", exercise=" + exercise +
-                ", numberOfRepetitions=" + numberOfRepetitions +
-                '}';
-    }
 
     public String getId() {
         return id;
@@ -46,6 +38,16 @@ public class Series extends RealmObject{
 
     public void setNumberOfRepetitions(int numberOfRepetitions) {
         this.numberOfRepetitions = numberOfRepetitions;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Series{" +
+                "id='" + id + '\'' +
+                ", exercise=" + exercise +
+                ", numberOfRepetitions=" + numberOfRepetitions +
+                '}';
     }
 
 }

@@ -24,15 +24,17 @@ import com.school.jakub.trainingplanmaker.services.BackpackService;
  */
 
 public class BackpackItemEditAdapter extends ArrayAdapter<Item> {
-    private ImageView edit;
+    private ImageView remove;
     private Context context;
+    String backpackName;
     BackpackService bpService;
 
 
     public BackpackItemEditAdapter(@NonNull Context context, BackpackService backpackService, String backpackName) {
-        super(context, R.layout.backpack_list_item, backpackService.getAllItemsFromBackpack(backpackName));
+        super(context, R.layout.backpack_list_item_edit, backpackService.getAllItemsFromBackpack(backpackName));
         bpService = backpackService;
         this.context = context;
+        this.backpackName = backpackName;
     }
 
     @NonNull
@@ -40,16 +42,34 @@ public class BackpackItemEditAdapter extends ArrayAdapter<Item> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        View customView = inflater.inflate(R.layout.backpack_list_item, parent, false);
+        View customView = inflater.inflate(R.layout.backpack_list_item_edit, parent, false);
 
 
         final Item item = getItem(position);
         String itemName = getItem(position).getName();
-        TextView textView = (TextView) customView.findViewById(R.id.backpack_list_item_textView);
+        TextView textView = (TextView) customView.findViewById(R.id.backpack_list_item_edit_item);
         textView.setText(itemName);
 
-        edit = (ImageView) customView.findViewById(R.id.backpack_list_item_imageEdit);
-        edit.setVisibility(View.INVISIBLE);
+        remove = (ImageView) customView.findViewById(R.id.backpack_list_item_remove);
+
+        remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AlertDialog.Builder(view.getContext())
+                        .setMessage("Czy na pewno chcesz usunąć przedmiot z plecaka?")
+                        .setCancelable(false)
+                        .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                bpService.deleteItemFromBackpack(backpackName, item.getName());
+                                remove(item);
+                                notifyDataSetChanged();
+                                dialog.cancel();
+                            }
+                        })
+                        .setNegativeButton("Nie", null)
+                        .show();
+            }
+        });
 
         return customView;
     }

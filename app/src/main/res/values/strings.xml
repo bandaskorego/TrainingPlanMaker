@@ -17,5 +17,6 @@
     <string name="title_activity_manage_measurements">ManageMeasurementsActivity</string>
     <string name="title_activity_exercise_monitor">ExerciseMonitor</string>
     <string name="title_activity_account">AccountActivity</string>
+    <string name="title_activity_bmi_calculator">BmiCalculatorActivity</string>
 
 </resources>

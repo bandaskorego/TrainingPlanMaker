@@ -79,14 +79,14 @@ public class MeasurementService {
     public void createEntry(final Measurement measurement){
 
         if(checkIfEntryExists(measurement.getDate())){
-            System.out.println("Entry Exist");
+
             final Measurement m = getMeasurementByDate(measurement.getDate());
             myRealm.executeTransaction(new Realm.Transaction() {
                 @Override
                 public void execute(Realm realm) {
-                    System.out.println(" W teorii usuwam " + m.toString());
+
                     m.deleteFromRealm();
-                    System.out.println(" Oraz dodaje " + measurement.toString());
+
                     myRealm.copyToRealmOrUpdate(measurement);
                 }
             });
@@ -95,7 +95,7 @@ public class MeasurementService {
             myRealm.executeTransaction(new Realm.Transaction() {
                 @Override
                 public void execute(Realm realm) {
-                    System.out.println("Nie istnieje, więc dodaje " + measurement.toString());
+
                     myRealm.copyToRealmOrUpdate(measurement);
                 }
             });
@@ -125,7 +125,6 @@ public class MeasurementService {
         Date from = new Date(today.get(Calendar.YEAR)-1900,today.get(Calendar.MONTH)-i, today.get(Calendar.DAY_OF_MONTH));
         Date to = new Date();
 
-        System.out.println(list);
 
         List<Measurement> measurements = new ArrayList<>();
         for(Measurement m : list){
@@ -133,7 +132,6 @@ public class MeasurementService {
                 measurements.add(m);
         }
 
-        System.out.println(measurements);
         return measurements;
     }
 

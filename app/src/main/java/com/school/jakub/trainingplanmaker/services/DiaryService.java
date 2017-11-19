@@ -85,23 +85,20 @@ public class DiaryService {
     public DayEntry createNewDayEntry(final Date date){
 
         if(checkIfDayEntryExist(date)){
-            System.out.println(" Podany DayEntry ISTNIEJE");
-            System.out.println(" Podany DayEntry ISTNIEJE");
-            System.out.println(" Podany DayEntry ISTNIEJE");
-            System.out.println(" Podany DayEntry ISTNIEJE");
+
         }else{
             myRealm.executeTransaction(new Realm.Transaction() {
                 @Override
                 public void execute(Realm realm) {
 
-                    Diary diary = myRealm.where(Diary.class).findFirst();
+                    //Diary diary = myRealm.where(Diary.class).findFirst();
 
                     DayEntry dayEntry = myRealm.createObject(DayEntry.class, UUID.randomUUID().toString());
                     dayEntry.setDate(date);
                     myRealm.copyToRealmOrUpdate(dayEntry);
 
-                    diary.getDays().add(dayEntry);
-                    myRealm.copyToRealmOrUpdate(diary);
+                    //diary.getDays().add(dayEntry);
+                    //myRealm.copyToRealmOrUpdate(diary);
                 }
             });
             return getDayEntryByDate(date);
@@ -202,10 +199,6 @@ public class DiaryService {
     }
 
     public void addAllSeriesToDiary(final TrainingPlan plan, final DayEntry dayEntry) {
-        System.out.println(plan.getName());
-        System.out.println(plan.getName());
-        System.out.println(plan.getName());
-        System.out.println(plan.getName());
 
         myRealm.executeTransaction(new Realm.Transaction() {
             @Override
@@ -221,7 +214,6 @@ public class DiaryService {
                 myRealm.copyToRealmOrUpdate(dayEntry);
             }
         });
-
     }
 
     public List<String> getAllMuscleGroup() {
@@ -229,7 +221,6 @@ public class DiaryService {
         List<String> list = new ArrayList<>();
         for(MuscleGroup m : groups) {
             list.add(m.getName());
-            System.out.println(m.getName());
         }
         return list;
     }
