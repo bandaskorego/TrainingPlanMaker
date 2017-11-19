@@ -11,10 +11,15 @@ import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.model.TrainingPlan;
 import com.school.jakub.trainingplanmaker.services.TrainingService;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+
 public class TrainingPlanSelect extends AppCompatActivity {
 
-    TrainingPlan plan;
+    @Inject
     TrainingService service;
+    TrainingPlan plan;
     TextView title;
     TextView content;
 
@@ -22,7 +27,7 @@ public class TrainingPlanSelect extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.training_plan_select_activity);
-
+        AndroidInjection.inject(TrainingPlanSelect.this);
         initialize();
 
     }

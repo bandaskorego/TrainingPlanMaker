@@ -30,7 +30,17 @@ import com.school.jakub.trainingplanmaker.utils.NavDrawer;
 import com.school.jakub.trainingplanmaker.model.Exercise;
 import com.school.jakub.trainingplanmaker.services.TrainingService;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+
 public class AtlasActivity extends NavDrawer {
+
+    @Inject
+    TrainingService service;
+
+    Toolbar toolbar;
+
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -50,6 +60,8 @@ public class AtlasActivity extends NavDrawer {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidInjection.inject(AtlasActivity.this);
+
         //setContentView(R.layout.atlas_activity);
 
 
@@ -57,30 +69,62 @@ public class AtlasActivity extends NavDrawer {
         View contentView = inflater.inflate(R.layout.atlas_activity, null, false);
         mDrawerLayout.addView(contentView, 0);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.atlas_activity_toolbar);
+        toolbar = (Toolbar) findViewById(R.id.atlas_activity_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Nogi");
 
 
-        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar,R.string.open, R.string.close);
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open, R.string.close);
         mDrawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
 
-
-        //setSupportActionBar(toolbar);
-
-
-
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), toolbar);
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
 
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                toolbar.setTitle("test");
+                if (position == 0) {
+                    toolbar.setTitle("Nogi");
+                }
+                if (position == 1) {
+                    toolbar.setTitle("Brzuch");
+                }
+                if (position == 2) {
+                    toolbar.setTitle("Klatka piersiowa");
+                }
+                if (position == 3) {
+                    toolbar.setTitle("Plecy");
+                }
+                if (position == 4) {
+                    toolbar.setTitle("Biceps");
+                }
+                if (position == 5) {
+                    toolbar.setTitle("Triceps");
+                }
+                if (position == 6) {
+                    toolbar.setTitle("Barki");
+                }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
 
@@ -141,6 +185,7 @@ public class AtlasActivity extends NavDrawer {
          * fragment.
          */
 
+        Toolbar toolbar;
         final TrainingService service = new TrainingService();
         ListAdapter adapter;
         ListView exercisesList;
@@ -150,16 +195,18 @@ public class AtlasActivity extends NavDrawer {
         public PlaceholderFragment() {
         }
 
-        private void updateListView(){
+        private void updateListView() {
             adapter = new ExerciseAdapter(getContext(), service, getArguments().getInt(ARG_SECTION_NUMBER));
             exercisesList.setAdapter(adapter);
+
         }
 
         /**
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
+        public static PlaceholderFragment newInstance(int sectionNumber, Toolbar toolbar) {
+
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
@@ -207,7 +254,7 @@ public class AtlasActivity extends NavDrawer {
                     final View mView = inflater1.inflate(R.layout.backpack_activity_new_popup, null);
 
                     mBuilder.setView(mView);
-                    final AlertDialog dialog  = mBuilder.create();
+                    final AlertDialog dialog = mBuilder.create();
 
                     Button buttonOK = (Button) mView.findViewById(R.id.backpack_edit_activity_popup_OK);
                     Button buttonCancel = (Button) mView.findViewById(R.id.backpack_edit_activity_popup_Cancel);
@@ -217,11 +264,11 @@ public class AtlasActivity extends NavDrawer {
                     buttonOK.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if(!service.checkIfExerciseExists(etName.getText().toString())) {
+                            if (!service.checkIfExerciseExists(etName.getText().toString())) {
                                 service.addNewExercise(etName.getText().toString(), service.getMuscleGroupName(getArguments().getInt(ARG_SECTION_NUMBER)));
                                 updateListView();
                                 dialog.cancel();
-                            }else{
+                            } else {
                                 Snackbar snackbar = Snackbar
                                         .make(view, "Nazwa jest zajęta", Snackbar.LENGTH_SHORT);
                                 snackbar.show();
@@ -252,15 +299,18 @@ public class AtlasActivity extends NavDrawer {
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-        public SectionsPagerAdapter(FragmentManager fm) {
+        Toolbar toolbar;
+
+        public SectionsPagerAdapter(FragmentManager fm, Toolbar toolbar) {
             super(fm);
+            this.toolbar = toolbar;
         }
 
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            return PlaceholderFragment.newInstance(position + 1, toolbar);
         }
 
         @Override

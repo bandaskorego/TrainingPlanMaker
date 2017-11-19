@@ -22,15 +22,22 @@ import com.school.jakub.trainingplanmaker.utils.NavDrawer;
 import com.school.jakub.trainingplanmaker.model.TrainingPlan;
 import com.school.jakub.trainingplanmaker.services.TrainingService;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+
 public class TrainingPlans extends NavDrawer {
 
+    @Inject
     TrainingService service;
+
     ListAdapter userPlanAdapter;
     ListView userPlansList;
     Button newPlan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidInjection.inject(TrainingPlans.this);
 
         initialize();
 
@@ -49,8 +56,6 @@ public class TrainingPlans extends NavDrawer {
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar,R.string.open, R.string.close);
         mDrawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
-
-        service = new TrainingService();
 
         userPlanAdapter = new TrainingPlansAdapter(this, service.getAllDefaultPlans());
         userPlansList = (ListView) findViewById(R.id.training_plans_activity_user_plans_list);

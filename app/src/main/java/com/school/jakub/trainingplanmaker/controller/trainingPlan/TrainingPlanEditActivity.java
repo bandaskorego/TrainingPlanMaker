@@ -31,11 +31,16 @@ import com.school.jakub.trainingplanmaker.services.TrainingService;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+
 public class TrainingPlanEditActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     EditText trainingName;
     Button addBtn;
     TextInputLayout layoutTrainingName;
+    @Inject
     TrainingService service;
     TrainingPlan plan;
     ListAdapter adapter1;
@@ -56,6 +61,7 @@ public class TrainingPlanEditActivity extends AppCompatActivity implements Adapt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.training_plan_edit_activity);
+        AndroidInjection.inject(TrainingPlanEditActivity.this);
 
         initialise();
     }
@@ -72,7 +78,6 @@ public class TrainingPlanEditActivity extends AppCompatActivity implements Adapt
 
         trainingName = (EditText) findViewById(R.id.training_plans_activity_edit_training_name);
         layoutTrainingName = (TextInputLayout) findViewById(R.id.training_plans_activity_edit_text_wrapper);
-        service = new TrainingService();
         trainingName.addTextChangedListener(new MyTextWatcher(trainingName));
         String oldName;
 
@@ -124,6 +129,9 @@ public class TrainingPlanEditActivity extends AppCompatActivity implements Adapt
                             Integer.parseInt(spinner_3.getSelectedItem().toString()),
                             Integer.parseInt(spinner_4.getSelectedItem().toString())+1
                     );
+                    Snackbar snackbar = Snackbar
+                            .make(view, "Dodano", Snackbar.LENGTH_SHORT);
+                    snackbar.show();
                     refreshListView();
                 }else{
                     Snackbar snackbar = Snackbar

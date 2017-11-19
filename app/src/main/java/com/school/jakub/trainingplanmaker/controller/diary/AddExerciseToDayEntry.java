@@ -26,6 +26,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+
 public class AddExerciseToDayEntry extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     TextView title;
@@ -37,7 +41,9 @@ public class AddExerciseToDayEntry extends AppCompatActivity implements AdapterV
     CheckBox ifFinished;
     Button confirm;
     Context context;
+    @Inject
     TrainingService trainingService;
+    @Inject
     DiaryService diaryService;
     int day;
     int month;
@@ -48,6 +54,7 @@ public class AddExerciseToDayEntry extends AppCompatActivity implements AdapterV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_exercise_to_day_entry_activity);
         this.context=context;
+        AndroidInjection.inject(AddExerciseToDayEntry.this);
         createHandlers();
         setUpTextViews();
         setUpSpinners();
@@ -122,9 +129,6 @@ public class AddExerciseToDayEntry extends AppCompatActivity implements AdapterV
          weightSpinner = (Spinner) findViewById(R.id.add_exercise_to_day_entry_spinner_weight);
          ifFinished = (CheckBox) findViewById(R.id.add_exercise_to_day_entry_ckeckbox);
          confirm = (Button) findViewById(R.id.add_exercise_to_day_entry_confirm);
-
-         trainingService = new TrainingService();
-         diaryService = new DiaryService();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(Color.WHITE);

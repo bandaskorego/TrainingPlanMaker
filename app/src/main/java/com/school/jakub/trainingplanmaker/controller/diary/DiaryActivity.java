@@ -30,7 +30,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+
 public class DiaryActivity extends NavDrawer {
+
+    @Inject
+    DiaryService service;
 
     Toolbar toolbar;
     TextView dateTextView;
@@ -39,7 +46,6 @@ public class DiaryActivity extends NavDrawer {
     ListView listView;
     Button addExerciseBtn;
     Button addPlanBtn;
-    DiaryService service;
     DayEntry dayEntry;
     Context context;
     ArrayAdapter<Entry> adapter;
@@ -50,6 +56,7 @@ public class DiaryActivity extends NavDrawer {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidInjection.inject(DiaryActivity.this);
         this.context = context;
 
         initialize();
@@ -100,7 +107,6 @@ public class DiaryActivity extends NavDrawer {
         listView = (ListView) findViewById(R.id.diary_activity_listview);
         addExerciseBtn = (Button) findViewById(R.id.diary_activity_add_exercise);
         addPlanBtn = (Button) findViewById(R.id.diary_activity_add_plan);
-        service = new DiaryService();
 
         readDayEntry();
         setDateTextView();
