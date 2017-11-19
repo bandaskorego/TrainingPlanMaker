@@ -16,22 +16,30 @@ import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.adapters.MeasurementAdapter;
 import com.school.jakub.trainingplanmaker.services.MeasurementService;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+
 public class ManageMeasurementsActivity extends AppCompatActivity {
 
-    Button addBtn ;
+    @Inject
     MeasurementService service;
     ListView listView;
     ArrayAdapter adaper;
+    Button addBtn ;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidInjection.inject(ManageMeasurementsActivity.this);
+
         setContentView(R.layout.manage_measurements_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Zarządzanie pomiarami");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        service = new MeasurementService();
         listView = (ListView) findViewById(R.id.manage_measurement_listView);
 
         addBtn = (Button) findViewById(R.id.manage_measurement_addBtn);
@@ -43,7 +51,6 @@ public class ManageMeasurementsActivity extends AppCompatActivity {
                 finish();
             }
         });
-
 
         adaper = new MeasurementAdapter(this, service);
         listView.setAdapter(adaper);

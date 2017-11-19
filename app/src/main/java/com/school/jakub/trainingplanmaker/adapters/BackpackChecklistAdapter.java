@@ -20,6 +20,10 @@ import com.school.jakub.trainingplanmaker.model.Backpack;
 import com.school.jakub.trainingplanmaker.model.Item;
 import com.school.jakub.trainingplanmaker.services.BackpackService;
 
+import java.util.List;
+
+import javax.inject.Inject;
+
 /**
  * Created by Jakub on 13-Oct-17.
  */
@@ -28,12 +32,13 @@ public class BackpackChecklistAdapter extends ArrayAdapter<Item>{
 
     private Context context;
     CardView card;
+    @Inject
     BackpackService bpService;
 
 
-    public BackpackChecklistAdapter(@NonNull Context context, BackpackService backpackService,String backpackName) {
-        super(context, R.layout.backpack_list_item_checklist, backpackService.getAllItemsFromBackpack(backpackName));
-        bpService = backpackService;
+    public BackpackChecklistAdapter(@NonNull Context context, List<Item> items, String backpackName) {
+        super(context, R.layout.backpack_list_item_checklist, items);
+//        bpService = backpackService;
         this.context = context;
     }
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

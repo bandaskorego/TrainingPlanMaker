@@ -23,17 +23,15 @@ public class BackpackService {
         myRealm = Realm.getDefaultInstance();
     }
 
-    public String createBagpack(String name){
-        final String backpackName = name;
+    public String createBagpack(final String name){
         myRealm.executeTransaction( new Realm.Transaction(){
             @Override
             public void execute(Realm realm) {
 
                 Backpack backpack = myRealm.createObject(Backpack.class, UUID.randomUUID().toString());
-                backpack.setName(backpackName);
+                backpack.setName(name);
             }
         });
-
         return name;
     }
 
@@ -80,7 +78,7 @@ public class BackpackService {
 
     public Backpack getBackpackByName(String backpackName){
         return myRealm.where(Backpack.class)
-                .contains("name", backpackName)
+                .equalTo("name", backpackName)
                 .findFirst();
     }
 

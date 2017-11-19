@@ -36,9 +36,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+
 public class MeasurementMonitorActivity extends NavDrawer implements CompoundButton.OnCheckedChangeListener {
 
     LineChart lineChart;
+    @Inject
     MeasurementService service;
     CheckBox bicepsLeft;
     CheckBox bicepsRight;
@@ -54,7 +59,7 @@ public class MeasurementMonitorActivity extends NavDrawer implements CompoundBut
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setUpToolbar();
-
+        AndroidInjection.inject(MeasurementMonitorActivity.this);
 
         initialize();
         generateChart();
@@ -199,8 +204,6 @@ public class MeasurementMonitorActivity extends NavDrawer implements CompoundBut
 
     private void initialize() {
         lineChart = (LineChart) findViewById(R.id.measurement_monitor_activity_linechart);
-        service = new MeasurementService();
-
 
         bicepsLeft = (CheckBox) findViewById(R.id.measurement_monitor_activity_checkbox_biceps_left);
         bicepsRight = (CheckBox) findViewById(R.id.measurement_monitor_activity_checkbox_biceps_right);

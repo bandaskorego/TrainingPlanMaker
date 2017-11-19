@@ -26,11 +26,16 @@ import com.school.jakub.trainingplanmaker.adapters.BackpackItemEditAdapter;
 import com.school.jakub.trainingplanmaker.model.Item;
 import com.school.jakub.trainingplanmaker.services.BackpackService;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+
 public class BackpackEditActivity extends AppCompatActivity {
 
+    @Inject
+    BackpackService service;
     private EditText etName;
     private TextInputLayout inputLayoutName;
-    final private BackpackService service = new BackpackService();
     String backpackName;
     ListAdapter listAdapter;
     ListView itemList;
@@ -38,7 +43,12 @@ public class BackpackEditActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initialize();
+    }
+
+    private void initialize() {
         setContentView(R.layout.backpack_edit_activity);
+        AndroidInjection.inject(BackpackEditActivity.this);
 
         Intent i = getIntent();
         etName = (EditText) findViewById(R.id.backpack_edit_activity_backpack_name);
@@ -70,8 +80,6 @@ public class BackpackEditActivity extends AppCompatActivity {
                 Button buttonOK = (Button) mView.findViewById(R.id.backpack_edit_activity_popup_OK);
                 Button buttonCancel = (Button) mView.findViewById(R.id.backpack_edit_activity_popup_Cancel);
                 final EditText etName = (EditText) mView.findViewById(R.id.backpack_edit_activity_popup_textInputLayout_editText);
-//                final TextInputLayout textInputLayout = (TextInputLayout) mView.findViewById(R.id.backpack_activity_edit_layoutInput);
-//                textInputLayout.setHint("sad");
                 final Item item =(Item)adapterView.getItemAtPosition(i);
                 etName.setText(item.getName());
                 buttonOK.setText("Zapisz");
@@ -101,26 +109,6 @@ public class BackpackEditActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
-//
-//        itemList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                final Item item = (Item)adapterView.getItemAtPosition(i);
-//                new AlertDialog.Builder(adapterView.getContext())
-//                        .setMessage("Czy na pewno chcesz usunąć przedmiot z plecaka?")
-//                        .setCancelable(false)
-//                        .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int id) {
-//                                service.deleteItemFromBackpack(backpackName, item.getName());
-//                                updateListView();
-//                                dialog.cancel();
-//                            }
-//                        })
-//                        .setNegativeButton("Nie", null)
-//                        .show();
-//                return true;
-//            }
-//        });
 
         Button btnAdd = (Button) findViewById(R.id.backpack_edit_activity_add_btn);
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -163,14 +151,6 @@ public class BackpackEditActivity extends AppCompatActivity {
             }
         });
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.backpack_edit_activity_fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
     }
 
     private void updateListView() {

@@ -16,7 +16,9 @@ import android.widget.TextView;
 
 import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.controller.bagpack.BackpackActivity;
+import com.school.jakub.trainingplanmaker.controller.bagpack.BackpackChecklistActivity;
 import com.school.jakub.trainingplanmaker.controller.diary.DiaryActivity;
+import com.school.jakub.trainingplanmaker.controller.measurement.ManageMeasurementsActivity;
 import com.school.jakub.trainingplanmaker.controller.measurement.MeasurementMonitorActivity;
 import com.school.jakub.trainingplanmaker.controller.trainingPlan.TrainingPlans;
 import com.school.jakub.trainingplanmaker.model.Measurement;
@@ -27,16 +29,23 @@ import com.school.jakub.trainingplanmaker.services.TrainingService;
 
 import java.util.Calendar;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
 import io.realm.Realm;
 
 
 public class MainActivity extends NavDrawer {
 
-    public static final String TAG = MainActivity.class.getName();
     private Realm myRealm;
-    private TrainingService trainingService;
-    private DiaryService diaryService;
-    private MeasurementService measurementService;
+
+    @Inject
+    TrainingService trainingService;
+    @Inject
+    DiaryService diaryService;
+    @Inject
+    MeasurementService measurementService;
+
     protected Toolbar toolbar;
     Button goToDiary;
     Button goToTraining;
@@ -49,6 +58,7 @@ public class MainActivity extends NavDrawer {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidInjection.inject(MainActivity.this);
         this.context = context;
         initialize();
     }
@@ -67,9 +77,9 @@ public class MainActivity extends NavDrawer {
         mDrawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
-        trainingService = new TrainingService();
-        diaryService = new DiaryService();
-        measurementService = new MeasurementService();
+//        trainingService = new TrainingService();
+//        diaryService = new DiaryService();
+//        measurementService = new MeasurementService();
 
         myRealm = Realm.getDefaultInstance();
 
@@ -101,7 +111,7 @@ public class MainActivity extends NavDrawer {
         goToMeasurement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MeasurementMonitorActivity.class);
+                Intent intent = new Intent(MainActivity.this, ManageMeasurementsActivity.class);
                 startActivity(intent);
             }
         });

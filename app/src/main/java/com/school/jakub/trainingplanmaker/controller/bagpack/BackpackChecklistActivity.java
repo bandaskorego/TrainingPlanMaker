@@ -22,10 +22,15 @@ import com.school.jakub.trainingplanmaker.services.BackpackService;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+
 public class BackpackChecklistActivity extends AppCompatActivity {
 
     String backpackName;
-    final private BackpackService service = new BackpackService();
+    @Inject
+    BackpackService service;
     ListAdapter listAdapter;
     ListView itemList;
     List<String> colors;
@@ -34,6 +39,7 @@ public class BackpackChecklistActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidInjection.inject(BackpackChecklistActivity.this);
         setContentView(R.layout.backpack_checklist_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.backpack_checklist_toolbar);
         setSupportActionBar(toolbar);
@@ -47,7 +53,7 @@ public class BackpackChecklistActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        listAdapter = new BackpackChecklistAdapter(this, service, backpackName);
+        listAdapter = new BackpackChecklistAdapter(this, service.getAllItemsFromBackpack(backpackName), backpackName);
         itemList = (ListView) findViewById(R.id.backpack_checklist_listView);
         itemList.setAdapter(listAdapter);
 
@@ -57,8 +63,6 @@ public class BackpackChecklistActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if("Red".equals(colors.get(i))) {
-//                    CardView card = adapterView.findViewById(R.id.backpack_checklist_item_row_cardView);
-//
 
                     CardView card = (CardView) adapterView.getChildAt(i).findViewById(R.id.backpack_checklist_item_row_cardView);
                     card.setCardBackgroundColor(Color.GREEN);
@@ -68,7 +72,7 @@ public class BackpackChecklistActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 try {
-                                    Thread.sleep(2000); // As I am using LENGTH_LONG in Toast
+                                    Thread.sleep(2000);
                                     BackpackChecklistActivity.this.finish();
                                 } catch (Exception e) {
                                     e.printStackTrace();
@@ -83,9 +87,6 @@ public class BackpackChecklistActivity extends AppCompatActivity {
                     }
                 }
                 else {
-//                    CardView card = adapterView.findViewById(R.id.backpack_checklist_item_row_cardView);
-//                    card.setCardBackgroundColor(Color.RED);
-//                    adapterView.getChildAt(i).setBackgroundColor(Color.RED);
                     CardView card = (CardView) adapterView.getChildAt(i).findViewById(R.id.backpack_checklist_item_row_cardView);
                     card.setCardBackgroundColor(Color.RED);
                     colors.set(i, "Red");
@@ -98,7 +99,7 @@ public class BackpackChecklistActivity extends AppCompatActivity {
         @Override
         public void run() {
             try {
-                Thread.sleep(3500); // As I am using LENGTH_LONG in Toast
+                Thread.sleep(3500);
                 BackpackChecklistActivity.this.finish();
             } catch (Exception e) {
                 e.printStackTrace();

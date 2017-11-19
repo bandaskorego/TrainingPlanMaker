@@ -22,6 +22,10 @@ import com.school.jakub.trainingplanmaker.services.MeasurementService;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+
 public class ProfileMeasurementActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView datepicker;
@@ -32,12 +36,14 @@ public class ProfileMeasurementActivity extends AppCompatActivity implements Vie
     private ImageView bicepsLeftPlusBtn, bicepsRightPlusBtn, chestPlusBtn, waistPlusBtn, thighLeftPlusBtn, thighRightPlusBtn, weightPlusBtn;
     private ImageView bicepsLeftMinusBtn, bicepsRightMinusBtn, chestMinusBtn, waistMinusBtn, thighLeftMinusBtn, thighRightMinusBtn, weightMinusBtn;
     private Button btnSave;
-    MeasurementService service = new MeasurementService();
+    @Inject
+    MeasurementService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.context = context;
+        AndroidInjection.inject(ProfileMeasurementActivity.this);
         setContentView(R.layout.profile_measurement_activity);
         initialiseItems();
         toolbar.setTitleTextColor(Color.WHITE);

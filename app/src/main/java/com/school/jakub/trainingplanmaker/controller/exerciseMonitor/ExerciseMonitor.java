@@ -26,6 +26,7 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.controller.diary.DiaryActivity;
+import com.school.jakub.trainingplanmaker.controller.measurement.ProfileMeasurementActivity;
 import com.school.jakub.trainingplanmaker.utils.NavDrawer;
 import com.school.jakub.trainingplanmaker.model.DayEntry;
 import com.school.jakub.trainingplanmaker.services.DiaryService;
@@ -36,6 +37,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+
 public class ExerciseMonitor extends NavDrawer implements AdapterView.OnItemSelectedListener {
 
     Toolbar toolbar;
@@ -43,12 +48,13 @@ public class ExerciseMonitor extends NavDrawer implements AdapterView.OnItemSele
     Spinner exerciseSpinner;
     Spinner rangeSpinner;
     LineChart chart;
+    @Inject
     DiaryService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        service = new DiaryService();
+        AndroidInjection.inject(ExerciseMonitor.this);
         setupToolbar();
         initializeSpinners();
         prepareChart();

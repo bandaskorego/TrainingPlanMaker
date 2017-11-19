@@ -18,21 +18,33 @@ import android.widget.ListView;
 
 import com.school.jakub.trainingplanmaker.R;
 import com.school.jakub.trainingplanmaker.adapters.BackpackAdapter;
+import com.school.jakub.trainingplanmaker.services.MeasurementService;
 import com.school.jakub.trainingplanmaker.utils.NavDrawer;
 import com.school.jakub.trainingplanmaker.model.Backpack;
 import com.school.jakub.trainingplanmaker.services.BackpackService;
 
-public class BackpackActivity extends NavDrawer {
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+
+public class BackpackActivity extends NavDrawer  {
 
     protected Toolbar toolbar;
-    final private BackpackService service = new BackpackService();
+
+    //final private BackpackService service = new BackpackService();
     private FloatingActionButton fabAdd;
     ListAdapter listAdapter;
     ListView backpackList;
 
+    @Inject
+    BackpackService service;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidInjection.inject(BackpackActivity.this);
 
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View contentView = inflater.inflate(R.layout.backpack_activity_layout, null, false);
@@ -56,6 +68,9 @@ public class BackpackActivity extends NavDrawer {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Backpack bp = (Backpack)adapterView.getItemAtPosition(i);
+                System.out.println(bp.getName());
+                System.out.println(bp.getName());
+                System.out.println(bp.getName());
                 Intent intent = new Intent(BackpackActivity.this, BackpackChecklistActivity.class);
                 intent.putExtra("backpackName",bp.getName());
                 startActivity(intent);
